@@ -205,7 +205,7 @@ contains
       subroutine dop853(n,fcn,x,y,xend,rtol,atol,itol,solout,iout,work, &
                       & lwork,iwork,liwork,idid)
 
-	  implicit none
+      implicit none
 
       double precision atol , beta , fac1 , fac2 , h , hmax ,     &
                      & rtol , safe , work , x ,&
@@ -215,7 +215,7 @@ contains
             & iprint , istore , itol
       integer iwork , liwork , lwork , meth , n , naccpt , nfcn , nmax ,&
             & nrdens , nrejct , nstep , nstiff
-	  dimension y(n) , atol(*) , rtol(*) , work(lwork) , iwork(liwork)
+      dimension y(n) , atol(*) , rtol(*) , work(lwork) , iwork(liwork)
       logical arret
       procedure(func) :: fcn  !! subroutine computing the value of f(x,y)
       external solout
