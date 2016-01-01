@@ -12,7 +12,7 @@
 !
 !# License
 !
-!  License for updated version:
+!###License for updated version:
 !
 !        Modern Fortran Edition of the DOP853 ODE Solver
 !        https://github.com/jacobwilliams/dop853
@@ -44,7 +44,7 @@
 !        (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 !        SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 !
-!  Original DOP853 License:
+!###Original DOP853 License:
 !
 !        Copyright (c) 2004, Ernst Hairer
 !
@@ -76,6 +76,7 @@
     module dop853_module
 
     use dop853_constants
+    use iso_fortran_env, only: output_unit
 
     implicit none
 
@@ -100,10 +101,10 @@
             !  to adapt the code to the problem and to the needs of
             !  the user. set them on class initialization.
 
-            integer :: iprint = 6   !! switch for printing error messages
-                                    !! if `iprint<0` no messages are being printed
-                                    !! if `iprint>0` messages are printed with
-                                    !! `write (iprint,*)` ...
+            integer :: iprint = output_unit   !! switch for printing error messages
+                                              !! if `iprint==0` no messages are being printed
+                                              !! if `iprint/=0` messages are printed with
+                                              !! `write (iprint,*)` ...
 
             integer :: nmax = 100000    !! the maximal number of allowed steps.
             integer :: nstiff = 1000    !! test for stiffness is activated after step number
@@ -126,9 +127,9 @@
                                         !! (see section iv.2). positive values of beta ( <= 0.04 )
                                         !! make the step size control more stable.
 
-            integer,dimension(:),allocatable  :: icomp      !! `size(nrd)`
+            integer,dimension(:),allocatable  :: icomp      !! `size(nrdens)`
                                                             !! the components for which dense output is required
-            real(wp),dimension(:),allocatable :: cont    !! `size(8*nrd)`
+            real(wp),dimension(:),allocatable :: cont       !! `size(8*nrdens)`
 
             !formerly in the condo8 common block:
             real(wp) :: xold = 0.0_wp
@@ -145,7 +146,7 @@
 
             procedure :: dp86co
             procedure :: hinit
-            procedure,public :: contd8
+            procedure,public :: contd8 !! can be called in user's [[solout_func]].
 
         end type dop853_class
 
@@ -219,7 +220,7 @@
 
 !*****************************************************************************************
 !>
-!  Set the optional inputs for [[dop853_class]].
+!  Destructor for [[dop853_class]].
 
     subroutine destroy_dop853(me)
 
@@ -242,8 +243,8 @@
 
     class(dop853_class),intent(inout)        :: me
     integer,intent(in),optional              :: iprint    !! switch for printing error messages
-                                                          !! if `iprint<0` no messages are being printed
-                                                          !! if `iprint>0` messages are printed with
+                                                          !! if `iprint==0` no messages are being printed
+                                                          !! if `iprint/=0` messages are printed with
                                                           !! `write (iprint,*)` ...
     integer,intent(in),optional              :: nstiff    !! test for stiffness is activated after step number
                                                           !! `j*nstiff` (`j` integer), provided `nstiff>0`.
@@ -279,7 +280,7 @@
 
     if (present(nmax)) then
         if ( nmax<=0 ) then
-            if ( me%iprint>0 ) write (me%iprint,*) ' wrong input nmax=', nmax
+            if ( me%iprint/=0 ) write (me%iprint,*) ' wrong input nmax=', nmax
             status_ok = .false.
         else
             me%nmax = nmax
@@ -288,7 +289,7 @@
 
     if (present(safe)) then
         if ( safe>=1.0_wp .or. safe<=1.0e-4_wp ) then
-            if ( me%iprint>0 ) write (me%iprint,*) ' curious input for safety factor safe:', safe
+            if ( me%iprint/=0 ) write (me%iprint,*) ' curious input for safety factor safe:', safe
             status_ok = .false.
         else
             me%safe = safe
@@ -300,7 +301,7 @@
            me%beta = 0.0_wp
         else
            if ( beta>0.2_wp ) then
-              if ( me%iprint>0 ) write (me%iprint,*) &
+              if ( me%iprint/=0 ) write (me%iprint,*) &
                                     ' curious input for beta: ', beta
               status_ok = .false.
            else
@@ -397,7 +398,7 @@
       elseif (size(rtol)==n .and. size(atol)==n) then
           itol = 1
       else
-          if ( iprint>0 ) write (iprint,*) 'Error in dop853: improper dimensions for rtol and/or atol.'
+          if ( iprint/=0 ) write (iprint,*) 'Error in dop853: improper dimensions for rtol and/or atol.'
           idid = -1
           return
       end if
@@ -419,10 +420,10 @@
       end if
 
       if ( nrdens<0 .or. me%nrdens>n ) then
-         if ( iprint>0 ) write (iprint,*) ' curious input nrdens=' , nrdens
+         if ( iprint/=0 ) write (iprint,*) ' curious input nrdens=' , nrdens
          arret = .true.
       else
-         if ( nrdens>0 .and. iout<2 .and. iprint>0 ) &
+         if ( nrdens>0 .and. iout<2 .and. iprint/=0 ) &
                 write (iprint,*) ' warning: put iout=2 or iout=3 for dense output '
       end if
 
@@ -545,13 +546,13 @@
         do
             ! basic integration step
             if ( nstep>nmax ) then
-                if ( iprint>0 ) write (iprint,'(A,E18.4)') ' exit of dop853 at x=', x
-                if ( iprint>0 ) write (iprint,*) ' more than nmax =' , nmax , 'steps are needed'
+                if ( iprint/=0 ) write (iprint,'(A,E18.4)') ' exit of dop853 at x=', x
+                if ( iprint/=0 ) write (iprint,*) ' more than nmax =' , nmax , 'steps are needed'
                 idid = -2
                 return
             elseif ( 0.1_wp*abs(h)<=abs(x)*uround ) then
-                if ( iprint>0 ) write (iprint,'(A,E18.4)') ' exit of dop853 at x=', x
-                if ( iprint>0 ) write (iprint,*) ' step size too small, h=' , h
+                if ( iprint/=0 ) write (iprint,'(A,E18.4)') ' exit of dop853 at x=', x
+                if ( iprint/=0 ) write (iprint,*) ' step size too small, h=' , h
                 idid = -3
                 return
             else
@@ -641,8 +642,8 @@
                             nonsti = 0
                             iasti = iasti + 1
                             if ( iasti==15 ) then
-                                if ( iprint>0 ) write (iprint,*) ' the problem seems to become stiff at x = ', x
-                                if ( iprint<=0 ) then
+                                if ( iprint/=0 ) write (iprint,*) ' the problem seems to become stiff at x = ', x
+                                if ( iprint==0 ) then
                                     idid = -4      ! fail exit
                                     return
                                 end if
@@ -716,7 +717,7 @@
         end do
     end if
 
-    if ( iprint>0 ) write (iprint,'(A,E18.4)') ' exit of dop853 at x=', x
+    if ( iprint/=0 ) write (iprint,'(A,E18.4)') ' exit of dop853 at x=', x
     idid = 2
 
     end subroutine dp86co
