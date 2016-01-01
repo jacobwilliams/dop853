@@ -12,6 +12,33 @@
 !
 !# License
 !
+!###Original DOP853 license:
+!
+!        Copyright (c) 2004, Ernst Hairer
+!
+!        Redistribution and use in source and binary forms, with or without
+!        modification, are permitted provided that the following conditions are
+!        met:
+!
+!        - Redistributions of source code must retain the above copyright
+!        notice, this list of conditions and the following disclaimer.
+!
+!        - Redistributions in binary form must reproduce the above copyright
+!        notice, this list of conditions and the following disclaimer in the
+!        documentation and/or other materials provided with the distribution.
+!
+!        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+!        IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+!        TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+!        PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR
+!        CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+!        EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+!        PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+!        PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+!        LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+!        NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+!        SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+!
 !###License for updated version:
 !
 !        Modern Fortran Edition of the DOP853 ODE Solver
@@ -42,33 +69,6 @@
 !        LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
 !        ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 !        (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-!        SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-!
-!###Original DOP853 License:
-!
-!        Copyright (c) 2004, Ernst Hairer
-!
-!        Redistribution and use in source and binary forms, with or without
-!        modification, are permitted provided that the following conditions are
-!        met:
-!
-!        - Redistributions of source code must retain the above copyright
-!        notice, this list of conditions and the following disclaimer.
-!
-!        - Redistributions in binary form must reproduce the above copyright
-!        notice, this list of conditions and the following disclaimer in the
-!        documentation and/or other materials provided with the distribution.
-!
-!        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
-!        IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
-!        TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
-!        PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR
-!        CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-!        EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-!        PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-!        PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-!        LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-!        NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 !        SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 !
 !*****************************************************************************************
@@ -135,6 +135,12 @@
             real(wp) :: xold = 0.0_wp
             real(wp) :: hout = 0.0_wp
 
+            !user-defined procedures:
+            procedure(deriv_func),pointer  :: fcn    => null() !! subroutine computing the value of `f(x,y)`
+            procedure(solout_func),pointer :: solout => null() !! subroutine providing the
+                                                               !! numerical solution during integration.
+                                                               !! if `iout>=1`, it is called during integration.
+
             contains
 
             private
@@ -152,40 +158,39 @@
 
         abstract interface
 
-            subroutine deriv_func(n,x,y,f)
-                import :: wp
+            subroutine deriv_func(me,n,x,y,f)
+                !! subroutine computing the value of `f(x,y)`
+                import :: wp,dop853_class
                 implicit none
+                class(dop853_class),intent(inout)   :: me
                 integer,intent(in) :: n
                 real(wp),intent(in) :: x
                 real(wp),dimension(n),intent(in) :: y
                 real(wp),dimension(n),intent(out) :: f
             end subroutine deriv_func
 
-            subroutine solout_func(nr,xold,x,y,n,con,icomp,nd,irtrn,xout)
+            subroutine solout_func(me,nr,xold,x,y,n,irtrn,xout)
                 !! `solout` furnishes the solution `y` at the `nr`-th
                 !!    grid-point `x` (thereby the initial value is
                 !!    the first grid-point).
-                import :: wp
+                import :: wp,dop853_class
                 implicit none
-                integer,intent(in)                  :: nr
-                real(wp),intent(in)                 :: xold  !! the preceeding grid-point
-                real(wp),intent(in)                 :: x
-                integer,intent(in)                  :: n
-                integer,intent(in)                  :: nd    !! number of components, for which dense output
-                                                             !! is required (see `nrdens` and `icomp`)
-                real(wp),dimension(n),intent(in)    :: y
-                real(wp),dimension(8*nd),intent(in) :: con
-                integer,dimension(nd),intent(in)    :: icomp
-                integer,intent(inout)               :: irtrn !! serves to interrupt the integration. if `irtrn`
-                                                             !! is set `<0`, [[dop853]] will return to the calling program.
-                                                             !! if the numerical solution is altered in `solout`,
-                                                             !! set `irtrn = 2`.
-                real(wp),intent(out)                :: xout  !! `xout` can be used for efficient intermediate output
-                                                             !! if one puts `iout=3`
-                                                             !! when `nr=1` define the first output point `xout` in `solout`.
-                                                             !! the subroutine `solout` will be called only when
-                                                             !! `xout` is in the interval `[xold,x]`; during this call
-                                                             !! a new value for `xout` can be defined, etc.
+                class(dop853_class),intent(inout) :: me
+                integer,intent(in)                :: nr
+                real(wp),intent(in)               :: xold  !! the preceeding grid-point
+                real(wp),intent(in)               :: x
+                integer,intent(in)                :: n
+                real(wp),dimension(n),intent(in)  :: y
+                integer,intent(inout)             :: irtrn !! serves to interrupt the integration. if `irtrn`
+                                                           !! is set `<0`, [[dop853]] will return to the calling program.
+                                                           !! if the numerical solution is altered in `solout`,
+                                                           !! set `irtrn = 2`.
+                real(wp),intent(out)              :: xout  !! `xout` can be used for efficient intermediate output
+                                                           !! if one puts `iout=3`
+                                                           !! when `nr=1` define the first output point `xout` in `solout`.
+                                                           !! the subroutine `solout` will be called only when
+                                                           !! `xout` is in the interval `[xold,x]`; during this call
+                                                           !! a new value for `xout` can be defined, etc.
             end subroutine solout_func
 
         end interface
@@ -237,11 +242,17 @@
 !
 !@note In the original code, these were part of the `work` and `iwork` arrays.
 
-    subroutine set_parameters(me,iprint,nstiff,nmax,hinitial,hmax,safe,fac1,fac2,beta,icomp,status_ok)
+    subroutine set_parameters(me,fcn,solout,iprint,nstiff,nmax,hinitial,&
+                              hmax,safe,fac1,fac2,beta,icomp,status_ok)
 
     implicit none
 
     class(dop853_class),intent(inout)        :: me
+    procedure(deriv_func)                    :: fcn       !! subroutine computing the value of `f(x,y)`
+    procedure(solout_func),optional          :: solout    !! subroutine providing the
+                                                          !! numerical solution during integration.
+                                                          !! if `iout>=1`, it is called during integration.
+                                                          !! supply a dummy subroutine if `iout=0`.
     integer,intent(in),optional              :: iprint    !! switch for printing error messages
                                                           !! if `iprint==0` no messages are being printed
                                                           !! if `iprint/=0` messages are printed with
@@ -271,6 +282,14 @@
 
     status_ok = .true.
 
+    !required inputs:
+
+    me%fcn => fcn
+
+    !optional inputs:
+
+    if (present(solout)) me%solout => solout
+
     if (present(iprint))    me%iprint = iprint
     if (present(nstiff))    me%nstiff = nstiff
     if (present(hinitial))  me%hinitial  = hinitial
@@ -280,7 +299,8 @@
 
     if (present(nmax)) then
         if ( nmax<=0 ) then
-            if ( me%iprint/=0 ) write (me%iprint,*) ' wrong input nmax=', nmax
+            if ( me%iprint/=0 ) &
+                write (me%iprint,*) ' wrong input nmax=', nmax
             status_ok = .false.
         else
             me%nmax = nmax
@@ -289,7 +309,9 @@
 
     if (present(safe)) then
         if ( safe>=1.0_wp .or. safe<=1.0e-4_wp ) then
-            if ( me%iprint/=0 ) write (me%iprint,*) ' curious input for safety factor safe:', safe
+            if ( me%iprint/=0 ) &
+                write (me%iprint,*) ' curious input for safety factor safe:', &
+                safe
             status_ok = .false.
         else
             me%safe = safe
@@ -342,13 +364,12 @@
 !    Differential Equations I. Nonstiff Problems. 2nd Edition](http://www.unige.ch/~hairer/books.html).
 !    Springer Series in Computational Mathematics, Springer-Verlag (1993)
 
-      subroutine dop853(me,n,fcn,x,y,xend,rtol,atol,solout,iout,idid)
+      subroutine dop853(me,n,x,y,xend,rtol,atol,iout,idid)
 
       implicit none
 
       class(dop853_class),intent(inout)       :: me
       integer,intent(in)                      :: n      !! dimension of the system
-      procedure(deriv_func)                   :: fcn    !! subroutine computing the value of `f(x,y)`
       real(wp),intent(inout)                  :: x      !! *input:* initial value of independent variable.
                                                         !! *output:* `x` for which the solution has been computed
                                                         !! (after successful return `x=xend`).
@@ -360,10 +381,6 @@
       real(wp),dimension(:),intent(in)        :: atol   !! absolute error tolerance. `rtol` and `atol`
                                                         !! can be both scalars or else both vectors of length `n`.
                                                         !! `atol` should be strictly positive (possibly very small)
-      procedure(solout_func)                  :: solout !! subroutine providing the
-                                                        !! numerical solution during integration.
-                                                        !! if `iout>=1`, it is called during integration.
-                                                        !! supply a dummy subroutine if `iout=0`.
       integer,intent(in)                      :: iout   !! switch for calling the subroutine `solout`:
                                                         !!  `iout=0`: subroutine is never called
                                                         !!  `iout=1`: subroutine is called after every successful step
@@ -378,10 +395,10 @@
                                                         !!  `idid=-3` step size becomes too small.
                                                         !!  `idid=-4` problem is probably stiff (interrupted).
 
-      real(wp) :: beta , fac1 , fac2 , h , hmax , safe
-      integer :: i , icomp , ieco , iprint ,  istore , nrdens , nstiff, nmax
-      logical :: arret
-      integer :: itol     !! switch for `rtol` and `atol`:
+      real(wp) :: beta,fac1,fac2,h,hmax,safe
+      integer  :: i,ieco,iprint,istore,nrdens,nstiff,nmax
+      logical  :: arret
+      integer  :: itol    !! switch for `rtol` and `atol`:
                           !!  `itol=0`: both `rtol` and `atol` are scalars.
                           !!    the code keeps, roughly, the local error of
                           !!    `y(i)` below `rtol*abs(y(i))+atol`.
@@ -392,13 +409,32 @@
       iprint = me%iprint
       arret = .false.
 
+      !check procedures:
+      if (.not. associated(me%fcn)) then
+          if ( iprint/=0 ) &
+                write (iprint,*) &
+                'Error in dop853: procedure FCN is not associated.'
+          idid = -1
+          return
+      end if
+
+      if (iout/=0 .and. .not. associated(me%solout)) then
+          if ( iprint/=0 ) &
+                write (iprint,*) &
+                'Error in dop853: procedure SOLOUT must be associated if IOUT/=0.'
+          idid = -1
+          return
+      end if
+
       !scalar or vector tolerances:
       if (size(rtol)==1 .and. size(atol)==1) then
           itol = 0
       elseif (size(rtol)==n .and. size(atol)==n) then
           itol = 1
       else
-          if ( iprint/=0 ) write (iprint,*) 'Error in dop853: improper dimensions for rtol and/or atol.'
+          if ( iprint/=0 ) &
+                write (iprint,*) &
+                'Error in dop853: improper dimensions for rtol and/or atol.'
           idid = -1
           return
       end if
@@ -449,9 +485,8 @@
       else
 
         ! call to core integrator
-        call me%dp86co(n,fcn,x,y,xend,hmax,h,rtol,atol,itol,iprint,solout, &
+        call me%dp86co(n,x,y,xend,hmax,h,rtol,atol,itol,iprint, &
                        iout,idid,nmax,nstiff,safe,beta,fac1,fac2, &
-                       me%cont,me%icomp,nrdens, &
                        me%nfcn,me%nstep,me%naccpt,me%nrejct)
 
         me%h = h  !May have been updated
@@ -466,69 +501,63 @@
 !  core integrator for [[dop853]].
 !  parameters same as in [[dop853]] with workspace added.
 
-    subroutine dp86co(me,n,fcn,x,y,xend,hmax,h,rtol,atol,itol,iprint, &
-                        solout,iout,idid,nmax,nstiff,safe, &
+    subroutine dp86co(me,n,x,y,xend,hmax,h,rtol,atol,itol,iprint, &
+                        iout,idid,nmax,nstiff,safe, &
                         beta,fac1,fac2, &
-                        cont,icomp,nrd,nfcn,nstep,naccpt,nrejct)
+                        nfcn,nstep,naccpt,nrejct)
 
     implicit none
 
-    class(dop853_class),intent(inout)       :: me
-    integer,intent(in)                      :: n
-    procedure(deriv_func)                   :: fcn
-    integer,intent(in)                      :: nrd
-    real(wp),intent(inout)                  :: x
-    real(wp),dimension(n),intent(inout)     :: y
-    real(wp),intent(in)                     :: xend
-    real(wp),intent(inout)                  :: hmax
-    real(wp),intent(inout)                  :: h
-    real(wp),dimension(:),intent(in)        :: rtol
-    real(wp),dimension(:),intent(in)        :: atol
-    integer,intent(in)                      :: itol
-    integer,intent(in)                      :: iprint
-    procedure(solout_func)                  :: solout
-    integer,intent(in)                      :: iout
-    integer,intent(out)                     :: idid
-    integer,intent(in)                      :: nmax
-    integer,intent(in)                      :: nstiff
-    real(wp),intent(in)                     :: safe
-    real(wp),intent(in)                     :: beta
-    real(wp),intent(in)                     :: fac1
-    real(wp),intent(in)                     :: fac2
-    real(wp),dimension(8*nrd),intent(inout) :: cont
-    integer,dimension(nrd),intent(in)       :: icomp
-    integer,intent(out)                     :: nfcn
-    integer,intent(out)                     :: nstep
-    integer,intent(out)                     :: naccpt
-    integer,intent(out)                     :: nrejct
+    class(dop853_class),intent(inout)   :: me
+    integer,intent(in)                  :: n
+    real(wp),intent(inout)              :: x
+    real(wp),dimension(n),intent(inout) :: y
+    real(wp),intent(in)                 :: xend
+    real(wp),intent(inout)              :: hmax
+    real(wp),intent(inout)              :: h
+    real(wp),dimension(:),intent(in)    :: rtol
+    real(wp),dimension(:),intent(in)    :: atol
+    integer,intent(in)                  :: itol
+    integer,intent(in)                  :: iprint
+    integer,intent(in)                  :: iout
+    integer,intent(out)                 :: idid
+    integer,intent(in)                  :: nmax
+    integer,intent(in)                  :: nstiff
+    real(wp),intent(in)                 :: safe
+    real(wp),intent(in)                 :: beta
+    real(wp),intent(in)                 :: fac1
+    real(wp),intent(in)                 :: fac2
+    integer,intent(out)                 :: nfcn
+    integer,intent(out)                 :: nstep
+    integer,intent(out)                 :: naccpt
+    integer,intent(out)                 :: nrejct
 
-    real(wp) :: atoli,bspl,deno,err,&
-                err2,erri,expo1,fac,fac11,&
-                facc1,facc2,facold,hlamb,&
-                hnew,posneg,rtoli,&
-                sk,stden,stnum,&
-                xout,xph,ydiff
-    integer :: i,iasti,iord,irtrn,j,nonsti
     real(wp),dimension(n) :: y1,k1,k2,k3,k4,k5,k6,k7,k8,k9,k10
+    real(wp) :: atoli,bspl,deno,err,err2,erri,expo1,fac,fac11,&
+                facc1,facc2,facold,hlamb,hnew,posneg,rtoli,&
+                sk,stden,stnum,xout,xph,ydiff
+    integer :: i,iasti,iord,irtrn,j,nonsti,nrd
     logical :: reject,last,event,abort
 
     ! initialisations
+    nrd = me%nrdens
     facold = 1.0e-4_wp
     expo1 = 1.0_wp/8.0_wp - beta*0.2_wp
     facc1 = 1.0_wp/fac1
     facc2 = 1.0_wp/fac2
     posneg = sign(1.0_wp,xend-x)
+
     ! initial preparations
     atoli = atol(1)
     rtoli = rtol(1)
     last = .false.
     hlamb = 0.0_wp
     iasti = 0
-    call fcn(n,x,y,k1)
+    call me%fcn(n,x,y,k1)
     hmax = abs(hmax)
     iord = 8
     if ( h==0.0_wp ) then
-        h = me%hinit(n,fcn,x,y,posneg,k1,iord,hmax,atol,rtol,itol)
+        h = me%hinit(n,x,y,posneg,k1,iord,hmax,atol,rtol,itol)
     end if
     nfcn = nfcn + 2
     reject = .false.
@@ -536,7 +565,7 @@
     if ( iout/=0 ) then
         irtrn = 1
         me%hout = 1.0_wp
-        call solout(naccpt+1,me%xold,x,y,n,cont,icomp,nrd,irtrn,xout)
+        call me%solout(naccpt+1,me%xold,x,y,n,irtrn,xout)
         abort = ( irtrn<0 )
     else
         abort = .false.
@@ -546,13 +575,17 @@
         do
             ! basic integration step
             if ( nstep>nmax ) then
-                if ( iprint/=0 ) write (iprint,'(A,E18.4)') ' exit of dop853 at x=', x
-                if ( iprint/=0 ) write (iprint,*) ' more than nmax =' , nmax , 'steps are needed'
+                if ( iprint/=0 ) &
+                        write (iprint,'(A,E18.4)') ' exit of dop853 at x=', x
+                if ( iprint/=0 ) &
+                        write (iprint,*) ' more than nmax =' , nmax , 'steps are needed'
                 idid = -2
                 return
             elseif ( 0.1_wp*abs(h)<=abs(x)*uround ) then
-                if ( iprint/=0 ) write (iprint,'(A,E18.4)') ' exit of dop853 at x=', x
-                if ( iprint/=0 ) write (iprint,*) ' step size too small, h=' , h
+                if ( iprint/=0 ) &
+                        write (iprint,'(A,E18.4)') ' exit of dop853 at x=', x
+                if ( iprint/=0 ) &
+                        write (iprint,*) ' step size too small, h=' , h
                 idid = -3
                 return
             else
@@ -562,32 +595,35 @@
                 end if
                 nstep = nstep + 1
                 ! the twelve stages
-                if ( irtrn>=2 ) call fcn(n,x,y,k1)
+                if ( irtrn>=2 ) call me%fcn(n,x,y,k1)
                 y1 = y + h*a21*k1
-                call fcn(n,x+c2*h,y1,k2)
+                call me%fcn(n,x+c2*h,y1,k2)
                 y1 = y + h*(a31*k1+a32*k2)
-                call fcn(n,x+c3*h,y1,k3)
+                call me%fcn(n,x+c3*h,y1,k3)
                 y1 = y + h*(a41*k1+a43*k3)
-                call fcn(n,x+c4*h,y1,k4)
+                call me%fcn(n,x+c4*h,y1,k4)
                 y1 = y + h*(a51*k1+a53*k3+a54*k4)
-                call fcn(n,x+c5*h,y1,k5)
+                call me%fcn(n,x+c5*h,y1,k5)
                 y1 = y + h*(a61*k1+a64*k4+a65*k5)
-                call fcn(n,x+c6*h,y1,k6)
+                call me%fcn(n,x+c6*h,y1,k6)
                 y1 = y + h*(a71*k1+a74*k4+a75*k5+a76*k6)
-                call fcn(n,x+c7*h,y1,k7)
+                call me%fcn(n,x+c7*h,y1,k7)
                 y1 = y + h*(a81*k1+a84*k4+a85*k5+a86*k6+a87*k7)
-                call fcn(n,x+c8*h,y1,k8)
+                call me%fcn(n,x+c8*h,y1,k8)
                 y1 = y + h*(a91*k1+a94*k4+a95*k5+a96*k6+a97*k7+a98*k8)
-                call fcn(n,x+c9*h,y1,k9)
-                y1 = y + h*(a101*k1+a104*k4+a105*k5+a106*k6+a107*k7+a108*k8+a109*k9)
-                call fcn(n,x+c10*h,y1,k10)
-                y1 = y + h*(a111*k1+a114*k4+a115*k5+a116*k6+a117*k7+a118*k8+a119*k9+a1110*k10)
-                call fcn(n,x+c11*h,y1,k2)
+                call me%fcn(n,x+c9*h,y1,k9)
+                y1 = y + h*(a101*k1+a104*k4+a105*k5+a106*k6+a107*k7+&
+                            a108*k8+a109*k9)
+                call me%fcn(n,x+c10*h,y1,k10)
+                y1 = y + h*(a111*k1+a114*k4+a115*k5+a116*k6+a117*k7+&
+                            a118*k8+a119*k9+a1110*k10)
+                call me%fcn(n,x+c11*h,y1,k2)
                 xph = x + h
-                y1 = y + h*(a121*k1+a124*k4+a125*k5+a126*k6+a127*k7+a128*k8+a129*k9+a1210*k10+a1211*k2)
-                call fcn(n,xph,y1,k3)
+                y1 = y + h*(a121*k1+a124*k4+a125*k5+a126*k6+a127*k7+&
+                            a128*k8+a129*k9+a1210*k10+a1211*k2)
+                call me%fcn(n,xph,y1,k3)
                 nfcn = nfcn + 11
-                k4 = b1*k1 + b6*k6 + b7*k7 + b8*k8 + b9*k9 + b10*k10 + b11*k2 + b12*k3
+                k4 = b1*k1+b6*k6+b7*k7+b8*k8+b9*k9+b10*k10+b11*k2+b12*k3
                 k5 = y + h*k4
                 ! error estimation
                 err = 0.0_wp
@@ -627,7 +663,7 @@
                     ! step is accepted
                     facold = max(err,1.0e-4_wp)
                     naccpt = naccpt + 1
-                    call fcn(n,xph,k5,k4)
+                    call me%fcn(n,xph,k5,k4)
                     nfcn = nfcn + 1
                     ! stiffness detection
                     if ( mod(naccpt,nstiff)==0 .or. iasti>0 ) then
@@ -637,12 +673,14 @@
                             stnum = stnum + (k4(i)-k3(i))**2
                             stden = stden + (k5(i)-y1(i))**2
                         end do
-                        if ( stden>0.d0 ) hlamb = abs(h)*sqrt(stnum/stden)
-                        if ( hlamb>6.1d0 ) then
+                        if ( stden>0.0_wp ) hlamb = abs(h)*sqrt(stnum/stden)
+                        if ( hlamb>6.1_wp ) then
                             nonsti = 0
                             iasti = iasti + 1
                             if ( iasti==15 ) then
-                                if ( iprint/=0 ) write (iprint,*) ' the problem seems to become stiff at x = ', x
+                                if ( iprint/=0 ) &
+                                        write (iprint,*) &
+                                        ' the problem seems to become stiff at x = ', x
                                 if ( iprint==0 ) then
                                     idid = -4      ! fail exit
                                     return
@@ -658,33 +696,48 @@
                     if ( iout==2 .or. event ) then
                         ! save the first function evaluations
                         do j = 1 , nrd
-                            i = icomp(j)
-                            cont(j) = y(i)
+                            i = me%icomp(j)
+                            me%cont(j) = y(i)
                             ydiff = k5(i) - y(i)
-                            cont(j+nrd) = ydiff
+                            me%cont(j+nrd) = ydiff
                             bspl = h*k1(i) - ydiff
-                            cont(j+nrd*2) = bspl
-                            cont(j+nrd*3) = ydiff - h*k4(i) - bspl
-                            cont(j+nrd*4) = d41*k1(i)+d46*k6(i)+d47*k7(i)+d48*k8(i)+d49*k9(i)+d410*k10(i)+d411*k2(i)+d412*k3(i)
-                            cont(j+nrd*5) = d51*k1(i)+d56*k6(i)+d57*k7(i)+d58*k8(i)+d59*k9(i)+d510*k10(i)+d511*k2(i)+d512*k3(i)
-                            cont(j+nrd*6) = d61*k1(i)+d66*k6(i)+d67*k7(i)+d68*k8(i)+d69*k9(i)+d610*k10(i)+d611*k2(i)+d612*k3(i)
-                            cont(j+nrd*7) = d71*k1(i)+d76*k6(i)+d77*k7(i)+d78*k8(i)+d79*k9(i)+d710*k10(i)+d711*k2(i)+d712*k3(i)
+                            me%cont(j+nrd*2) = bspl
+                            me%cont(j+nrd*3) = ydiff - h*k4(i) - bspl
+                            me%cont(j+nrd*4) = d41*k1(i)+d46*k6(i)+d47*k7(i)+&
+                                               d48*k8(i)+d49*k9(i)+d410*k10(i)+&
+                                               d411*k2(i)+d412*k3(i)
+                            me%cont(j+nrd*5) = d51*k1(i)+d56*k6(i)+d57*k7(i)+&
+                                               d58*k8(i)+d59*k9(i)+d510*k10(i)+&
+                                               d511*k2(i)+d512*k3(i)
+                            me%cont(j+nrd*6) = d61*k1(i)+d66*k6(i)+d67*k7(i)+&
+                                               d68*k8(i)+d69*k9(i)+d610*k10(i)+&
+                                               d611*k2(i)+d612*k3(i)
+                            me%cont(j+nrd*7) = d71*k1(i)+d76*k6(i)+d77*k7(i)+&
+                                               d78*k8(i)+d79*k9(i)+d710*k10(i)+&
+                                               d711*k2(i)+d712*k3(i)
                         end do
                         ! the next three function evaluations
-                        y1 = y + h*(a141*k1+a147*k7+a148*k8+a149*k9+a1410*k10+a1411*k2+a1412*k3+a1413*k4)
-                        call fcn(n,x+c14*h,y1,k10)
-                        y1 = y + h*(a151*k1+a156*k6+a157*k7+a158*k8+a1511*k2+a1512*k3+a1513*k4+a1514*k10)
-                        call fcn(n,x+c15*h,y1,k2)
-                        y1 = y + h*(a161*k1+a166*k6+a167*k7+a168*k8+a169*k9+a1613*k4+a1614*k10+a1615*k2)
-                        call fcn(n,x+c16*h,y1,k3)
+                        y1 = y + h*(a141*k1+a147*k7+a148*k8+a149*k9+&
+                                    a1410*k10+a1411*k2+a1412*k3+a1413*k4)
+                        call me%fcn(n,x+c14*h,y1,k10)
+                        y1 = y + h*(a151*k1+a156*k6+a157*k7+a158*k8+&
+                                    a1511*k2+a1512*k3+a1513*k4+a1514*k10)
+                        call me%fcn(n,x+c15*h,y1,k2)
+                        y1 = y + h*(a161*k1+a166*k6+a167*k7+a168*k8+a169*k9+&
+                                    a1613*k4+a1614*k10+a1615*k2)
+                        call me%fcn(n,x+c16*h,y1,k3)
                         nfcn = nfcn + 3
                         ! final preparation
                         do j = 1 , nrd
-                            i = icomp(j)
-                            cont(j+nrd*4) = h*(cont(j+nrd*4)+d413*k4(i)+d414*k10(i)+d415*k2(i)+d416*k3(i))
-                            cont(j+nrd*5) = h*(cont(j+nrd*5)+d513*k4(i)+d514*k10(i)+d515*k2(i)+d516*k3(i))
-                            cont(j+nrd*6) = h*(cont(j+nrd*6)+d613*k4(i)+d614*k10(i)+d615*k2(i)+d616*k3(i))
-                            cont(j+nrd*7) = h*(cont(j+nrd*7)+d713*k4(i)+d714*k10(i)+d715*k2(i)+d716*k3(i))
+                            i = me%icomp(j)
+                            me%cont(j+nrd*4) = h*(me%cont(j+nrd*4)+d413*k4(i)+&
+                                               d414*k10(i)+d415*k2(i)+d416*k3(i))
+                            me%cont(j+nrd*5) = h*(me%cont(j+nrd*5)+d513*k4(i)+&
+                                               d514*k10(i)+d515*k2(i)+d516*k3(i))
+                            me%cont(j+nrd*6) = h*(me%cont(j+nrd*6)+d613*k4(i)+&
+                                               d614*k10(i)+d615*k2(i)+d616*k3(i))
+                            me%cont(j+nrd*7) = h*(me%cont(j+nrd*7)+d713*k4(i)+&
+                                               d714*k10(i)+d715*k2(i)+d716*k3(i))
                         end do
                         me%hout = h
                     end if
@@ -693,7 +746,7 @@
                     me%xold = x
                     x = xph
                     if ( iout==1 .or. iout==2 .or. event ) then
-                        call solout(naccpt+1,me%xold,x,y,n,cont,icomp,nrd,irtrn,xout)
+                        call me%solout(naccpt+1,me%xold,x,y,n,irtrn,xout)
                         if ( irtrn<0 ) exit !abort
                     end if
                     ! normal exit
@@ -727,13 +780,12 @@
 !>
 !  computation of an initial step size guess
 
-    function hinit(me,n,fcn,x,y,posneg,f0,iord,hmax,atol,rtol,itol)
+    function hinit(me,n,x,y,posneg,f0,iord,hmax,atol,rtol,itol)
 
     implicit none
 
-    class(dop853_class),intent(in)    :: me
+    class(dop853_class),intent(inout) :: me
     integer,intent(in)                :: n
-    procedure(deriv_func)             :: fcn
     real(wp),intent(in)               :: x
     real(wp),dimension(n),intent(in)  :: y
     real(wp),intent(in)               :: posneg
@@ -744,8 +796,7 @@
     real(wp),dimension(:),intent(in)  :: rtol
     integer,intent(in)                :: itol
 
-    real(wp) :: atoli , der12 , der2 , dnf , dny , &
-                h , h1 , hinit , rtoli , sk
+    real(wp) :: atoli,der12,der2,dnf,dny,h,h1,hinit,rtoli,sk
     integer :: i
     real(wp),dimension(n)  :: f1
     real(wp),dimension(n)  :: y1
@@ -782,7 +833,7 @@
     do i = 1 , n
         y1(i) = y(i) + h*f0(i)
     end do
-    call fcn(n,x+h,y1,f1)
+    call me%fcn(n,x+h,y1,f1)
     ! estimate the second derivative of the solution
     der2 = 0.0_wp
     if ( itol==0 ) then
@@ -816,36 +867,36 @@
 !>
 !  this function can be used for continuous output in connection
 !  with the output-subroutine for [[dop853]]. it provides an
-!  approximation to the ii-th component of the solution at `x`.
+!  approximation to the `ii`-th component of the solution at `x`.
 
-    function contd8(me,ii,x,con,icomp,nd)
+    function contd8(me,ii,x)
 
-      implicit none
+    implicit none
 
-      class(dop853_class),intent(in)      :: me
-      integer,intent(in)                  :: ii
-      real(wp)                            :: contd8
-      real(wp),intent(in)                 :: x
-      integer,intent(in)                  :: nd
-      integer,dimension(nd),intent(in)    :: icomp
-      real(wp),dimension(8*nd),intent(in) :: con
+    class(dop853_class),intent(in) :: me
+    integer,intent(in)             :: ii
+    real(wp),intent(in)            :: x
+    real(wp)                       :: contd8
 
-      real(wp) :: conpar, s, s1
-      integer :: i,j
+    real(wp) :: conpar, s, s1
+    integer :: i,j,nd
 
-      ! compute place of ii-th component
-      i = 0
-      do j = 1, nd
-         if ( icomp(j)==ii ) i = j
-      end do
-      if ( i==0 ) then
-         write (6,*) ' no dense output available for comp.' , ii
-      else
-          s = (x-me%xold)/me%hout
-          s1 = 1.0_wp - s
-          conpar = con(i+nd*4) + s*(con(i+nd*5)+s1*(con(i+nd*6)+s*con(i+nd*7)))
-          contd8 = con(i) + s*(con(i+nd)+s1*(con(i+nd*2)+s*(con(i+nd*3)+s1*conpar)))
-      end if
+    ! compute place of ii-th component
+    i = 0
+    do j = 1, me%nrdens
+        if ( me%icomp(j)==ii ) i = j
+    end do
+    if ( i==0 ) then
+        write (6,*) ' no dense output available for comp.', ii
+    else
+        nd = me%nrdens
+        s = (x-me%xold)/me%hout
+        s1 = 1.0_wp - s
+        conpar = me%cont(i+nd*4) + &
+                 s*(me%cont(i+nd*5)+s1*(me%cont(i+nd*6)+s*me%cont(i+nd*7)))
+        contd8 = me%cont(i) + s*(me%cont(i+nd)+s1*(me%cont(i+nd*2)+&
+                 s*(me%cont(i+nd*3)+s1*conpar)))
+    end if
 
     end function contd8
 !*****************************************************************************************
