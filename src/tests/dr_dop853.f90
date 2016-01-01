@@ -31,6 +31,7 @@ program dr_dop853
     atol = tol
     call prop%initialize(ICOMP=icomp,NSTIFF=1,STATUS_OK=status_ok,hinitial=1.0_wp)
     !all other parameters use defaults
+    
     if (status_ok) then
 
       call prop%integrate(n,fvpol,x,y,xend,rtol,atol,solout,iout,idid)
