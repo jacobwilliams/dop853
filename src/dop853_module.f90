@@ -163,10 +163,10 @@
                 import :: wp,dop853_class
                 implicit none
                 class(dop853_class),intent(inout)   :: me
-                integer,intent(in) :: n
-                real(wp),intent(in) :: x
-                real(wp),dimension(n),intent(in) :: y
-                real(wp),dimension(n),intent(out) :: f
+                integer,intent(in)                  :: n    !! dimension of the system
+                real(wp),intent(in)                 :: x
+                real(wp),dimension(n),intent(in)    :: y
+                real(wp),dimension(n),intent(out)   :: f
             end subroutine deriv_func
 
             subroutine solout_func(me,nr,xold,x,y,n,irtrn,xout)
@@ -178,9 +178,9 @@
                 class(dop853_class),intent(inout) :: me
                 integer,intent(in)                :: nr
                 real(wp),intent(in)               :: xold  !! the preceeding grid-point
-                real(wp),intent(in)               :: x
-                integer,intent(in)                :: n
-                real(wp),dimension(n),intent(in)  :: y
+                real(wp),intent(in)               :: x     !! current grid-point
+                integer,intent(in)                :: n     !! dimension of the system
+                real(wp),dimension(n),intent(in)  :: y     !!
                 integer,intent(inout)             :: irtrn !! serves to interrupt the integration. if `irtrn`
                                                            !! is set `<0`, [[dop853]] will return to the calling program.
                                                            !! if the numerical solution is altered in `solout`,
@@ -440,8 +440,8 @@
       end if
 
       ! setting the parameters
-      me%nfcn = 0
-      me%nstep = 0
+      me%nfcn   = 0
+      me%nstep  = 0
       me%naccpt = 0
       me%nrejct = 0
 
@@ -527,10 +527,10 @@
     real(wp),intent(in)                 :: beta
     real(wp),intent(in)                 :: fac1
     real(wp),intent(in)                 :: fac2
-    integer,intent(out)                 :: nfcn
-    integer,intent(out)                 :: nstep
-    integer,intent(out)                 :: naccpt
-    integer,intent(out)                 :: nrejct
+    integer,intent(inout)               :: nfcn
+    integer,intent(inout)               :: nstep
+    integer,intent(inout)               :: naccpt
+    integer,intent(inout)               :: nrejct
 
     real(wp),dimension(n) :: y1,k1,k2,k3,k4,k5,k6,k7,k8,k9,k10
     real(wp) :: atoli,bspl,deno,err,err2,erri,expo1,fac,fac11,&
