@@ -1,6 +1,8 @@
-program dr_dop853
-
-    !! driver for [[dop853]] on van der pol's equation
+!*****************************************************************************************
+!>
+!  Driver for [[dop853]] on van der Pol's equation.
+!
+    program dr_dop853
 
     use dop853_module
     use dop853_constants
@@ -8,33 +10,35 @@ program dr_dop853
 
     implicit none
 
-    integer :: i
+    integer :: i  !! counter
 
-    integer,parameter :: n = 2  !dimension of the system
-    integer,dimension(n),parameter :: icomp = [(i,i=1,n)]
+    integer,parameter              :: n     = 2            !! dimension of the system
+    integer,dimension(n),parameter :: icomp = [(i,i=1,n)]  !! indices where we need dense output
+    integer,parameter              :: iout  = 3            !! output routine (and dense output) is used during integration
+    real(wp),parameter             :: tol   = 1.0e-9_wp    !! required (relative) tolerance
 
     type(dop853_class) :: prop
-    real(wp) :: tol , x , xend, eps
     real(wp),dimension(n) :: y
     real(wp),dimension(1) :: rtol,atol
-    integer :: idid,iout,itol,j,nfcn,nstep,naccpt,nrejct
+    real(wp) :: x,xend
+    integer :: idid,j,nfcn,nstep,naccpt,nrejct
     logical :: status_ok
 
-    eps  = 1.0e-3_wp
-    iout = 3          ! output routine (and dense output) is used during integration
-    x    = 0.0_wp     ! initial values
-    y(1) = 2.0_wp
-    y(2) = 0.0_wp
-    xend = 2.0_wp     ! endpoint of integration
-    tol  = 1.0e-9_wp  ! required (relative) tolerance
+    x    = 0.0_wp           ! initial values
+    y    = [2.0_wp,0.0_wp]  !
+    xend = 2.0_wp           ! endpoint of integration
     rtol = tol
     atol = tol
-    call prop%initialize(ICOMP=icomp,NSTIFF=1,STATUS_OK=status_ok,hinitial=1.0_wp)
+    call prop%initialize(   fcn       = fvpol,    &
+                            solout    = solout,   &
+                            icomp     = icomp,    &
+                            nstiff    = 1,        &
+                            status_ok = status_ok )
     !all other parameters use defaults
-    
+
     if (status_ok) then
 
-      call prop%integrate(n,fvpol,x,y,xend,rtol,atol,solout,iout,idid)
+      call prop%integrate(n,x,y,xend,rtol,atol,iout,idid)
       call prop%info(nfcn,nstep,naccpt,nrejct)
 
       ! print final solution
@@ -51,24 +55,24 @@ program dr_dop853
     end if
 
     contains
+!*****************************************************************************************
 
-    subroutine solout(nr,xold,x,y,n,con,icomp,nd,irtrn,xout)
+!*******************************************************************************
+    subroutine solout(me,nr,xold,x,y,n,irtrn,xout)
 
     !! prints solution at equidistant output-points
-    !! by using `contd8`, the continuous collocation solution
+    !! by using [[contd8]], the continuous collocation solution.
 
     implicit none
 
-    integer,intent(in)                  :: nr
-    real(wp),intent(in)                 :: xold
-    real(wp),intent(in)                 :: x
-    integer,intent(in)                  :: n
-    integer,intent(in)                  :: nd
-    real(wp),dimension(n),intent(in)    :: y
-    real(wp),dimension(8*nd),intent(in) :: con
-    integer,dimension(nd),intent(in)    :: icomp
-    integer,intent(inout)               :: irtrn
-    real(wp),intent(out)                :: xout
+    class(dop853_class),intent(inout) :: me
+    integer,intent(in)                :: nr
+    real(wp),intent(in)               :: xold
+    real(wp),intent(in)               :: x
+    integer,intent(in)                :: n
+    real(wp),dimension(n),intent(in)  :: y
+    integer,intent(inout)             :: irtrn
+    real(wp),intent(out)              :: xout   !! the point where we want the next output reported
 
     if ( nr==1 ) then
         write (output_unit,'(1X,A,F5.2,A,2E18.10,A,I4)') &
@@ -80,30 +84,38 @@ program dr_dop853
         do
             if ( x<xout ) exit
             write (output_unit,'(1X,A,F5.2,A,2E18.10,A,I4)') &
-                     'x =',xout,'    y =',&
-                     prop%contd8(1,xout,con,icomp,nd),&
-                     prop%contd8(2,xout,con,icomp,nd),&
+                     'x =',xout,&
+                     '    y =',&
+                     prop%contd8(1,xout),&
+                     prop%contd8(2,xout),&
                      '    nstep =',nr - 1
             xout = xout + 0.1_wp
         end do
     end if
 
     end subroutine solout
+!*******************************************************************************
 
-    subroutine fvpol(n,x,y,f)
+!*******************************************************************************
+    subroutine fvpol(me,n,x,y,f)
 
-    !! right-hand side of van der pol's equation
+    !! right-hand side of van der Pol's equation
 
     implicit none
 
+    class(dop853_class),intent(inout)         :: me
     integer,intent(in)                        :: n
     double precision,intent(in)               :: x
     double precision,dimension(n),intent(in)  :: y
     double precision,dimension(n),intent(out) :: f
 
+    real(wp),parameter :: eps = 1.0e-3_wp
+
     f(1) = y(2)
     f(2) = ((1.0_wp-y(1)**2)*y(2)-y(1))/eps
 
     end subroutine fvpol
+!*******************************************************************************
 
-end program dr_dop853
+    end program dr_dop853
+!*****************************************************************************************
