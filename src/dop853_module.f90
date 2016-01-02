@@ -171,8 +171,8 @@
 
             subroutine solout_func(me,nr,xold,x,y,n,irtrn,xout)
                 !! `solout` furnishes the solution `y` at the `nr`-th
-                !!    grid-point `x` (thereby the initial value is
-                !!    the first grid-point).
+                !! grid-point `x` (thereby the initial value is
+                !! the first grid-point).
                 import :: wp,dop853_class
                 implicit none
                 class(dop853_class),intent(inout) :: me
