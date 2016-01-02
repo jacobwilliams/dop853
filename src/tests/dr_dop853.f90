@@ -2,6 +2,8 @@
 !>
 !  Driver for [[dop853]] on van der Pol's equation.
 !
+!@note This requires [pyplot-fortran](https://github.com/jacobwilliams/pyplot-fortran).
+
     program dr_dop853
 
     use dop853_module
@@ -221,8 +223,8 @@
     class(dop853_class),intent(inout) :: me
     integer,intent(in)                :: n
     real(wp),intent(in)               :: x
-    real(wp),dimension(n),intent(in)  :: y
-    real(wp),dimension(n),intent(out) :: f
+    real(wp),dimension(n),intent(in)  :: y  !! \( [y, y' ] \)
+    real(wp),dimension(n),intent(out) :: f  !! \( [y', y'' ] \)
 
     real(wp),parameter :: mu  = 0.2_wp  !! \( \mu \) in van der Pol's equation.
 

@@ -76,7 +76,7 @@
     module dop853_module
 
     use dop853_constants
-    use iso_fortran_env, only: output_unit
+    use iso_fortran_env, only: output_unit,error_unit
 
     implicit none
 
@@ -177,8 +177,8 @@
                 implicit none
                 class(dop853_class),intent(inout) :: me
                 integer,intent(in)                :: nr
-                real(wp),intent(in)               :: xold  !! the preceeding grid-point
-                real(wp),intent(in)               :: x     !! current grid-point
+                real(wp),intent(in)               :: xold  !! the preceeding grid point
+                real(wp),intent(in)               :: x     !! current grid point
                 integer,intent(in)                :: n     !! dimension of the system
                 real(wp),dimension(n),intent(in)  :: y     !!
                 integer,intent(inout)             :: irtrn !! serves to interrupt the integration. if `irtrn`
@@ -869,17 +869,17 @@
 !  with the output-subroutine for [[dop853]]. it provides an
 !  approximation to the `ii`-th component of the solution at `x`.
 
-    function contd8(me,ii,x)
+    function contd8(me,ii,x) result(y)
 
     implicit none
 
     class(dop853_class),intent(in) :: me
     integer,intent(in)             :: ii
     real(wp),intent(in)            :: x
-    real(wp)                       :: contd8
+    real(wp)                       :: y
 
     real(wp) :: conpar, s, s1
-    integer :: i,j,nd
+    integer :: i,j,nd,ierr
 
     ! compute place of ii-th component
     i = 0
@@ -887,15 +887,26 @@
         if ( me%icomp(j)==ii ) i = j
     end do
     if ( i==0 ) then
-        write (6,*) ' no dense output available for comp.', ii
+        !always report this message, since it is an invalid use of the code.
+        if (me%iprint==0) then
+            ierr = error_unit
+        else
+            ierr = me%iprint
+        end if
+        write (ierr,*) &
+            ' Error in contd8: no dense output available for component:', ii
+        y = 0.0_wp
     else
         nd = me%nrdens
         s = (x-me%xold)/me%hout
         s1 = 1.0_wp - s
         conpar = me%cont(i+nd*4) + &
-                 s*(me%cont(i+nd*5)+s1*(me%cont(i+nd*6)+s*me%cont(i+nd*7)))
-        contd8 = me%cont(i) + s*(me%cont(i+nd)+s1*(me%cont(i+nd*2)+&
-                 s*(me%cont(i+nd*3)+s1*conpar)))
+                 s*(me%cont(i+nd*5)+ &
+                 s1*(me%cont(i+nd*6)+s*me%cont(i+nd*7)))
+        y = me%cont(i) + &
+            s*(me%cont(i+nd)+ &
+            s1*(me%cont(i+nd*2)+&
+            s*(me%cont(i+nd*3)+s1*conpar)))
     end if
 
     end function contd8
