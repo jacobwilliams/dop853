@@ -2,9 +2,12 @@
 !>
 !  Driver for [[dop853]] on van der Pol's equation.
 !
+!### See also
+!  * Based on [dr_dop853.f](http://www.unige.ch/~hairer/prog/nonstiff/dr_dop853.f)
+!
 !@note This requires [pyplot-fortran](https://github.com/jacobwilliams/pyplot-fortran).
 
-    program dr_dop853
+    program dop853_test
 
     use dop853_module
     use dop853_constants
@@ -13,10 +16,8 @@
 
     implicit none
 
-    integer :: i  !! counter
-
     integer,parameter               :: n     = 2                !! dimension of the system
-    integer,dimension(n),parameter  :: icomp = [(i,i=1,n)]      !! indices where we need dense output
+    integer,dimension(n),parameter  :: icomp = [1,2]            !! indices where we need dense output
     integer,parameter               :: iout  = 3                !! output routine (and dense output) is used during integration
     real(wp),parameter              :: tol   = 1.0e-12_wp       !! required (relative) tolerance
     real(wp),parameter              :: x0    = 0.0_wp           !! initial values
@@ -28,7 +29,7 @@
     real(wp),dimension(n) :: y
     real(wp),dimension(1) :: rtol,atol
     real(wp) :: x,xend
-    integer :: idid,j,nfcn,nstep,naccpt,nrejct
+    integer :: i,idid,j,nfcn,nstep,naccpt,nrejct
     logical :: status_ok
     type(pyplot) :: plt
     real(wp),dimension(:),allocatable :: t_vec, y_vec, yp_vec
@@ -55,7 +56,7 @@
         yp_vec = [yp_vec,y(2)]
 
         ! print final solution
-        write (output_unit,'(1X,A,F5.2,A,2E18.10)') &
+        write (output_unit,'(1X,A,F6.2,A,2E18.10)') &
                 'x =',x ,'    y =',y(1),y(2)
 
         ! print statistics
@@ -65,7 +66,7 @@
 
         ! plot:
         call plt%initialize(grid=.true.,xlabel='y(x)',&
-                          ylabel='y''(x)',&
+                          ylabel='y''(x)',axis_equal=.true.,&
                           title='van der Pol''s Equation ($\mu = 0.2$)',legend=.true.)
         call plt%add_plot(y_vec,yp_vec,label='Forward',&
                           linestyle='r-',linewidth=2)
@@ -81,26 +82,18 @@
         write(*,*) ''
         write(*,*) 'backwards test'
         write(*,*) ''
-        write (output_unit,'(1X,A,F5.2,A,2E18.10)') &
-                'x =',x ,'    y =',y(1),y(2)
         call prop%destroy()
         call prop%initialize(fcn=fvpol,solout=solout2,status_ok = status_ok)
         call prop%integrate(n,x,y,x0,rtol,atol,iout=1,idid=idid)
-        write (output_unit,'(1X,A,F5.2,A,2E18.10)') &
-                'x =',x ,'    y =',y(1),y(2)
 
         write(*,*) ''
         write(*,*) 'error:', norm2(y-y0)
         write(*,*) ''
 
-        t_vec  = [t_vec,x]        !last point
-        y_vec  = [y_vec,y(1)]
-        yp_vec = [yp_vec,y(2)]
-
         ! plot:
         call plt%initialize(grid=.true.,xlabel='y(x)',&
-                        ylabel='y''(x)',&
-                        title='Van der Pol''s Equation ($\mu = 0.2$)',legend=.true.)
+                        ylabel='y''(x)',axis_equal=.true.,&
+                        title='van der Pol''s Equation ($\mu = 0.2$)',legend=.true.)
 
         call plt%add_plot(y_vec,yp_vec,label='Backward',&
                         linestyle='r-',linewidth=2)
@@ -136,7 +129,7 @@
     real(wp),intent(out)              :: xout   !! the point where we want the next output reported
 
     if ( nr==1 ) then
-        write (output_unit,'(1X,A,F5.2,A,2E18.10,A,I4)') &
+        write (output_unit,'(1X,A,F6.2,A,2E18.10,A,I4)') &
                 'x =',x,&
                 '    y =',y(1),y(2),&
                 '    nstep =',nr - 1
@@ -144,7 +137,7 @@
     else
         do
             if ( x<xout ) exit
-            write (output_unit,'(1X,A,F5.2,A,2E18.10,A,I4)') &
+            write (output_unit,'(1X,A,F6.2,A,2E18.10,A,I4)') &
                      'x =',xout,&
                      '    y =',&
                      prop%contd8(1,xout),&
@@ -186,7 +179,7 @@
     integer,intent(inout)             :: irtrn
     real(wp),intent(out)              :: xout   !! not used for `iout=1`.
 
-    write (output_unit,'(1X,A,F5.2,A,2E18.10,A,I4)') &
+    write (output_unit,'(1X,A,F6.2,A,2E18.10,A,I4)') &
                     'x =',x,&
                     '    y =',y(1),y(2),&
                     '    nstep =',nr - 1
@@ -234,5 +227,5 @@
     end subroutine fvpol
 !*******************************************************************************
 
-    end program dr_dop853
+    end program dop853_test
 !*****************************************************************************************

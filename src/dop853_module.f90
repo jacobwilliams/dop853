@@ -145,28 +145,28 @@
 
             private
 
-            procedure,public :: initialize => set_parameters
-            procedure,public :: integrate  => dop853
-            procedure,public :: destroy    => destroy_dop853
-            procedure,public :: info       => get_dop853_info
+            procedure,public :: initialize => set_parameters    !! initialization routine.
+            procedure,public :: integrate  => dop853            !! main integration routine.
+            procedure,public :: destroy    => destroy_dop853    !! destructor.
+            procedure,public :: info       => get_dop853_info   !! to get info after a run.
 
             procedure :: dp86co
             procedure :: hinit
-            procedure,public :: contd8 !! can be called in user's [[solout_func]].
+            procedure,public :: contd8  !! can be called in user's [[solout_func]] for dense output.
 
         end type dop853_class
 
         abstract interface
 
             subroutine deriv_func(me,n,x,y,f)
-                !! subroutine computing the value of `f(x,y)`
+                !! subroutine computing the value of \( dy/dx = f(x,y) \)
                 import :: wp,dop853_class
                 implicit none
                 class(dop853_class),intent(inout)   :: me
                 integer,intent(in)                  :: n    !! dimension of the system
                 real(wp),intent(in)                 :: x
                 real(wp),dimension(n),intent(in)    :: y
-                real(wp),dimension(n),intent(out)   :: f
+                real(wp),dimension(n),intent(out)   :: f    !! dy/dx
             end subroutine deriv_func
 
             subroutine solout_func(me,nr,xold,x,y,n,irtrn,xout)
