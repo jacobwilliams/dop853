@@ -72,10 +72,11 @@
         ! plot:
         if (make_plots) then
             call plt%initialize(grid=.true.,xlabel='y(x)',&
-                              ylabel='y''(x)',axis_equal=.true.,&
+                              ylabel='y''(x)',&
                               title='van der Pol''s Equation ($\mu = 0.2$)',legend=.true.)
             call plt%add_plot(y_vec,yp_vec,label='Forward',&
-                              linestyle='r-',linewidth=2)
+                              linestyle='r-',linewidth=2,&
+                              xlim=[-3.0_wp,3.0_wp], ylim=[-3.0_wp,3.0_wp])
             call plt%savefig('dop853_forward.png')
             call plt%destroy()
 
@@ -100,11 +101,12 @@
         ! plot:
         if (make_plots) then
             call plt%initialize(grid=.true.,xlabel='y(x)',&
-                            ylabel='y''(x)',axis_equal=.true.,&
+                            ylabel='y''(x)',&
                             title='van der Pol''s Equation ($\mu = 0.2$)',legend=.true.)
 
             call plt%add_plot(y_vec,yp_vec,label='Backward',&
-                            linestyle='r-',linewidth=2)
+                            linestyle='r-',linewidth=2,&
+                            xlim=[-3.0_wp,3.0_wp], ylim=[-3.0_wp,3.0_wp])
 
             call plt%savefig('dop853_backward.png')
             call plt%destroy()
