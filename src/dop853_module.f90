@@ -174,19 +174,19 @@
             import :: wp,dop853_class
             implicit none
             class(dop853_class),intent(inout) :: me
-            integer,intent(in)                :: nr
+            integer,intent(in)                :: nr    !! grid point (0,1,...)
             real(wp),intent(in)               :: xold  !! the preceeding grid point
             real(wp),intent(in)               :: x     !! current grid point
             real(wp),dimension(:),intent(in)  :: y     !! state vector \( y(x) \) [size n]
-            integer,intent(inout)             :: irtrn !! serves to interrupt the integration. if `irtrn`
-                                                       !! is set `<0`, [[dop853]] will return to the calling program.
-                                                       !! if the numerical solution is altered in `solout`,
-                                                       !! set `irtrn = 2`.
+            integer,intent(inout)             :: irtrn !! serves to interrupt the integration. if
+                                                       !! `irtrn` is set `<0`, [[dop853]] will return to
+                                                       !! the calling program. if the numerical solution
+                                                       !! is altered in `solout`, set `irtrn = 2`.
             real(wp),intent(out)              :: xout  !! `xout` can be used for efficient intermediate output
-                                                       !! if one puts `iout=3`
-                                                       !! when `nr=1` define the first output point `xout` in `solout`.
-                                                       !! the subroutine `solout` will be called only when
-                                                       !! `xout` is in the interval `[xold,x]`; during this call
+                                                       !! if one puts `iout=3`. when `nr=1` define the first
+                                                       !! output point `xout` in `solout`. the subroutine
+                                                       !! `solout` will be called only when `xout` is in the
+                                                       !! interval `[xold,x]`; during this call
                                                        !! a new value for `xout` can be defined, etc.
         end subroutine solout_func
 
@@ -366,7 +366,7 @@
 !    (new option `iout=3` for sparse dense output)
 !  * Jacob Williams, Dec 2015: significant refactoring into modern Fortran.
 !
-!# References
+!# Reference
 !  * E. Hairer, S.P. Norsett and G. Wanner, [Solving Ordinary
 !    Differential Equations I. Nonstiff Problems. 2nd Edition](http://www.unige.ch/~hairer/books.html).
 !    Springer Series in Computational Mathematics, Springer-Verlag (1993)
