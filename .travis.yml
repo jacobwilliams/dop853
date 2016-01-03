@@ -1,0 +1,38 @@
+language: python
+
+python:
+  - 2.7
+
+before_install:
+  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq python-numpy python-scipy
+  - sudo apt-get install gfortran-4.9
+  - sudo apt-get install graphviz
+  - sudo ln -fs /usr/bin/gfortran-4.9 /usr/bin/gfortran && gfortran --version
+  - sudo -H pip install FoBiS.py && FoBiS.py --version
+  - sudo -H pip install ford && ford --version
+  - sudo -H pip install matplotlib
+  - export PATH=".:$PATH"
+  - wget https://raw.githubusercontent.com/jacobwilliams/pyplot-fortran/master/src/pyplot_module.f90
+  - mv ./pyplot_module.f90 ./src/tests/
+
+before_script:
+  - FoBiS.py build -compiler gnu -cflags "-c -O2 -std=f2008" -dbld ./lib/ -s ./src/ -dmod ./ -dobj ./ -t dop853_module.f90 -o libdop853.a -mklib static -colors
+  - FoBiS.py build -compiler gnu -cflags "-c -O2 -std=f2008" -dbld ./bin/ -s ./src/tests/ -dmod ./ -dobj ./ -colors -libs ./lib/libdop853.a --include ./lib/
+
+script:
+  - ./bin/dop853_test
+
+after_success:
+  - mv *.png media
+  - git config --global user.name "TRAVIS-CI-for-$(git --no-pager show -s --format='%cn' $TRAVIS_COMMIT)"
+  - git config --global user.email "$(git --no-pager show -s --format='%ce' $TRAVIS_COMMIT)"
+  - git clone --branch=gh-pages https://${GH_TOKEN}@github.com/$TRAVIS_REPO_SLUG gh-pages
+  - rm -rf gh-pages/*
+  - ford ./dop853.md
+  - cp -rf ./doc/* gh-pages/
+  - cd gh-pages/
+  - git add -f --all *
+  - git commit -m "Travis CI autocommit from Travis job $TRAVIS_JOB_NUMBER for tag $TRAVIS_TAG $TRAVIS_COMMIT"
+  - git push -fq origin gh-pages

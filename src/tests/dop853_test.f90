@@ -5,6 +5,10 @@
 !### See also
 !  * Based on [dr_dop853.f](http://www.unige.ch/~hairer/prog/nonstiff/dr_dop853.f)
 !
+!### Results
+!  ![Forward Test](|media|/dop853_forward.png)
+!  ![Backward Test](|media|/dop853_backward.png)
+!
 !@note This requires [pyplot-fortran](https://github.com/jacobwilliams/pyplot-fortran).
 
     program dop853_test
