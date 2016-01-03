@@ -80,119 +80,117 @@
 
     implicit none
 
-        type,public :: dop853_class
+    type,public :: dop853_class
 
-            private
+        private
 
-            !internal variables:
-            integer :: n      = 0   !! the dimension of the system
-            integer :: nfcn   = 0   !! number of function evaluations
-            integer :: nstep  = 0   !! number of computed steps
-            integer :: naccpt = 0   !! number of accepted steps
-            integer :: nrejct = 0   !! number of rejected steps (due to error test),
-                                    !! (step rejections in the first step are not counted)
-            integer :: nrdens = 0   !! number of components, for which dense output
-                                    !! is required. for `0 < nrdens < n` the components
-                                    !! (for which dense output is required) have to be
-                                    !! specified in `icomp(1),...,icomp(nrdens)`.
-            real(wp) :: h = 0.0_wp  !! predicted step size of the last accepted step
+        !internal variables:
+        integer :: n      = 0   !! the dimension of the system
+        integer :: nfcn   = 0   !! number of function evaluations
+        integer :: nstep  = 0   !! number of computed steps
+        integer :: naccpt = 0   !! number of accepted steps
+        integer :: nrejct = 0   !! number of rejected steps (due to error test),
+                                !! (step rejections in the first step are not counted)
+        integer :: nrdens = 0   !! number of components, for which dense output
+                                !! is required. for `0 < nrdens < n` the components
+                                !! (for which dense output is required) have to be
+                                !! specified in `icomp(1),...,icomp(nrdens)`.
+        real(wp) :: h = 0.0_wp  !! predicted step size of the last accepted step
 
-            !input paramters:
-            !  these parameters allow
-            !  to adapt the code to the problem and to the needs of
-            !  the user. set them on class initialization.
+        !input paramters:
+        !  these parameters allow
+        !  to adapt the code to the problem and to the needs of
+        !  the user. set them on class initialization.
 
-            integer :: iprint = output_unit   !! switch for printing error messages
-                                              !! if `iprint==0` no messages are being printed
-                                              !! if `iprint/=0` messages are printed with
-                                              !! `write (iprint,*)` ...
+        integer :: iprint = output_unit   !! switch for printing error messages
+                                          !! if `iprint==0` no messages are being printed
+                                          !! if `iprint/=0` messages are printed with
+                                          !! `write (iprint,*)` ...
 
-            integer :: nmax = 100000    !! the maximal number of allowed steps.
-            integer :: nstiff = 1000    !! test for stiffness is activated after step number
-                                        !! `j*nstiff` (`j` integer), provided `nstiff>0`.
-                                        !! for negative `nstiff` the stiffness test is
-                                        !! never activated.
-            real(wp) :: hinitial = 0.0_wp  !! initial step size, for `hinitial=0` an initial guess
-                                           !! is computed with help of the function [[hinit]].
-            real(wp) :: hmax = 0.0_wp   !! maximal step size, defaults to `xend-x` if `hmax=0`.
-            real(wp) :: safe = 0.9_wp   !! safety factor in step size prediction
+        integer :: nmax = 100000       !! the maximal number of allowed steps.
+        integer :: nstiff = 1000       !! test for stiffness is activated after step number
+                                       !! `j*nstiff` (`j` integer), provided `nstiff>0`.
+                                       !! for negative `nstiff` the stiffness test is
+                                       !! never activated.
+        real(wp) :: hinitial = 0.0_wp  !! initial step size, for `hinitial=0` an initial guess
+                                       !! is computed with help of the function [[hinit]].
+        real(wp) :: hmax = 0.0_wp      !! maximal step size, defaults to `xend-x` if `hmax=0`.
+        real(wp) :: safe = 0.9_wp      !! safety factor in step size prediction
+        real(wp) :: fac1 = 0.333_wp    !! parameter for step size selection.
+                                       !! the new step size is chosen subject to the restriction
+                                       !! `fac1 <= hnew/hold <= fac2`
+        real(wp) :: fac2 = 6.0_wp      !! parameter for step size selection.
+                                       !! the new step size is chosen subject to the restriction
+                                       !! `fac1 <= hnew/hold <= fac2`
+        real(wp) :: beta = 0.0_wp      !! is the `beta` for stabilized step size control
+                                       !! (see section iv.2). positive values of beta ( <= 0.04 )
+                                       !! make the step size control more stable.
 
+        integer,dimension(:),allocatable  :: icomp      !! `dimension(nrdens)`
+                                                        !! the components for which dense output is required
+        real(wp),dimension(:),allocatable :: cont       !! `dimension(8*nrdens)`
 
-            real(wp) :: fac1 = 0.333_wp !! parameter for step size selection.
-                                        !! the new step size is chosen subject to the restriction
-                                        !! `fac1 <= hnew/hold <= fac2`
-            real(wp) :: fac2 = 6.0_wp   !! parameter for step size selection.
-                                        !! the new step size is chosen subject to the restriction
-                                        !! `fac1 <= hnew/hold <= fac2`
-            real(wp) :: beta = 0.0_wp   !! is the `beta` for stabilized step size control
-                                        !! (see section iv.2). positive values of beta ( <= 0.04 )
-                                        !! make the step size control more stable.
+        !formerly in the condo8 common block:
+        real(wp) :: xold = 0.0_wp
+        real(wp) :: hout = 0.0_wp
 
-            integer,dimension(:),allocatable  :: icomp      !! `size(nrdens)`
-                                                            !! the components for which dense output is required
-            real(wp),dimension(:),allocatable :: cont       !! `size(8*nrdens)`
+        !user-defined procedures:
+        procedure(deriv_func),pointer  :: fcn    => null() !! subroutine computing the value of `f(x,y)`
+        procedure(solout_func),pointer :: solout => null() !! subroutine providing the
+                                                           !! numerical solution during integration.
+                                                           !! if `iout>=1`, it is called during integration.
 
-            !formerly in the condo8 common block:
-            real(wp) :: xold = 0.0_wp
-            real(wp) :: hout = 0.0_wp
+        contains
 
-            !user-defined procedures:
-            procedure(deriv_func),pointer  :: fcn    => null() !! subroutine computing the value of `f(x,y)`
-            procedure(solout_func),pointer :: solout => null() !! subroutine providing the
-                                                               !! numerical solution during integration.
-                                                               !! if `iout>=1`, it is called during integration.
+        private
 
-            contains
+        procedure,public :: initialize => set_parameters    !! initialization routine.
+        procedure,public :: integrate  => dop853            !! main integration routine.
+        procedure,public :: destroy    => destroy_dop853    !! destructor.
+        procedure,public :: info       => get_dop853_info   !! to get info after a run.
 
-            private
+        procedure :: dp86co
+        procedure :: hinit
+        procedure,public :: contd8  !! can be called in user's [[solout_func]] for dense output.
 
-            procedure,public :: initialize => set_parameters    !! initialization routine.
-            procedure,public :: integrate  => dop853            !! main integration routine.
-            procedure,public :: destroy    => destroy_dop853    !! destructor.
-            procedure,public :: info       => get_dop853_info   !! to get info after a run.
+    end type dop853_class
 
-            procedure :: dp86co
-            procedure :: hinit
-            procedure,public :: contd8  !! can be called in user's [[solout_func]] for dense output.
+    abstract interface
 
-        end type dop853_class
+        subroutine deriv_func(me,x,y,f)
+            !! subroutine computing the value of \( dy/dx = f(x,y) \)
+            import :: wp,dop853_class
+            implicit none
+            class(dop853_class),intent(inout)   :: me
+            real(wp),intent(in)                 :: x    !! independent variable \(x\)
+            real(wp),dimension(:),intent(in)    :: y    !! state vector \( y(x) \) [size n]
+            real(wp),dimension(:),intent(out)   :: f    !! derivative vector \( f(x,y) = dy/dx \) [size n]
+        end subroutine deriv_func
 
-        abstract interface
+        subroutine solout_func(me,nr,xold,x,y,irtrn,xout)
+            !! `solout` furnishes the solution `y` at the `nr`-th
+            !! grid-point `x` (thereby the initial value is
+            !! the first grid-point).
+            import :: wp,dop853_class
+            implicit none
+            class(dop853_class),intent(inout) :: me
+            integer,intent(in)                :: nr
+            real(wp),intent(in)               :: xold  !! the preceeding grid point
+            real(wp),intent(in)               :: x     !! current grid point
+            real(wp),dimension(:),intent(in)  :: y     !! state vector \( y(x) \) [size n]
+            integer,intent(inout)             :: irtrn !! serves to interrupt the integration. if `irtrn`
+                                                       !! is set `<0`, [[dop853]] will return to the calling program.
+                                                       !! if the numerical solution is altered in `solout`,
+                                                       !! set `irtrn = 2`.
+            real(wp),intent(out)              :: xout  !! `xout` can be used for efficient intermediate output
+                                                       !! if one puts `iout=3`
+                                                       !! when `nr=1` define the first output point `xout` in `solout`.
+                                                       !! the subroutine `solout` will be called only when
+                                                       !! `xout` is in the interval `[xold,x]`; during this call
+                                                       !! a new value for `xout` can be defined, etc.
+        end subroutine solout_func
 
-            subroutine deriv_func(me,x,y,f)
-                !! subroutine computing the value of \( dy/dx = f(x,y) \)
-                import :: wp,dop853_class
-                implicit none
-                class(dop853_class),intent(inout)   :: me
-                real(wp),intent(in)                 :: x    !! independent variable \(x\)
-                real(wp),dimension(:),intent(in)    :: y    !! state vector \( y(x) \) [size n]
-                real(wp),dimension(:),intent(out)   :: f    !! derivative vector \( f(x,y) = dy/dx \) [size n]
-            end subroutine deriv_func
-
-            subroutine solout_func(me,nr,xold,x,y,irtrn,xout)
-                !! `solout` furnishes the solution `y` at the `nr`-th
-                !! grid-point `x` (thereby the initial value is
-                !! the first grid-point).
-                import :: wp,dop853_class
-                implicit none
-                class(dop853_class),intent(inout) :: me
-                integer,intent(in)                :: nr
-                real(wp),intent(in)               :: xold  !! the preceeding grid point
-                real(wp),intent(in)               :: x     !! current grid point
-                real(wp),dimension(:),intent(in)  :: y     !! state vector \( y(x) \) [size n]
-                integer,intent(inout)             :: irtrn !! serves to interrupt the integration. if `irtrn`
-                                                           !! is set `<0`, [[dop853]] will return to the calling program.
-                                                           !! if the numerical solution is altered in `solout`,
-                                                           !! set `irtrn = 2`.
-                real(wp),intent(out)              :: xout  !! `xout` can be used for efficient intermediate output
-                                                           !! if one puts `iout=3`
-                                                           !! when `nr=1` define the first output point `xout` in `solout`.
-                                                           !! the subroutine `solout` will be called only when
-                                                           !! `xout` is in the interval `[xold,x]`; during this call
-                                                           !! a new value for `xout` can be defined, etc.
-            end subroutine solout_func
-
-        end interface
+    end interface
 
     contains
 !*****************************************************************************************
@@ -292,12 +290,12 @@
 
     if (present(solout)) me%solout => solout
 
-    if (present(iprint))    me%iprint = iprint
-    if (present(nstiff))    me%nstiff = nstiff
-    if (present(hinitial))  me%hinitial  = hinitial
-    if (present(hmax))      me%hmax   = hmax
-    if (present(fac1))      me%fac1   = fac1
-    if (present(fac2))      me%fac2   = fac2
+    if (present(iprint))   me%iprint   = iprint
+    if (present(nstiff))   me%nstiff   = nstiff
+    if (present(hinitial)) me%hinitial = hinitial
+    if (present(hmax))     me%hmax     = hmax
+    if (present(fac1))     me%fac1     = fac1
+    if (present(fac2))     me%fac2     = fac2
 
     if (present(nmax)) then
         if ( nmax<=0 ) then
@@ -468,11 +466,12 @@
          arret = .true.
       else
          if ( nrdens>0 .and. iout<2 .and. iprint/=0 ) &
-                write (iprint,*) ' warning: put iout=2 or iout=3 for dense output '
+                write (iprint,*) ' warning: set iout=2 or iout=3 for dense output '
       end if
 
       if (size(y)/=me%n) then
-          write (iprint,*) ' error: y must have n elements: size(y)= ',size(y)
+          if ( iprint/=0 ) &
+            write (iprint,*) ' error: y must have n elements: size(y)= ',size(y)
           arret = .true.
       end if
 
@@ -502,7 +501,7 @@
                        iout,idid,nmax,nstiff,safe,beta,fac1,fac2, &
                        me%nfcn,me%nstep,me%naccpt,me%nrejct)
 
-        me%h = h  !May have been updated
+        me%h = h  ! may have been updated
 
       end if
 
