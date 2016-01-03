@@ -85,6 +85,7 @@
             private
 
             !internal variables:
+            integer :: n      = 0   !! the dimension of the system
             integer :: nfcn   = 0   !! number of function evaluations
             integer :: nstep  = 0   !! number of computed steps
             integer :: naccpt = 0   !! number of accepted steps
@@ -158,18 +159,17 @@
 
         abstract interface
 
-            subroutine deriv_func(me,n,x,y,f)
+            subroutine deriv_func(me,x,y,f)
                 !! subroutine computing the value of \( dy/dx = f(x,y) \)
                 import :: wp,dop853_class
                 implicit none
                 class(dop853_class),intent(inout)   :: me
-                integer,intent(in)                  :: n    !! dimension of the system
-                real(wp),intent(in)                 :: x
-                real(wp),dimension(n),intent(in)    :: y
-                real(wp),dimension(n),intent(out)   :: f    !! dy/dx
+                real(wp),intent(in)                 :: x    !! independent variable \(x\)
+                real(wp),dimension(:),intent(in)    :: y    !! state vector \( y(x) \) [size n]
+                real(wp),dimension(:),intent(out)   :: f    !! derivative vector \( f(x,y) = dy/dx \) [size n]
             end subroutine deriv_func
 
-            subroutine solout_func(me,nr,xold,x,y,n,irtrn,xout)
+            subroutine solout_func(me,nr,xold,x,y,irtrn,xout)
                 !! `solout` furnishes the solution `y` at the `nr`-th
                 !! grid-point `x` (thereby the initial value is
                 !! the first grid-point).
@@ -179,8 +179,7 @@
                 integer,intent(in)                :: nr
                 real(wp),intent(in)               :: xold  !! the preceeding grid point
                 real(wp),intent(in)               :: x     !! current grid point
-                integer,intent(in)                :: n     !! dimension of the system
-                real(wp),dimension(n),intent(in)  :: y     !!
+                real(wp),dimension(:),intent(in)  :: y     !! state vector \( y(x) \) [size n]
                 integer,intent(inout)             :: irtrn !! serves to interrupt the integration. if `irtrn`
                                                            !! is set `<0`, [[dop853]] will return to the calling program.
                                                            !! if the numerical solution is altered in `solout`,
@@ -202,11 +201,12 @@
 !>
 !  Get info from a [[dop853_class]].
 
-    subroutine get_dop853_info(me,nfcn,nstep,naccpt,nrejct,h)
+    subroutine get_dop853_info(me,n,nfcn,nstep,naccpt,nrejct,h)
 
     implicit none
 
     class(dop853_class),intent(in) :: me
+    integer,intent(out),optional   :: n      !! dimension of the system
     integer,intent(out),optional   :: nfcn   !! number of function evaluations
     integer,intent(out),optional   :: nstep  !! number of computed steps
     integer,intent(out),optional   :: naccpt !! number of accepted steps
@@ -214,6 +214,7 @@
                                              !! (step rejections in the first step are not counted)
     real(wp),intent(out),optional  :: h      !! predicted step size of the last accepted step
 
+    if (present(n     )) n      = me%n
     if (present(nfcn  )) nfcn   = me%nfcn
     if (present(nstep )) nstep  = me%nstep
     if (present(naccpt)) naccpt = me%naccpt
@@ -242,13 +243,14 @@
 !
 !@note In the original code, these were part of the `work` and `iwork` arrays.
 
-    subroutine set_parameters(me,fcn,solout,iprint,nstiff,nmax,hinitial,&
+    subroutine set_parameters(me,n,fcn,solout,iprint,nstiff,nmax,hinitial,&
                               hmax,safe,fac1,fac2,beta,icomp,status_ok)
 
     implicit none
 
     class(dop853_class),intent(inout)        :: me
-    procedure(deriv_func)                    :: fcn       !! subroutine computing the value of `f(x,y)`
+    integer,intent(in)                       :: n         !! the dimension of the system (size of \(y\) and \(y'\) vectors)
+    procedure(deriv_func)                    :: fcn       !! subroutine computing the value of \( y' = f(x,y) \)
     procedure(solout_func),optional          :: solout    !! subroutine providing the
                                                           !! numerical solution during integration.
                                                           !! if `iout>=1`, it is called during integration.
@@ -263,7 +265,7 @@
                                                           !! never activated.
     integer,intent(in),optional              :: nmax      !! the maximal number of allowed steps.
     real(wp),intent(in),optional             :: hinitial  !! initial step size, for `hinitial=0` an initial guess
-                                                          !! is computed with help of the function `hinit`
+                                                          !! is computed with help of the function [[hinit]].
     real(wp),intent(in),optional             :: hmax      !! maximal step size, defaults to `xend-x` if `hmax=0`.
     real(wp),intent(in),optional             :: safe      !! safety factor in step size prediction
     real(wp),intent(in),optional             :: fac1      !! parameter for step size selection.
@@ -283,7 +285,7 @@
     status_ok = .true.
 
     !required inputs:
-
+    me%n = n
     me%fcn => fcn
 
     !optional inputs:
@@ -311,7 +313,7 @@
         if ( safe>=1.0_wp .or. safe<=1.0e-4_wp ) then
             if ( me%iprint/=0 ) &
                 write (me%iprint,*) ' curious input for safety factor safe:', &
-                safe
+                                    safe
             status_ok = .false.
         else
             me%safe = safe
@@ -334,8 +336,15 @@
 
     if (present(icomp)) then
         me%nrdens = size(icomp)
-        allocate(me%icomp(me%nrdens));  me%icomp = icomp
-        allocate(me%cont(8*me%nrdens)); me%cont = 0.0_wp
+        !check validity of icomp array:
+        if (size(icomp)<=me%n .and. all(icomp>0 .and. icomp<=me%n)) then
+            allocate(me%icomp(me%nrdens));  me%icomp = icomp
+            allocate(me%cont(8*me%nrdens)); me%cont = 0.0_wp
+        else
+            if ( me%iprint/=0 ) write (me%iprint,*) &
+                                  ' invalid icomp array: ',icomp
+            status_ok = .false.
+        end if
     end if
 
     end subroutine set_parameters
@@ -364,16 +373,15 @@
 !    Differential Equations I. Nonstiff Problems. 2nd Edition](http://www.unige.ch/~hairer/books.html).
 !    Springer Series in Computational Mathematics, Springer-Verlag (1993)
 
-      subroutine dop853(me,n,x,y,xend,rtol,atol,iout,idid)
+      subroutine dop853(me,x,y,xend,rtol,atol,iout,idid)
 
       implicit none
 
       class(dop853_class),intent(inout)       :: me
-      integer,intent(in)                      :: n      !! dimension of the system
       real(wp),intent(inout)                  :: x      !! *input:* initial value of independent variable.
                                                         !! *output:* `x` for which the solution has been computed
                                                         !! (after successful return `x=xend`).
-      real(wp),dimension(n),intent(inout)     :: y      !! *input:* initial values for `y`.
+      real(wp),dimension(:),intent(inout)     :: y      !! *input:* initial values for `y`. [size n]
                                                         !! *output:* numerical solution at `x`.
       real(wp),intent(in)                     :: xend   !! final x-value (xend-x may be positive or negative)
       real(wp),dimension(:),intent(in)        :: rtol   !! relative error tolerance. `rtol` and `atol`
@@ -429,7 +437,7 @@
       !scalar or vector tolerances:
       if (size(rtol)==1 .and. size(atol)==1) then
           itol = 0
-      elseif (size(rtol)==n .and. size(atol)==n) then
+      elseif (size(rtol)==me%n .and. size(atol)==me%n) then
           itol = 1
       else
           if ( iprint/=0 ) &
@@ -455,12 +463,17 @@
           nstiff = me%nstiff
       end if
 
-      if ( nrdens<0 .or. me%nrdens>n ) then
+      if ( nrdens<0 .or. me%nrdens>me%n ) then
          if ( iprint/=0 ) write (iprint,*) ' curious input nrdens=' , nrdens
          arret = .true.
       else
          if ( nrdens>0 .and. iout<2 .and. iprint/=0 ) &
                 write (iprint,*) ' warning: put iout=2 or iout=3 for dense output '
+      end if
+
+      if (size(y)/=me%n) then
+          write (iprint,*) ' error: y must have n elements: size(y)= ',size(y)
+          arret = .true.
       end if
 
       safe = me%safe
@@ -485,7 +498,7 @@
       else
 
         ! call to core integrator
-        call me%dp86co(n,x,y,xend,hmax,h,rtol,atol,itol,iprint, &
+        call me%dp86co(x,y,xend,hmax,h,rtol,atol,itol,iprint, &
                        iout,idid,nmax,nstiff,safe,beta,fac1,fac2, &
                        me%nfcn,me%nstep,me%naccpt,me%nrejct)
 
@@ -498,10 +511,10 @@
 
 !*****************************************************************************************
 !>
-!  core integrator for [[dop853]].
+!  Core integrator for [[dop853]].
 !  parameters same as in [[dop853]] with workspace added.
 
-    subroutine dp86co(me,n,x,y,xend,hmax,h,rtol,atol,itol,iprint, &
+    subroutine dp86co(me,x,y,xend,hmax,h,rtol,atol,itol,iprint, &
                         iout,idid,nmax,nstiff,safe, &
                         beta,fac1,fac2, &
                         nfcn,nstep,naccpt,nrejct)
@@ -509,9 +522,8 @@
     implicit none
 
     class(dop853_class),intent(inout)   :: me
-    integer,intent(in)                  :: n
     real(wp),intent(inout)              :: x
-    real(wp),dimension(n),intent(inout) :: y
+    real(wp),dimension(:),intent(inout) :: y
     real(wp),intent(in)                 :: xend
     real(wp),intent(inout)              :: hmax
     real(wp),intent(inout)              :: h
@@ -532,7 +544,7 @@
     integer,intent(inout)               :: naccpt
     integer,intent(inout)               :: nrejct
 
-    real(wp),dimension(n) :: y1,k1,k2,k3,k4,k5,k6,k7,k8,k9,k10
+    real(wp),dimension(me%n) :: y1,k1,k2,k3,k4,k5,k6,k7,k8,k9,k10
     real(wp) :: atoli,bspl,deno,err,err2,erri,expo1,fac,fac11,&
                 facc1,facc2,facold,hlamb,hnew,posneg,rtoli,&
                 sk,stden,stnum,xout,xph,ydiff
@@ -553,11 +565,11 @@
     last = .false.
     hlamb = 0.0_wp
     iasti = 0
-    call me%fcn(n,x,y,k1)
+    call me%fcn(x,y,k1)
     hmax = abs(hmax)
     iord = 8
     if ( h==0.0_wp ) then
-        h = me%hinit(n,x,y,posneg,k1,iord,hmax,atol,rtol,itol)
+        h = me%hinit(x,y,posneg,k1,iord,hmax,atol,rtol,itol)
     end if
     nfcn = nfcn + 2
     reject = .false.
@@ -565,7 +577,7 @@
     if ( iout/=0 ) then
         irtrn = 1
         me%hout = 1.0_wp
-        call me%solout(naccpt+1,me%xold,x,y,n,irtrn,xout)
+        call me%solout(naccpt+1,me%xold,x,y,irtrn,xout)
         abort = ( irtrn<0 )
     else
         abort = .false.
@@ -595,33 +607,33 @@
                 end if
                 nstep = nstep + 1
                 ! the twelve stages
-                if ( irtrn>=2 ) call me%fcn(n,x,y,k1)
+                if ( irtrn>=2 ) call me%fcn(x,y,k1)
                 y1 = y + h*a21*k1
-                call me%fcn(n,x+c2*h,y1,k2)
+                call me%fcn(x+c2*h,y1,k2)
                 y1 = y + h*(a31*k1+a32*k2)
-                call me%fcn(n,x+c3*h,y1,k3)
+                call me%fcn(x+c3*h,y1,k3)
                 y1 = y + h*(a41*k1+a43*k3)
-                call me%fcn(n,x+c4*h,y1,k4)
+                call me%fcn(x+c4*h,y1,k4)
                 y1 = y + h*(a51*k1+a53*k3+a54*k4)
-                call me%fcn(n,x+c5*h,y1,k5)
+                call me%fcn(x+c5*h,y1,k5)
                 y1 = y + h*(a61*k1+a64*k4+a65*k5)
-                call me%fcn(n,x+c6*h,y1,k6)
+                call me%fcn(x+c6*h,y1,k6)
                 y1 = y + h*(a71*k1+a74*k4+a75*k5+a76*k6)
-                call me%fcn(n,x+c7*h,y1,k7)
+                call me%fcn(x+c7*h,y1,k7)
                 y1 = y + h*(a81*k1+a84*k4+a85*k5+a86*k6+a87*k7)
-                call me%fcn(n,x+c8*h,y1,k8)
+                call me%fcn(x+c8*h,y1,k8)
                 y1 = y + h*(a91*k1+a94*k4+a95*k5+a96*k6+a97*k7+a98*k8)
-                call me%fcn(n,x+c9*h,y1,k9)
+                call me%fcn(x+c9*h,y1,k9)
                 y1 = y + h*(a101*k1+a104*k4+a105*k5+a106*k6+a107*k7+&
                             a108*k8+a109*k9)
-                call me%fcn(n,x+c10*h,y1,k10)
+                call me%fcn(x+c10*h,y1,k10)
                 y1 = y + h*(a111*k1+a114*k4+a115*k5+a116*k6+a117*k7+&
                             a118*k8+a119*k9+a1110*k10)
-                call me%fcn(n,x+c11*h,y1,k2)
+                call me%fcn(x+c11*h,y1,k2)
                 xph = x + h
                 y1 = y + h*(a121*k1+a124*k4+a125*k5+a126*k6+a127*k7+&
                             a128*k8+a129*k9+a1210*k10+a1211*k2)
-                call me%fcn(n,xph,y1,k3)
+                call me%fcn(xph,y1,k3)
                 nfcn = nfcn + 11
                 k4 = b1*k1+b6*k6+b7*k7+b8*k8+b9*k9+b10*k10+b11*k2+b12*k3
                 k5 = y + h*k4
@@ -629,7 +641,7 @@
                 err = 0.0_wp
                 err2 = 0.0_wp
                 if ( itol==0 ) then
-                    do i = 1 , n
+                    do i = 1 , me%n
                         sk = atoli + rtoli*max(abs(y(i)),abs(k5(i)))
                         erri = k4(i) - bhh1*k1(i) - bhh2*k9(i) - bhh3*k3(i)
                         err2 = err2 + (erri/sk)**2
@@ -639,7 +651,7 @@
                         err = err + (erri/sk)**2
                     end do
                 else
-                    do i = 1 , n
+                    do i = 1 , me%n
                         sk = atol(i) + rtol(i)*max(abs(y(i)),abs(k5(i)))
                         erri = k4(i) - bhh1*k1(i) - bhh2*k9(i) - bhh3*k3(i)
                         err2 = err2 + (erri/sk)**2
@@ -651,7 +663,7 @@
                 end if
                 deno = err + 0.01_wp*err2
                 if ( deno<=0.0_wp ) deno = 1.0_wp
-                err = abs(h)*err*sqrt(1.0_wp/(n*deno))
+                err = abs(h)*err*sqrt(1.0_wp/(me%n*deno))
                 ! computation of hnew
                 fac11 = err**expo1
                 ! lund-stabilization
@@ -663,13 +675,13 @@
                     ! step is accepted
                     facold = max(err,1.0e-4_wp)
                     naccpt = naccpt + 1
-                    call me%fcn(n,xph,k5,k4)
+                    call me%fcn(xph,k5,k4)
                     nfcn = nfcn + 1
                     ! stiffness detection
                     if ( mod(naccpt,nstiff)==0 .or. iasti>0 ) then
                         stnum = 0.0_wp
                         stden = 0.0_wp
-                        do i = 1 , n
+                        do i = 1 , me%n
                             stnum = stnum + (k4(i)-k3(i))**2
                             stden = stden + (k5(i)-y1(i))**2
                         end do
@@ -719,13 +731,13 @@
                         ! the next three function evaluations
                         y1 = y + h*(a141*k1+a147*k7+a148*k8+a149*k9+&
                                     a1410*k10+a1411*k2+a1412*k3+a1413*k4)
-                        call me%fcn(n,x+c14*h,y1,k10)
+                        call me%fcn(x+c14*h,y1,k10)
                         y1 = y + h*(a151*k1+a156*k6+a157*k7+a158*k8+&
                                     a1511*k2+a1512*k3+a1513*k4+a1514*k10)
-                        call me%fcn(n,x+c15*h,y1,k2)
+                        call me%fcn(x+c15*h,y1,k2)
                         y1 = y + h*(a161*k1+a166*k6+a167*k7+a168*k8+a169*k9+&
                                     a1613*k4+a1614*k10+a1615*k2)
-                        call me%fcn(n,x+c16*h,y1,k3)
+                        call me%fcn(x+c16*h,y1,k3)
                         nfcn = nfcn + 3
                         ! final preparation
                         do j = 1 , nrd
@@ -746,7 +758,7 @@
                     me%xold = x
                     x = xph
                     if ( iout==1 .or. iout==2 .or. event ) then
-                        call me%solout(naccpt+1,me%xold,x,y,n,irtrn,xout)
+                        call me%solout(naccpt+1,me%xold,x,y,irtrn,xout)
                         if ( irtrn<0 ) exit !abort
                     end if
                     ! normal exit
@@ -780,16 +792,15 @@
 !>
 !  computation of an initial step size guess
 
-    function hinit(me,n,x,y,posneg,f0,iord,hmax,atol,rtol,itol)
+    function hinit(me,x,y,posneg,f0,iord,hmax,atol,rtol,itol)
 
     implicit none
 
     class(dop853_class),intent(inout) :: me
-    integer,intent(in)                :: n
     real(wp),intent(in)               :: x
-    real(wp),dimension(n),intent(in)  :: y
+    real(wp),dimension(:),intent(in)  :: y       !! dimension(n)
     real(wp),intent(in)               :: posneg
-    real(wp),dimension(n),intent(in)  :: f0
+    real(wp),dimension(:),intent(in)  :: f0      !! dimension(n)
     integer,intent(in)                :: iord
     real(wp),intent(in)               :: hmax
     real(wp),dimension(:),intent(in)  :: atol
@@ -798,8 +809,7 @@
 
     real(wp) :: atoli,der12,der2,dnf,dny,h,h1,hinit,rtoli,sk
     integer :: i
-    real(wp),dimension(n)  :: f1
-    real(wp),dimension(n)  :: y1
+    real(wp),dimension(me%n)  :: f1,y1
 
     ! compute a first guess for explicit euler as
     !   h = 0.01 * norm (y0) / norm (f0)
@@ -810,13 +820,13 @@
     atoli = atol(1)
     rtoli = rtol(1)
     if ( itol==0 ) then
-        do i = 1 , n
+        do i = 1 , me%n
             sk = atoli + rtoli*abs(y(i))
             dnf = dnf + (f0(i)/sk)**2
             dny = dny + (y(i)/sk)**2
         end do
     else
-        do i = 1 , n
+        do i = 1 , me%n
             sk = atol(i) + rtol(i)*abs(y(i))
             dnf = dnf + (f0(i)/sk)**2
             dny = dny + (y(i)/sk)**2
@@ -830,19 +840,19 @@
     h = min(h,hmax)
     h = sign(h,posneg)
     ! perform an explicit euler step
-    do i = 1 , n
+    do i = 1 , me%n
         y1(i) = y(i) + h*f0(i)
     end do
-    call me%fcn(n,x+h,y1,f1)
+    call me%fcn(x+h,y1,f1)
     ! estimate the second derivative of the solution
     der2 = 0.0_wp
     if ( itol==0 ) then
-        do i = 1 , n
+        do i = 1 , me%n
             sk = atoli + rtoli*abs(y(i))
             der2 = der2 + ((f1(i)-f0(i))/sk)**2
         end do
     else
-        do i = 1 , n
+        do i = 1 , me%n
             sk = atol(i) + rtol(i)*abs(y(i))
             der2 = der2 + ((f1(i)-f0(i))/sk)**2
         end do
