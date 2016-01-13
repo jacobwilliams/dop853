@@ -75,6 +75,10 @@ x =100.00    y = -0.1360372426E+01  0.1325538438E+01
 
 For dense output, see the example in the `src/tests` directory.
 
+# Documentation
+
+The latest API documentation for the `master` branch can be found [here](http://jacobwilliams.github.io/dop853/). This was generated from the source code using [FORD](https://github.com/cmacmackin/ford) (note that the `build.sh` script will also generate these files if FORD is installed).
+
 ## References
 
 1. E. Hairer, S.P. Norsett and G. Wanner, "[Solving ordinary
@@ -86,4 +90,4 @@ For dense output, see the example in the `src/tests` directory.
 ## License
 
 * [Original license for Hairer's codes](http://www.unige.ch/~hairer/prog/licence.txt).
-* The updates are released under a [similar BSD-style license](https://raw.githubusercontent.com/jacobwilliams/dop853/master/LICENSE?token=AGLts7b7U0xmmh6R8kZCsRNyVG7m71KZks5WkIeIwA%3D%3D).
+* The updates are released under a [similar BSD-style license](https://raw.githubusercontent.com/jacobwilliams/dop853/master/LICENSE).
