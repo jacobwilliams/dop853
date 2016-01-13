@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="Modern Fortran Implementation of the DOP853 ODE Solver">
+    
+    <meta name="author" content="Chris MacMackin" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>dop853_constants.f90 &ndash; dop853</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">dop853 </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+                
+            <li><a href="../lists/files.html">Source Files</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+				
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+				
+            <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
+								
+            <li><a href="../lists/types.html">Derived Types</a></li>
+				
+				
+            <li><a href="../program/dop853_test.html">Program</a></li>
+				
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>dop853_constants.f90
+    <small>Source File</small>
+    
+    </h1>
+	 
+<div class="row">
+<div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+    <li><i class="fa fa-code"></i><a href="../src/dop853_constants.f90"> Source File</a></li>
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+     <li class="active">dop853_constants.f90</li>
+  </ol>
+</div>
+</div>
+</div>
+    
+  </div>
+  <div class="row">
+    <div class="col-lg-3">
+    
+<div id="sidebar">
+  
+  
+  
+  
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#mods">Modules</a></h3></div>
+    <div id="mods" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../module/dop853_constants.html">dop853_constants</a>
+          
+        </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="panel panel-primary">
+    <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+    <div class="list-group">
+      <a class="list-group-item" href="../sourcefile/dop853_constants.f90.html#src">dop853_constants.f90</a>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allfiles">All Source Files</a></h3></div>
+    <div id="allfiles" class="panel-collapse collapse">
+        <div class="list-group">
+          
+          <a class="list-group-item" href="../sourcefile/dop853_constants.f90.html">dop853_constants.f90</a>
+          
+          <a class="list-group-item" href="../sourcefile/dop853_module.f90.html">dop853_module.f90</a>
+          
+          <a class="list-group-item" href="../sourcefile/dop853_test.f90.html">dop853_test.f90</a>
+          
+        </div>
+    </div>
+  </div>
+  
+</div>
+
+    </div>
+    <div class="col-lg-9" id='text'>
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl"><pre><a name="ln-1"></a><span class="c">!*****************************************************************************************</span>
+<a name="ln-2"></a><span class="c">!&gt;</span>
+<a name="ln-3"></a><span class="c">!  Constants used by [[dop853_module]].</span>
+<a name="ln-4"></a><span class="c">!</span>
+<a name="ln-5"></a>    <span class="k">module </span><span class="n">dop853_constants</span>
+<a name="ln-6"></a>
+<a name="ln-7"></a>    <span class="k">use </span><span class="n">iso_fortran_env</span><span class="p">,</span>    <span class="n">only</span><span class="p">:</span> <span class="n">wp</span> <span class="o">=&gt;</span> <span class="n">real64</span>
+<a name="ln-8"></a>
+<a name="ln-9"></a>    <span class="k">implicit none</span>
+<a name="ln-10"></a>
+<a name="ln-11"></a><span class="k">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">uround</span> <span class="o">=</span> <span class="nb">epsilon</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="p">)</span>  <span class="c">!! machine \( \epsilon \)</span>
+<a name="ln-12"></a>
+<a name="ln-13"></a>    <span class="c">!integration constants (formerly in dp86co):</span>
+<a name="ln-14"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">c2</span> <span class="o">=</span> <span class="mf">0.526001519587677318785587544488e-01_wp</span>
+<a name="ln-15"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">c3</span> <span class="o">=</span> <span class="mf">0.789002279381515978178381316732e-01_wp</span>
+<a name="ln-16"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">c4</span> <span class="o">=</span> <span class="mf">0.118350341907227396726757197510_wp</span>
+<a name="ln-17"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">c5</span> <span class="o">=</span> <span class="mf">0.281649658092772603273242802490_wp</span>
+<a name="ln-18"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">c6</span> <span class="o">=</span> <span class="mf">0.333333333333333333333333333333_wp</span>
+<a name="ln-19"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">c7</span> <span class="o">=</span> <span class="mf">0.25_wp</span>
+<a name="ln-20"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">c8</span> <span class="o">=</span> <span class="mf">0.307692307692307692307692307692_wp</span>
+<a name="ln-21"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">c9</span> <span class="o">=</span> <span class="mf">0.651282051282051282051282051282_wp</span>
+<a name="ln-22"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">c10</span> <span class="o">=</span> <span class="mf">0.6_wp</span>
+<a name="ln-23"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">c11</span> <span class="o">=</span> <span class="mf">0.857142857142857142857142857142_wp</span>
+<a name="ln-24"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">c14</span> <span class="o">=</span> <span class="mf">0.1_wp</span>
+<a name="ln-25"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">c15</span> <span class="o">=</span> <span class="mf">0.2_wp</span>
+<a name="ln-26"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">c16</span> <span class="o">=</span> <span class="mf">0.777777777777777777777777777778_wp</span>
+<a name="ln-27"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">b1</span> <span class="o">=</span> <span class="mf">5.42937341165687622380535766363e-2_wp</span>
+<a name="ln-28"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">b6</span> <span class="o">=</span> <span class="mf">4.45031289275240888144113950566_wp</span>
+<a name="ln-29"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">b7</span> <span class="o">=</span> <span class="mf">1.89151789931450038304281599044_wp</span>
+<a name="ln-30"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">b8</span> <span class="o">=</span> <span class="o">-</span><span class="mf">5.8012039600105847814672114227_wp</span>
+<a name="ln-31"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">b9</span> <span class="o">=</span> <span class="mf">3.1116436695781989440891606237e-1_wp</span>
+<a name="ln-32"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">b10</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.52160949662516078556178806805e-1_wp</span>
+<a name="ln-33"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">b11</span> <span class="o">=</span> <span class="mf">2.01365400804030348374776537501e-1_wp</span>
+<a name="ln-34"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">b12</span> <span class="o">=</span> <span class="mf">4.47106157277725905176885569043e-2_wp</span>
+<a name="ln-35"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">bhh1</span> <span class="o">=</span> <span class="mf">0.244094488188976377952755905512_wp</span>
+<a name="ln-36"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">bhh2</span> <span class="o">=</span> <span class="mf">0.733846688281611857341361741547_wp</span>
+<a name="ln-37"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">bhh3</span> <span class="o">=</span> <span class="mf">0.220588235294117647058823529412e-1_wp</span>
+<a name="ln-38"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">er1</span> <span class="o">=</span> <span class="mf">0.1312004499419488073250102996e-01_wp</span>
+<a name="ln-39"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">er6</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.1225156446376204440720569753e+01_wp</span>
+<a name="ln-40"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">er7</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.4957589496572501915214079952_wp</span>
+<a name="ln-41"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">er8</span> <span class="o">=</span> <span class="mf">0.1664377182454986536961530415e+01_wp</span>
+<a name="ln-42"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">er9</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.3503288487499736816886487290_wp</span>
+<a name="ln-43"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">er10</span> <span class="o">=</span> <span class="mf">0.3341791187130174790297318841_wp</span>
+<a name="ln-44"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">er11</span> <span class="o">=</span> <span class="mf">0.8192320648511571246570742613e-01_wp</span>
+<a name="ln-45"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">er12</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.2235530786388629525884427845e-01_wp</span>
+<a name="ln-46"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a21</span> <span class="o">=</span> <span class="mf">5.26001519587677318785587544488e-2_wp</span>
+<a name="ln-47"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a31</span> <span class="o">=</span> <span class="mf">1.97250569845378994544595329183e-2_wp</span>
+<a name="ln-48"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a32</span> <span class="o">=</span> <span class="mf">5.91751709536136983633785987549e-2_wp</span>
+<a name="ln-49"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a41</span> <span class="o">=</span> <span class="mf">2.95875854768068491816892993775e-2_wp</span>
+<a name="ln-50"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a43</span> <span class="o">=</span> <span class="mf">8.87627564304205475450678981324e-2_wp</span>
+<a name="ln-51"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a51</span> <span class="o">=</span> <span class="mf">2.41365134159266685502369798665e-1_wp</span>
+<a name="ln-52"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a53</span> <span class="o">=</span> <span class="o">-</span><span class="mf">8.84549479328286085344864962717e-1_wp</span>
+<a name="ln-53"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a54</span> <span class="o">=</span> <span class="mf">9.24834003261792003115737966543e-1_wp</span>
+<a name="ln-54"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a61</span> <span class="o">=</span> <span class="mf">3.7037037037037037037037037037e-2_wp</span>
+<a name="ln-55"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a64</span> <span class="o">=</span> <span class="mf">1.70828608729473871279604482173e-1_wp</span>
+<a name="ln-56"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a65</span> <span class="o">=</span> <span class="mf">1.25467687566822425016691814123e-1_wp</span>
+<a name="ln-57"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a71</span> <span class="o">=</span> <span class="mf">3.7109375e-2_wp</span>
+<a name="ln-58"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a74</span> <span class="o">=</span> <span class="mf">1.70252211019544039314978060272e-1_wp</span>
+<a name="ln-59"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a75</span> <span class="o">=</span> <span class="mf">6.02165389804559606850219397283e-2_wp</span>
+<a name="ln-60"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a76</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.7578125e-2_wp</span>
+<a name="ln-61"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a81</span> <span class="o">=</span> <span class="mf">3.70920001185047927108779319836e-2_wp</span>
+<a name="ln-62"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a84</span> <span class="o">=</span> <span class="mf">1.70383925712239993810214054705e-1_wp</span>
+<a name="ln-63"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a85</span> <span class="o">=</span> <span class="mf">1.07262030446373284651809199168e-1_wp</span>
+<a name="ln-64"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a86</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.53194377486244017527936158236e-2_wp</span>
+<a name="ln-65"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a87</span> <span class="o">=</span> <span class="mf">8.27378916381402288758473766002e-3_wp</span>
+<a name="ln-66"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a91</span> <span class="o">=</span> <span class="mf">6.24110958716075717114429577812e-1_wp</span>
+<a name="ln-67"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a94</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.36089262944694129406857109825_wp</span>
+<a name="ln-68"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a95</span> <span class="o">=</span> <span class="o">-</span><span class="mf">8.68219346841726006818189891453e-1_wp</span>
+<a name="ln-69"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a96</span> <span class="o">=</span> <span class="mf">2.75920996994467083049415600797e+1_wp</span>
+<a name="ln-70"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a97</span> <span class="o">=</span> <span class="mf">2.01540675504778934086186788979e+1_wp</span>
+<a name="ln-71"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a98</span> <span class="o">=</span> <span class="o">-</span><span class="mf">4.34898841810699588477366255144e+1_wp</span>
+<a name="ln-72"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a101</span> <span class="o">=</span> <span class="mf">4.77662536438264365890433908527e-1_wp</span>
+<a name="ln-73"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a104</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.48811461997166764192642586468_wp</span>
+<a name="ln-74"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a105</span> <span class="o">=</span> <span class="o">-</span><span class="mf">5.90290826836842996371446475743e-1_wp</span>
+<a name="ln-75"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a106</span> <span class="o">=</span> <span class="mf">2.12300514481811942347288949897e+1_wp</span>
+<a name="ln-76"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a107</span> <span class="o">=</span> <span class="mf">1.52792336328824235832596922938e+1_wp</span>
+<a name="ln-77"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a108</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.32882109689848629194453265587e+1_wp</span>
+<a name="ln-78"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a109</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.03312017085086261358222928593e-2_wp</span>
+<a name="ln-79"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a111</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9.3714243008598732571704021658e-1_wp</span>
+<a name="ln-80"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a114</span> <span class="o">=</span> <span class="mf">5.18637242884406370830023853209_wp</span>
+<a name="ln-81"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a115</span> <span class="o">=</span> <span class="mf">1.09143734899672957818500254654_wp</span>
+<a name="ln-82"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a116</span> <span class="o">=</span> <span class="o">-</span><span class="mf">8.14978701074692612513997267357_wp</span>
+<a name="ln-83"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a117</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.85200656599969598641566180701e+1_wp</span>
+<a name="ln-84"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a118</span> <span class="o">=</span> <span class="mf">2.27394870993505042818970056734e+1_wp</span>
+<a name="ln-85"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a119</span> <span class="o">=</span> <span class="mf">2.49360555267965238987089396762_wp</span>
+<a name="ln-86"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a1110</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.0467644718982195003823669022_wp</span>
+<a name="ln-87"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a121</span> <span class="o">=</span> <span class="mf">2.27331014751653820792359768449_wp</span>
+<a name="ln-88"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a124</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.05344954667372501984066689879e+1_wp</span>
+<a name="ln-89"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a125</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.00087205822486249909675718444_wp</span>
+<a name="ln-90"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a126</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.79589318631187989172765950534e+1_wp</span>
+<a name="ln-91"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a127</span> <span class="o">=</span> <span class="mf">2.79488845294199600508499808837e+1_wp</span>
+<a name="ln-92"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a128</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.85899827713502369474065508674_wp</span>
+<a name="ln-93"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a129</span> <span class="o">=</span> <span class="o">-</span><span class="mf">8.87285693353062954433549289258_wp</span>
+<a name="ln-94"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a1210</span> <span class="o">=</span> <span class="mf">1.23605671757943030647266201528e+1_wp</span>
+<a name="ln-95"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a1211</span> <span class="o">=</span> <span class="mf">6.43392746015763530355970484046e-1_wp</span>
+<a name="ln-96"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a141</span> <span class="o">=</span> <span class="mf">5.61675022830479523392909219681e-2_wp</span>
+<a name="ln-97"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a147</span> <span class="o">=</span> <span class="mf">2.53500210216624811088794765333e-1_wp</span>
+<a name="ln-98"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a148</span> <span class="o">=</span> <span class="o">-</span><span class="mf">2.46239037470802489917441475441e-1_wp</span>
+<a name="ln-99"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a149</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.24191423263816360469010140626e-1_wp</span>
+<a name="ln-100"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a1410</span> <span class="o">=</span> <span class="mf">1.5329179827876569731206322685e-1_wp</span>
+<a name="ln-101"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a1411</span> <span class="o">=</span> <span class="mf">8.20105229563468988491666602057e-3_wp</span>
+<a name="ln-102"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a1412</span> <span class="o">=</span> <span class="mf">7.56789766054569976138603589584e-3_wp</span>
+<a name="ln-103"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a1413</span> <span class="o">=</span> <span class="o">-</span><span class="mf">8.298e-3_wp</span>
+<a name="ln-104"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a151</span> <span class="o">=</span> <span class="mf">3.18346481635021405060768473261e-2_wp</span>
+<a name="ln-105"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a156</span> <span class="o">=</span> <span class="mf">2.83009096723667755288322961402e-2_wp</span>
+<a name="ln-106"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a157</span> <span class="o">=</span> <span class="mf">5.35419883074385676223797384372e-2_wp</span>
+<a name="ln-107"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a158</span> <span class="o">=</span> <span class="o">-</span><span class="mf">5.49237485713909884646569340306e-2_wp</span>
+<a name="ln-108"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a1511</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.08347328697249322858509316994e-4_wp</span>
+<a name="ln-109"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a1512</span> <span class="o">=</span> <span class="mf">3.82571090835658412954920192323e-4_wp</span>
+<a name="ln-110"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a1513</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.40465008687404560802977114492e-4_wp</span>
+<a name="ln-111"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a1514</span> <span class="o">=</span> <span class="mf">1.41312443674632500278074618366e-1_wp</span>
+<a name="ln-112"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a161</span> <span class="o">=</span> <span class="o">-</span><span class="mf">4.28896301583791923408573538692e-1_wp</span>
+<a name="ln-113"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a166</span> <span class="o">=</span> <span class="o">-</span><span class="mf">4.69762141536116384314449447206_wp</span>
+<a name="ln-114"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a167</span> <span class="o">=</span> <span class="mf">7.68342119606259904184240953878_wp</span>
+<a name="ln-115"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a168</span> <span class="o">=</span> <span class="mf">4.06898981839711007970213554331_wp</span>
+<a name="ln-116"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a169</span> <span class="o">=</span> <span class="mf">3.56727187455281109270669543021e-1_wp</span>
+<a name="ln-117"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a1613</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.39902416515901462129418009734e-3_wp</span>
+<a name="ln-118"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a1614</span> <span class="o">=</span> <span class="mf">2.9475147891527723389556272149_wp</span>
+<a name="ln-119"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">a1615</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9.15095847217987001081870187138_wp</span>
+<a name="ln-120"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d41</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.84289382761090128651353491142e+01_wp</span>
+<a name="ln-121"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d46</span> <span class="o">=</span> <span class="mf">0.56671495351937776962531783590_wp</span>
+<a name="ln-122"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d47</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.30689499459498916912797304727e+01_wp</span>
+<a name="ln-123"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d48</span> <span class="o">=</span> <span class="mf">0.23846676565120698287728149680e+01_wp</span>
+<a name="ln-124"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d49</span> <span class="o">=</span> <span class="mf">0.21170345824450282767155149946e+01_wp</span>
+<a name="ln-125"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d410</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.87139158377797299206789907490_wp</span>
+<a name="ln-126"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d411</span> <span class="o">=</span> <span class="mf">0.22404374302607882758541771650e+01_wp</span>
+<a name="ln-127"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d412</span> <span class="o">=</span> <span class="mf">0.63157877876946881815570249290_wp</span>
+<a name="ln-128"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d413</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.88990336451333310820698117400e-01_wp</span>
+<a name="ln-129"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d414</span> <span class="o">=</span> <span class="mf">0.18148505520854727256656404962e+02_wp</span>
+<a name="ln-130"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d415</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.91946323924783554000451984436e+01_wp</span>
+<a name="ln-131"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d416</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.44360363875948939664310572000e+01_wp</span>
+<a name="ln-132"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d51</span> <span class="o">=</span> <span class="mf">0.10427508642579134603413151009e+02_wp</span>
+<a name="ln-133"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d56</span> <span class="o">=</span> <span class="mf">0.24228349177525818288430175319e+03_wp</span>
+<a name="ln-134"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d57</span> <span class="o">=</span> <span class="mf">0.16520045171727028198505394887e+03_wp</span>
+<a name="ln-135"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d58</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.37454675472269020279518312152e+03_wp</span>
+<a name="ln-136"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d59</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.22113666853125306036270938578e+02_wp</span>
+<a name="ln-137"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d510</span> <span class="o">=</span> <span class="mf">0.77334326684722638389603898808e+01_wp</span>
+<a name="ln-138"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d511</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.30674084731089398182061213626e+02_wp</span>
+<a name="ln-139"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d512</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.93321305264302278729567221706e+01_wp</span>
+<a name="ln-140"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d513</span> <span class="o">=</span> <span class="mf">0.15697238121770843886131091075e+02_wp</span>
+<a name="ln-141"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d514</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.31139403219565177677282850411e+02_wp</span>
+<a name="ln-142"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d515</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.93529243588444783865713862664e+01_wp</span>
+<a name="ln-143"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d516</span> <span class="o">=</span> <span class="mf">0.35816841486394083752465898540e+02_wp</span>
+<a name="ln-144"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d61</span> <span class="o">=</span> <span class="mf">0.19985053242002433820987653617e+02_wp</span>
+<a name="ln-145"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d66</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.38703730874935176555105901742e+03_wp</span>
+<a name="ln-146"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d67</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.18917813819516756882830838328e+03_wp</span>
+<a name="ln-147"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d68</span> <span class="o">=</span> <span class="mf">0.52780815920542364900561016686e+03_wp</span>
+<a name="ln-148"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d69</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.11573902539959630126141871134e+02_wp</span>
+<a name="ln-149"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d610</span> <span class="o">=</span> <span class="mf">0.68812326946963000169666922661e+01_wp</span>
+<a name="ln-150"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d611</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.10006050966910838403183860980e+01_wp</span>
+<a name="ln-151"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d612</span> <span class="o">=</span> <span class="mf">0.77771377980534432092869265740_wp</span>
+<a name="ln-152"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d613</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.27782057523535084065932004339e+01_wp</span>
+<a name="ln-153"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d614</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.60196695231264120758267380846e+02_wp</span>
+<a name="ln-154"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d615</span> <span class="o">=</span> <span class="mf">0.84320405506677161018159903784e+02_wp</span>
+<a name="ln-155"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d616</span> <span class="o">=</span> <span class="mf">0.11992291136182789328035130030e+02_wp</span>
+<a name="ln-156"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d71</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.25693933462703749003312586129e+02_wp</span>
+<a name="ln-157"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d76</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.15418974869023643374053993627e+03_wp</span>
+<a name="ln-158"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d77</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.23152937917604549567536039109e+03_wp</span>
+<a name="ln-159"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d78</span> <span class="o">=</span> <span class="mf">0.35763911791061412378285349910e+03_wp</span>
+<a name="ln-160"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d79</span> <span class="o">=</span> <span class="mf">0.93405324183624310003907691704e+02_wp</span>
+<a name="ln-161"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d710</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.37458323136451633156875139351e+02_wp</span>
+<a name="ln-162"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d711</span> <span class="o">=</span> <span class="mf">0.10409964950896230045147246184e+03_wp</span>
+<a name="ln-163"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d712</span> <span class="o">=</span> <span class="mf">0.29840293426660503123344363579e+02_wp</span>
+<a name="ln-164"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d713</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.43533456590011143754432175058e+02_wp</span>
+<a name="ln-165"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d714</span> <span class="o">=</span> <span class="mf">0.96324553959188282948394950600e+02_wp</span>
+<a name="ln-166"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d715</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.39177261675615439165231486172e+02_wp</span>
+<a name="ln-167"></a>    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">d716</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.14972683625798562581422125276e+03_wp</span>
+<a name="ln-168"></a>
+<a name="ln-169"></a>    <span class="k">end module </span><span class="n">dop853_constants</span>
+<a name="ln-170"></a><span class="c">!*****************************************************************************************</span>
+</pre></div>
+
+    </section>
+    </div>
+  </div>
+
+    <hr>
+    <footer>
+        <div class="row">
+        <div class="col-md-4">&copy; 2016 </div>
+	<div class="col-md-4"><span class="text-center"> dop853 was developed by Jacob Williams</span></div>
+        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
+        </div>
+        <br>
+    </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>
