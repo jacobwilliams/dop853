@@ -39,6 +39,7 @@
     logical :: status_ok
     type(pyplot) :: plt
     real(wp),dimension(:),allocatable :: t_vec, y_vec, yp_vec
+    integer :: istat !! pyplot-fortran status flag
 
     x = x0
     y = y0
@@ -80,8 +81,8 @@
                               title='van der Pol''s Equation ($\mu = 0.2$)',legend=.true.)
             call plt%add_plot(y_vec,yp_vec,label='Forward',&
                               linestyle='r-',linewidth=2,&
-                              xlim=[-3.0_wp,3.0_wp], ylim=[-3.0_wp,3.0_wp])
-            call plt%savefig('dop853_forward.png')
+                              xlim=[-3.0_wp,3.0_wp], ylim=[-3.0_wp,3.0_wp],istat=istat)
+            call plt%savefig('dop853_forward.png',istat=istat)
             call plt%destroy()
 
             deallocate(t_vec )
@@ -110,9 +111,9 @@
 
             call plt%add_plot(y_vec,yp_vec,label='Backward',&
                             linestyle='r-',linewidth=2,&
-                            xlim=[-3.0_wp,3.0_wp], ylim=[-3.0_wp,3.0_wp])
+                            xlim=[-3.0_wp,3.0_wp], ylim=[-3.0_wp,3.0_wp],istat=istat)
 
-            call plt%savefig('dop853_backward.png')
+            call plt%savefig('dop853_backward.png',istat=istat)
             call plt%destroy()
         end if
 
