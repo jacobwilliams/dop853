@@ -7,7 +7,7 @@
 	 
 	 <meta name="description" content="Modern Fortran Implementation of the DOP853 ODE Solver">
     
-    <meta name="author" content="Chris MacMackin" >
+    <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
     <title>dop853 &ndash; dop853</title>
@@ -53,13 +53,20 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
 				
-                
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+		 aria-expanded="false">Contents <span class="caret"></span></a>
+	      <ul class="dropdown-menu">
+              
             <li><a href="../lists/files.html">Source Files</a></li>
 				
 				
             <li><a href="../lists/modules.html">Modules</a></li>
 				
-				
+            
+                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
 				
 				
@@ -69,7 +76,27 @@
 				
 				
             <li><a href="../program/dop853_test.html">Program</a></li>
-				
+	    
+            </ul>
+            </li>
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/absint.html">Abstract Interfaces</a></li>
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/dop853_test.html">Program</a></li>
+
           </ul>
         
         <form action="../search.html" class="navbar-form navbar-right" role="search">
@@ -90,12 +117,12 @@
   
   <div class="row">
     <h1>dop853
-    <small>Subroutine</small>
+      <small>Subroutine</small>
     
     </h1>
-	 
+    
 <div class="row">
-<div class="col-lg-12">
+  <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
      
@@ -104,6 +131,13 @@
      
     
     
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+	  data-placement="bottom" data-html="true"
+	  title="13.9% of total for procedures.">74 statements</a>
+     </li> 
+     
+     
     <li><i class="fa fa-code"></i><a href="../src/dop853_module.f90"> Source File</a></li>
      
   </ul>
@@ -118,126 +152,119 @@
 </div>
 </div>
 </div>
-    
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
   </div>
   
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
     
 <div id="sidebar">
   
-  
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars">Variables</a></h3></div>
-    <div id="vars" class="panel-collapse collapse">
-      <div class="list-group">
-        
-        <a class="list-group-item" href="../proc/dop853.html#variable-beta%7E3">beta</a>
-        
-        <a class="list-group-item" href="../proc/dop853.html#variable-fac1%7E3">fac1</a>
-        
-        <a class="list-group-item" href="../proc/dop853.html#variable-fac2%7E3">fac2</a>
-        
-        <a class="list-group-item" href="../proc/dop853.html#variable-h%7E4">h</a>
-        
-        <a class="list-group-item" href="../proc/dop853.html#variable-hmax%7E4">hmax</a>
-        
-        <a class="list-group-item" href="../proc/dop853.html#variable-safe%7E3">safe</a>
-        
-        <a class="list-group-item" href="../proc/dop853.html#variable-i%7E3">i</a>
-        
-        <a class="list-group-item" href="../proc/dop853.html#variable-ieco">ieco</a>
-        
-        <a class="list-group-item" href="../proc/dop853.html#variable-iprint%7E3">iprint</a>
-        
-        <a class="list-group-item" href="../proc/dop853.html#variable-istore">istore</a>
-        
-        <a class="list-group-item" href="../proc/dop853.html#variable-nrdens%7E2">nrdens</a>
-        
-        <a class="list-group-item" href="../proc/dop853.html#variable-nstiff%7E3">nstiff</a>
-        
-        <a class="list-group-item" href="../proc/dop853.html#variable-nmax%7E3">nmax</a>
-        
-        <a class="list-group-item" href="../proc/dop853.html#variable-arret">arret</a>
-        
-        <a class="list-group-item" href="../proc/dop853.html#variable-itol%7E2">itol</a>
-        
-      </div>
-    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/dop853.html#src">dop853</a>
   </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-    <div class="list-group">
-      <a class="list-group-item" href="../proc/dop853.html#src">dop853</a>
-    </div>
-  </div>
-  
+</div>
+
+
   <hr>
   
-  <div class="panel panel-default">
-    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allprocs">All Procedures</a></h3></div>
-    <div id="allprocs" class="panel-collapse collapse">
-        <div class="list-group">
-          
-          <a class="list-group-item" href="../proc/contd8.html">contd8</a>
-          
-          <a class="list-group-item" href="../proc/destroy_dop853.html">destroy_dop853</a>
-          
-          <a class="list-group-item" href="../proc/dop853.html">dop853</a>
-          
-          <a class="list-group-item" href="../proc/dp86co.html">dp86co</a>
-          
-          <a class="list-group-item" href="../proc/fvpol.html">fvpol</a>
-          
-          <a class="list-group-item" href="../proc/get_dop853_info.html">get_dop853_info</a>
-          
-          <a class="list-group-item" href="../proc/hinit.html">hinit</a>
-          
-          <a class="list-group-item" href="../proc/set_parameters.html">set_parameters</a>
-          
-          <a class="list-group-item" href="../proc/solout.html">solout</a>
-          
-          <a class="list-group-item" href="../proc/solout2.html">solout2</a>
-          
-        </div>
+
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allprocs-0">All Procedures</a></h3></div>
+  <div id="allprocs-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/contd8.html">contd8</a>
+      
+      <a class="list-group-item" href="../proc/destroy_dop853.html">destroy_dop853</a>
+      
+      <a class="list-group-item" href="../proc/dop853.html">dop853</a>
+      
+      <a class="list-group-item" href="../proc/dp86co.html">dp86co</a>
+      
+      <a class="list-group-item" href="../proc/fvpol.html">fvpol</a>
+      
+      <a class="list-group-item" href="../proc/get_dop853_info.html">get_dop853_info</a>
+      
+      <a class="list-group-item" href="../proc/hinit.html">hinit</a>
+      
+      <a class="list-group-item" href="../proc/set_parameters.html">set_parameters</a>
+      
+      <a class="list-group-item" href="../proc/solout.html">solout</a>
+      
+      <a class="list-group-item" href="../proc/solout2.html">solout2</a>
+      
     </div>
   </div>
-  
 </div>
+
+
+</div>  
 
     </div>
     
-    <div class="col-lg-9" id='text'>
+    <div class="col-md-9" id='text'>
     <h2>
 public subroutine dop853(me, x, y, xend, rtol, atol, iout, idid)
     
     
-    
+	 
 </h2>
     
   
 
 
+    
+    <p>Numerical solution of a system of first order
+  ordinary differential equations \( y'=f(x,y) \).
+  This is an explicit Runge-Kutta method of order 8(5,3)
+  due to Dormand &amp; Prince (with stepsize control and
+  dense output).</p>
+<h1>Authors</h1>
+<ul>
+<li>E. Hairer and G. Wanner
+    Universite de Geneve, Dept. De Mathematiques
+    ch-1211 geneve 24, switzerland
+    e-mail:  ernst.hairer@unige.ch
+             gerhard.wanner@unige.ch</li>
+<li>Version of October 11, 2009
+    (new option <code>iout=3</code> for sparse dense output)</li>
+<li>Jacob Williams, Dec 2015: significant refactoring into modern Fortran.</li>
+</ul>
+<h1>Reference</h1>
+<ul>
+<li>E. Hairer, S.P. Norsett and G. Wanner, <a href="http://www.unige.ch/~hairer/books.html">Solving Ordinary
+    Differential Equations I. Nonstiff Problems. 2nd Edition</a>.
+    Springer Series in Computational Mathematics, Springer-Verlag (1993)</li>
+</ul>
+    
 
     <h3>Arguments</h3>
     
@@ -394,267 +421,44 @@ public subroutine dop853(me, x, y, xend, rtol, atol, iout, idid)
     
     
     
-    <h3>Description</h3>
-    <p>Numerical solution of a system of first order
-  ordinary differential equations \( y'=f(x,y) \).
-  This is an explicit Runge-Kutta method of order 8(5,3)
-  due to Dormand &amp; Prince (with stepsize control and
-  dense output).</p>
-<h1>Authors</h1>
-<ul>
-<li>E. Hairer and G. Wanner
-    Universite de Geneve, Dept. De Mathematiques
-    ch-1211 geneve 24, switzerland
-    e-mail:  ernst.hairer@unige.ch
-             gerhard.wanner@unige.ch</li>
-<li>Version of October 11, 2009
-    (new option <code>iout=3</code> for sparse dense output)</li>
-<li>Jacob Williams, Dec 2015: significant refactoring into modern Fortran.</li>
-</ul>
-<h1>Reference</h1>
-<ul>
-<li>E. Hairer, S.P. Norsett and G. Wanner, <a href="http://www.unige.ch/~hairer/books.html">Solving Ordinary
-    Differential Equations I. Nonstiff Problems. 2nd Edition</a>.
-    Springer Series in Computational Mathematics, Springer-Verlag (1993)</li>
-</ul>
-    
-    
      
     <br>
-    
-    <section>
-    <h2>Variables</h2>
-    
-<table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Visibility</th>
 
-<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+    <section class="visible-xs visible-sm hidden-md">
+      
 
 
 
-<tbody>
 
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-beta%7E3"></span>real(kind=wp),</td>
-  
-  <td>public</td>
-  <td></td><td>::</td>
-  <td><strong>beta</strong></td><td></td><td></td><td></td>
-  
-</tr>
 
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-fac1%7E3"></span>real(kind=wp),</td>
-  
-  <td>public</td>
-  <td></td><td>::</td>
-  <td><strong>fac1</strong></td><td></td><td></td><td></td>
-  
-</tr>
 
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-fac2%7E3"></span>real(kind=wp),</td>
-  
-  <td>public</td>
-  <td></td><td>::</td>
-  <td><strong>fac2</strong></td><td></td><td></td><td></td>
-  
-</tr>
 
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-h%7E4"></span>real(kind=wp),</td>
-  
-  <td>public</td>
-  <td></td><td>::</td>
-  <td><strong>h</strong></td><td></td><td></td><td></td>
-  
-</tr>
 
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-hmax%7E4"></span>real(kind=wp),</td>
-  
-  <td>public</td>
-  <td></td><td>::</td>
-  <td><strong>hmax</strong></td><td></td><td></td><td></td>
-  
-</tr>
 
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-safe%7E3"></span>real(kind=wp),</td>
-  
-  <td>public</td>
-  <td></td><td>::</td>
-  <td><strong>safe</strong></td><td></td><td></td><td></td>
-  
-</tr>
 
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-i%7E3"></span>integer,</td>
-  
-  <td>public</td>
-  <td></td><td>::</td>
-  <td><strong>i</strong></td><td></td><td></td><td></td>
-  
-</tr>
 
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-ieco"></span>integer,</td>
-  
-  <td>public</td>
-  <td></td><td>::</td>
-  <td><strong>ieco</strong></td><td></td><td></td><td></td>
-  
-</tr>
 
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-iprint%7E3"></span>integer,</td>
-  
-  <td>public</td>
-  <td></td><td>::</td>
-  <td><strong>iprint</strong></td><td></td><td></td><td></td>
-  
-</tr>
 
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-istore"></span>integer,</td>
-  
-  <td>public</td>
-  <td></td><td>::</td>
-  <td><strong>istore</strong></td><td></td><td></td><td></td>
-  
-</tr>
 
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-nrdens%7E2"></span>integer,</td>
-  
-  <td>public</td>
-  <td></td><td>::</td>
-  <td><strong>nrdens</strong></td><td></td><td></td><td></td>
-  
-</tr>
 
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-nstiff%7E3"></span>integer,</td>
-  
-  <td>public</td>
-  <td></td><td>::</td>
-  <td><strong>nstiff</strong></td><td></td><td></td><td></td>
-  
-</tr>
 
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-nmax%7E3"></span>integer,</td>
-  
-  <td>public</td>
-  <td></td><td>::</td>
-  <td><strong>nmax</strong></td><td></td><td></td><td></td>
-  
-</tr>
 
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-arret"></span>logical,</td>
-  
-  <td>public</td>
-  <td></td><td>::</td>
-  <td><strong>arret</strong></td><td></td><td></td><td></td>
-  
-</tr>
 
-  
-  
-  
-  
-<tr>
-  
-  <td><span class="anchor" id="variable-itol%7E2"></span>integer,</td>
-  
-  <td>public</td>
-  <td></td><td>::</td>
-  <td><strong>itol</strong></td><td></td><td></td><td><p>switch for <code>rtol</code> and <code>atol</code>:
-  <code>itol=0</code>: both <code>rtol</code> and <code>atol</code> are scalars.
-    the code keeps, roughly, the local error of
-    <code>y(i)</code> below <code>rtol*abs(y(i))+atol</code>.
-  <code>itol=1</code>: both <code>rtol</code> and <code>atol</code> are vectors.
-    the code keeps the local error of <code>y(i)</code> below
-    <code>rtol(i)*abs(y(i))+atol(i)</code>.</p></td>
-  
-</tr>
 
-</tbody>
-</table>
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/dop853.html#src">dop853</a>
+  </div>
+</div>
+
 
     </section>
-    <br>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
     
     
     
@@ -673,7 +477,7 @@ public subroutine dop853(me, x, y, xend, rtol, atol, iout, idid)
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="highlight"><pre>      <span class="k">subroutine </span><span class="n">dop853</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">xend</span><span class="p">,</span><span class="n">rtol</span><span class="p">,</span><span class="n">atol</span><span class="p">,</span><span class="n">iout</span><span class="p">,</span><span class="n">idid</span><span class="p">)</span>
+    <div class="highlight"><pre><span></span>      <span class="k">subroutine </span><span class="n">dop853</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">xend</span><span class="p">,</span><span class="n">rtol</span><span class="p">,</span><span class="n">atol</span><span class="p">,</span><span class="n">iout</span><span class="p">,</span><span class="n">idid</span><span class="p">)</span>
 
       <span class="k">implicit none</span>
 
@@ -817,17 +621,60 @@ public subroutine dop853(me, x, y, xend, rtol, atol, iout, idid)
     </div>
   </div>
 
+  <section class="visible-xs visible-sm hidden-md">
     <hr>
-    <footer>
-        <div class="row">
-        <div class="col-md-4">&copy; 2016 </div>
-	<div class="col-md-4"><span class="text-center"> dop853 was developed by Jacob Williams</span></div>
-        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
-        </div>
-        <br>
-    </footer>
-    </div> <!-- /container -->
+    
 
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allprocs-1">All Procedures</a></h3></div>
+  <div id="allprocs-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../proc/contd8.html">contd8</a>
+      
+      <a class="list-group-item" href="../proc/destroy_dop853.html">destroy_dop853</a>
+      
+      <a class="list-group-item" href="../proc/dop853.html">dop853</a>
+      
+      <a class="list-group-item" href="../proc/dp86co.html">dp86co</a>
+      
+      <a class="list-group-item" href="../proc/fvpol.html">fvpol</a>
+      
+      <a class="list-group-item" href="../proc/get_dop853_info.html">get_dop853_info</a>
+      
+      <a class="list-group-item" href="../proc/hinit.html">hinit</a>
+      
+      <a class="list-group-item" href="../proc/set_parameters.html">set_parameters</a>
+      
+      <a class="list-group-item" href="../proc/solout.html">solout</a>
+      
+      <a class="list-group-item" href="../proc/solout2.html">solout2</a>
+      
+    </div>
+  </div>
+</div>
+
+
+  </section>
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2017 </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> dop853 was developed by Jacob Williams</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -852,6 +699,6 @@ public subroutine dop853(me, x, y, xend, rtol, atol, iout, idid)
         }
       });
     </script>
-    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   </body>
 </html>

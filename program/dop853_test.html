@@ -7,7 +7,7 @@
 	 
 	 <meta name="description" content="Modern Fortran Implementation of the DOP853 ODE Solver">
     
-    <meta name="author" content="Chris MacMackin" >
+    <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
     <title>dop853_test &ndash; dop853</title>
@@ -53,13 +53,20 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
 				
-                
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+		 aria-expanded="false">Contents <span class="caret"></span></a>
+	      <ul class="dropdown-menu">
+              
             <li><a href="../lists/files.html">Source Files</a></li>
 				
 				
             <li><a href="../lists/modules.html">Modules</a></li>
 				
-				
+            
+                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
 				
 				
@@ -69,7 +76,27 @@
 				
 				
             <li><a href="../program/dop853_test.html">Program</a></li>
-				
+	    
+            </ul>
+            </li>
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/absint.html">Abstract Interfaces</a></li>
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/dop853_test.html">Program</a></li>
+
           </ul>
         
         <form action="../search.html" class="navbar-form navbar-right" role="search">
@@ -89,13 +116,13 @@
     
   
   <div class="row">
-    <h1>dop853_test 
+    <h1>dop853_test
     <small>Program</small>
     
     </h1>
-	 
+    
 <div class="row">
-<div class="col-lg-12">
+  <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
      
@@ -104,6 +131,13 @@
      
     
     
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+	  data-placement="bottom" data-html="true"
+	  title="100.0% of total for programs.">133 statements</a>
+     </li> 
+     
+     
     <li><i class="fa fa-code"></i><a href="../src/dop853_test.f90"> Source File</a></li>
      
   </ul>
@@ -116,138 +150,147 @@
 </div>
 </div>
 </div>
-    
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
   </div>
   
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
     
 <div id="sidebar">
   
-  
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars">Variables</a></h3></div>
-    <div id="vars" class="panel-collapse collapse">
-      <div class="list-group">
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-n%7E4">n</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-icomp%7E3">icomp</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-iout%7E3">iout</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-tol">tol</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-x0">x0</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-xf">xf</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-y0">y0</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-dx">dx</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-make_plots">make_plots</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-prop">prop</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-y%7E10">y</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-rtol%7E4">rtol</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-atol%7E4">atol</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-x%7E10">x</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-xend%7E3">xend</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-i%7E5">i</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-idid%7E3">idid</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-j%7E3">j</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-nfcn%7E4">nfcn</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-nstep%7E4">nstep</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-naccpt%7E4">naccpt</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-nrejct%7E4">nrejct</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-status_ok%7E2">status_ok</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-plt">plt</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-t_vec">t_vec</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-y_vec">y_vec</a>
-        
-        <a class="list-group-item" href="../program/dop853_test.html#variable-yp_vec">yp_vec</a>
-        
-      </div>
-    </div>
-  </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs">Subroutines</a></h3></div>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
     <div class="list-group">
-        <div id="subs" class="panel-collapse collapse">
-          
-          <a class="list-group-item" href="../program/dop853_test.html#proc-solout">solout</a>
-          
-          <a class="list-group-item" href="../program/dop853_test.html#proc-solout2">solout2</a>
-          
-          <a class="list-group-item" href="../program/dop853_test.html#proc-fvpol">fvpol</a>
-          
-        </div>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-n%7E4">n</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-icomp%7E3">icomp</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-iout%7E3">iout</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-tol">tol</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-x0">x0</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-xf">xf</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-y0">y0</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-dx">dx</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-make_plots">make_plots</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-prop">prop</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-y%7E10">y</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-rtol%7E4">rtol</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-atol%7E4">atol</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-x%7E10">x</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-xend%7E3">xend</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-i">i</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-idid%7E3">idid</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-j">j</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-nfcn%7E4">nfcn</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-nstep%7E4">nstep</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-naccpt%7E4">naccpt</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-nrejct%7E4">nrejct</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-status_ok%7E2">status_ok</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-plt">plt</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-t_vec">t_vec</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-y_vec">y_vec</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-yp_vec">yp_vec</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-istat">istat</a>
+      
     </div>
   </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-    <div class="list-group">
-      <a class="list-group-item" href="../program/dop853_test.html#src">dop853_test</a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-0">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-0" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../program/dop853_test.html#proc-solout">solout</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#proc-solout2">solout2</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#proc-fvpol">fvpol</a>
+      
     </div>
   </div>
-  
+</div>
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../program/dop853_test.html#src">dop853_test</a>
+  </div>
+</div>
+
+
   <hr>
   
-  <div class="panel panel-default">
-    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allprogs">All Programs</a></h3></div>
-    <div id="allprogs" class="panel-collapse collapse">
-        <div class="list-group">
-          
-          <a class="list-group-item" href="../program/dop853_test.html">dop853_test</a>
-          
-        </div>
+
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allprogs-0">All Programs</a></h3></div>
+  <div id="allprogs-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../program/dop853_test.html">dop853_test</a>
+      
     </div>
   </div>
-  
 </div>
+
+
+</div>  
 
     </div>
     
-    <div class="col-lg-9" id='text'>
+    <div class="col-md-9" id='text'>
     
   
     <ul class="list-inline">
@@ -262,8 +305,6 @@
       <li><a href="https://github.com/jacobwilliams/pyplot-fortran">pyplot_module</a></li>
       
     </ul>
-  
-
     
                 <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -271,78 +312,79 @@
 <!-- Generated by graphviz version 2.26.3 (20100126.1600)
  -->
 <!-- Title: program~~dop853_test~~UsesGraph Pages: 1 -->
-<svg id="programdop853_testUsesGraph" width="466pt" height="108pt"
- viewBox="0.00 0.00 466.00 107.82" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="program~~dop853_test~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 103.822)">
+<svg id="programdop853_testUsesGraph" width="466pt" height="146pt"
+ viewBox="0.00 0.00 466.00 145.59" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="program~~dop853_test~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 141.589)">
 <title>program~~dop853_test~~UsesGraph</title>
-<polygon fill="white" stroke="white" points="-4,5 -4,-103.822 463,-103.822 463,5 -4,5"/>
+<polygon fill="white" stroke="white" points="-4,5 -4,-141.589 463,-141.589 463,5 -4,5"/>
 <!-- program~dop853_test -->
 <g id="node1" class="node"><title>program~dop853_test</title>
-<polygon fill="none" stroke="black" points="458,-70 386,-70 386,-44 458,-44 458,-70"/>
-<text text-anchor="middle" x="422" y="-54.55" font-family="Helvetica,sans-Serif" font-size="10.50">dop853_test</text>
+<polygon fill="none" stroke="black" points="458,-87 386,-87 386,-61 458,-61 458,-87"/>
+<text text-anchor="middle" x="422" y="-71.55" font-family="Helvetica,sans-Serif" font-size="10.50">dop853_test</text>
+</g>
+<!-- module~dop853_module -->
+<g id="node2" class="node"><title>module~dop853_module</title>
+<a xlink:href="../module/dop853_module.html" xlink:title="dop853_module">
+<polygon fill="#337ab7" stroke="#337ab7" points="350,-108 260,-108 260,-82 350,-82 350,-108"/>
+<text text-anchor="middle" x="305" y="-92.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dop853_module</text>
+</a>
+</g>
+<!-- module~dop853_module&#45;&gt;program~dop853_test -->
+<g id="edge8" class="edge"><title>module~dop853_module&#45;&gt;program~dop853_test</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M350.235,-86.8809C358.647,-85.371 367.445,-83.7919 375.883,-82.2774"/>
+<polygon fill="#000000" stroke="#000000" points="376.722,-85.6828 385.946,-80.4712 375.485,-78.7929 376.722,-85.6828"/>
 </g>
 <!-- module~dop853_constants -->
-<g id="node2" class="node"><title>module~dop853_constants</title>
+<g id="node3" class="node"><title>module~dop853_constants</title>
 <a xlink:href="../module/dop853_constants.html" xlink:title="dop853_constants">
-<polygon fill="#337ab7" stroke="#337ab7" points="224,-70 124,-70 124,-44 224,-44 224,-70"/>
-<text text-anchor="middle" x="174" y="-54.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dop853_constants</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="224,-108 124,-108 124,-82 224,-82 224,-108"/>
+<text text-anchor="middle" x="174" y="-92.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dop853_constants</text>
 </a>
 </g>
 <!-- module~dop853_constants&#45;&gt;program~dop853_test -->
-<g id="edge8" class="edge"><title>module~dop853_constants&#45;&gt;program~dop853_test</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M197.047,-70.2121C222.741,-83.5057 265.841,-101.57 305,-98"/>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M305,-98C333.696,-95.384 364.375,-84.2915 387.116,-74.3036"/>
-<polygon fill="black" stroke="black" points="388.685,-77.4354 396.347,-70.1186 385.794,-71.06 388.685,-77.4354"/>
-</g>
-<!-- module~dop853_module -->
-<g id="node4" class="node"><title>module~dop853_module</title>
-<a xlink:href="../module/dop853_module.html" xlink:title="dop853_module">
-<polygon fill="#337ab7" stroke="#337ab7" points="350,-70 260,-70 260,-44 350,-44 350,-70"/>
-<text text-anchor="middle" x="305" y="-54.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dop853_module</text>
-</a>
+<g id="edge10" class="edge"><title>module~dop853_constants&#45;&gt;program~dop853_test</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M216.463,-81.8939C230.214,-78.2561 245.627,-74.8093 260,-73 299.687,-68.0042 310.001,-72.7222 350,-73 358.265,-73.0574 367.064,-73.1518 375.569,-73.2604"/>
+<polygon fill="#000000" stroke="#000000" points="375.696,-76.7623 385.742,-73.3982 375.79,-69.763 375.696,-76.7623"/>
 </g>
 <!-- module~dop853_constants&#45;&gt;module~dop853_module -->
 <g id="edge4" class="edge"><title>module~dop853_constants&#45;&gt;module~dop853_module</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M224.273,-57C232.583,-57 241.24,-57 249.666,-57"/>
-<polygon fill="black" stroke="black" points="249.791,-60.5001 259.791,-57 249.791,-53.5001 249.791,-60.5001"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M224.273,-95C232.583,-95 241.24,-95 249.666,-95"/>
+<polygon fill="#000000" stroke="#000000" points="249.791,-98.5001 259.791,-95 249.791,-91.5001 249.791,-98.5001"/>
 </g>
 <!-- pyplot_module -->
-<g id="node3" class="node"><title>pyplot_module</title>
+<g id="node4" class="node"><title>pyplot_module</title>
 <a xlink:href="https://github.com/jacobwilliams/pyplot-fortran" xlink:title="pyplot_module">
 <polygon fill="#337ab7" stroke="#337ab7" points="346,-26 264,-26 264,-1.24345e-14 346,-3.55271e-15 346,-26"/>
 <text text-anchor="middle" x="305" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">pyplot_module</text>
 </a>
 </g>
 <!-- pyplot_module&#45;&gt;program~dop853_test -->
-<g id="edge10" class="edge"><title>pyplot_module&#45;&gt;program~dop853_test</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M339.787,-26.0823C351.704,-30.5637 365.2,-35.6394 377.762,-40.3636"/>
-<polygon fill="black" stroke="black" points="376.553,-43.648 387.145,-43.8921 379.017,-37.096 376.553,-43.648"/>
-</g>
-<!-- module~dop853_module&#45;&gt;program~dop853_test -->
-<g id="edge12" class="edge"><title>module~dop853_module&#45;&gt;program~dop853_test</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M350.235,-57C358.647,-57 367.445,-57 375.883,-57"/>
-<polygon fill="black" stroke="black" points="375.946,-60.5001 385.946,-57 375.946,-53.5001 375.946,-60.5001"/>
+<g id="edge12" class="edge"><title>pyplot_module&#45;&gt;program~dop853_test</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M330.099,-26.086C346.987,-34.8907 369.459,-46.607 387.954,-56.2498"/>
+<polygon fill="#000000" stroke="#000000" points="386.457,-59.416 396.942,-60.9356 389.693,-53.209 386.457,-59.416"/>
 </g>
 <!-- iso_fortran_env -->
 <g id="node5" class="node"><title>iso_fortran_env</title>
 <a xlink:href="https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fFORTRAN_005fENV.html" xlink:title="iso_fortran_env">
-<polygon fill="#337ab7" stroke="#337ab7" points="87,-70 1,-70 1,-44 87,-44 87,-70"/>
-<text text-anchor="middle" x="44" y="-54.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
+<polygon fill="#337ab7" stroke="#337ab7" points="87,-128 1,-128 1,-102 87,-102 87,-128"/>
+<text text-anchor="middle" x="44" y="-112.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
 </a>
 </g>
 <!-- iso_fortran_env&#45;&gt;program~dop853_test -->
 <g id="edge14" class="edge"><title>iso_fortran_env&#45;&gt;program~dop853_test</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M85.8311,-70.0412C137.204,-84.556 227.118,-105.1 305,-98"/>
-</g>
-<!-- iso_fortran_env&#45;&gt;module~dop853_constants -->
-<g id="edge2" class="edge"><title>iso_fortran_env&#45;&gt;module~dop853_constants</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M87.6498,-57C96.0264,-57 104.935,-57 113.728,-57"/>
-<polygon fill="black" stroke="black" points="113.958,-60.5001 123.958,-57 113.958,-53.5001 113.958,-60.5001"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M174,-136C252.676,-136.194 275.391,-141.97 350,-117 366.491,-111.481 383.266,-101.752 396.471,-92.9426"/>
+<polygon fill="#000000" stroke="#000000" points="398.757,-95.6174 404.995,-87.0538 394.778,-89.8581 398.757,-95.6174"/>
 </g>
 <!-- iso_fortran_env&#45;&gt;module~dop853_module -->
-<g id="edge6" class="edge"><title>iso_fortran_env&#45;&gt;module~dop853_module</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M83.4423,-43.8964C96.2311,-40.2588 110.581,-36.8114 124,-35 168.045,-29.0542 179.946,-29.1238 224,-35 234.183,-36.3583 244.9,-38.6369 255.086,-41.226"/>
-<polygon fill="black" stroke="black" points="254.489,-44.6895 265.054,-43.896 256.3,-37.9278 254.489,-44.6895"/>
+<g id="edge2" class="edge"><title>iso_fortran_env&#45;&gt;module~dop853_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M87.6441,-125.569C112.744,-130.76 144.965,-135.928 174,-136"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M174,-136C207.81,-136.083 244.38,-123.482 270.266,-112.229"/>
+<polygon fill="#000000" stroke="#000000" points="271.954,-115.308 279.637,-108.012 269.081,-108.925 271.954,-115.308"/>
+</g>
+<!-- iso_fortran_env&#45;&gt;module~dop853_constants -->
+<g id="edge6" class="edge"><title>iso_fortran_env&#45;&gt;module~dop853_constants</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M87.6498,-108.285C96.1175,-106.982 105.129,-105.596 114.015,-104.229"/>
+<polygon fill="#000000" stroke="#000000" points="114.606,-107.679 123.958,-102.699 113.542,-100.76 114.606,-107.679"/>
 </g>
 </g>
 </svg>
@@ -357,18 +399,18 @@
                       </div>
                       <div class="modal-body">
                         
-Nodes of different colours represent the following:
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.26.3 (20100126.1600)
  -->
 <!-- Title: Graph Key Pages: 1 -->
-<svg width="641pt" height="28pt"
- viewBox="0.00 0.00 641.00 27.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph1" class="graph" transform="scale(0.817602 0.817602) rotate(0) translate(4 30)">
+<svg width="486pt" height="34pt"
+ viewBox="0.00 0.00 486.00 34.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 30)">
 <title>Graph Key</title>
-<polygon fill="white" stroke="white" points="-4,5 -4,-30 781,-30 781,5 -4,5"/>
+<polygon fill="white" stroke="white" points="-4,5 -4,-30 483,-30 483,5 -4,5"/>
 <!-- Module -->
 <g id="node1" class="node"><title>Module</title>
 <polygon fill="#337ab7" stroke="#337ab7" points="54,-26 2.13163e-14,-26 0,-1.24345e-14 54,-3.55271e-15 54,-26"/>
@@ -379,64 +421,42 @@ Nodes of different colours represent the following:
 <polygon fill="#5bc0de" stroke="#5bc0de" points="138,-26 72,-26 72,-1.24345e-14 138,-3.55271e-15 138,-26"/>
 <text text-anchor="middle" x="105" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
 </g>
-<!-- Type -->
-<g id="node3" class="node"><title>Type</title>
-<polygon fill="#5cb85c" stroke="#5cb85c" points="210,-26 156,-26 156,-1.24345e-14 210,-3.55271e-15 210,-26"/>
-<text text-anchor="middle" x="183" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
-</g>
 <!-- Subroutine -->
-<g id="node4" class="node"><title>Subroutine</title>
-<polygon fill="#d9534f" stroke="#d9534f" points="292,-26 228,-26 228,-1.24345e-14 292,-3.55271e-15 292,-26"/>
-<text text-anchor="middle" x="260" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+<g id="node3" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="220,-26 156,-26 156,-1.24345e-14 220,-3.55271e-15 220,-26"/>
+<text text-anchor="middle" x="188" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
 </g>
 <!-- Function -->
-<g id="node5" class="node"><title>Function</title>
-<polygon fill="#d94e8f" stroke="#d94e8f" points="364,-26 310,-26 310,-1.24345e-14 364,-3.55271e-15 364,-26"/>
-<text text-anchor="middle" x="337" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
-</g>
-<!-- Interface -->
-<g id="node6" class="node"><title>Interface</title>
-<polygon fill="#a7506f" stroke="#a7506f" points="436,-26 382,-26 382,-1.24345e-14 436,-3.55271e-15 436,-26"/>
-<text text-anchor="middle" x="409" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
-</g>
-<!-- Unknown Procedure Type -->
-<g id="node7" class="node"><title>Unknown Procedure Type</title>
-<polygon fill="#777777" stroke="#777777" points="590,-26 454,-26 454,-1.24345e-14 590,-3.55271e-15 590,-26"/>
-<text text-anchor="middle" x="522" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+<g id="node4" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="292,-26 238,-26 238,-1.24345e-14 292,-3.55271e-15 292,-26"/>
+<text text-anchor="middle" x="265" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
 </g>
 <!-- Program -->
-<g id="node8" class="node"><title>Program</title>
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="662,-26 608,-26 608,-1.24345e-14 662,-3.55271e-15 662,-26"/>
-<text text-anchor="middle" x="635" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+<g id="node5" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="364,-26 310,-26 310,-1.24345e-14 364,-3.55271e-15 364,-26"/>
+<text text-anchor="middle" x="337" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
 </g>
 <!-- This Page&#39;s Entity -->
-<g id="node9" class="node"><title>This Page&#39;s Entity</title>
-<polygon fill="none" stroke="black" points="776,-26 680,-26 680,-1.24345e-14 776,-3.55271e-15 776,-26"/>
-<text text-anchor="middle" x="728" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+<g id="node6" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="478,-26 382,-26 382,-1.24345e-14 478,-3.55271e-15 478,-26"/>
+<text text-anchor="middle" x="430" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
 </g>
 </g>
 </svg>
 
-<h5>Module Graph</h5>
-<p>Solid arrows point from a parent (sub)module to the submodule which is
-descended from it. Dashed arrows point from a module being used to the
-module using it.</p>
-<h5>Type Graph</h5>
-<p>Solid arrows point from one derived type to another which extends
-(inherits from) it. Dashed arrows point from a derived type to another
-type containing it as a components, with a label listing the name(s) of
-said component(s).</p>
-<h5>Call Graph</h5>
-<p>Solid arrows point from a procedure to one which it calls. Dashed 
-arrows point from an interface to procedures which implement that interface.
-This could include the module procedures in a generic interface or the
-implementation in a submodule of an interface in a parent module.</p>
-
+    
+    <p>Solid arrows point from a parent (sub)module to the submodule which is
+    descended from it. Dashed arrows point from a module being used to the
+    module or program unit using it.
+    </p>
+    
                       </div>
                     </div>
                   </div>
                 </div>
                 
+    
+
     <br><br>
     <p>Driver for <a href="../proc/dop853.html">dop853</a> on van der Pol's equation.</p>
 <h3>See also</h3>
@@ -446,9 +466,124 @@ implementation in a submodule of an interface in a parent module.</p>
 <h3>Results</h3>
 <p><img alt="Forward Test" src="../media/dop853_forward.png">
   <img alt="Backward Test" src="../media/dop853_backward.png"></p>
-<p></p><div class="alert alert-info" role="alert"><h4>Note</h4>This requires <a href="https://github.com/jacobwilliams/pyplot-fortran">pyplot-fortran</a>.</div>
+<p></p><div class="alert alert-info" role="alert"><h4>Note</h4><p>This requires <a href="https://github.com/jacobwilliams/pyplot-fortran">pyplot-fortran</a>.</p></div>
     
     <br>
+
+     <section class="visible-xs visible-sm hidden-md">
+       
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-n%7E4">n</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-icomp%7E3">icomp</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-iout%7E3">iout</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-tol">tol</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-x0">x0</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-xf">xf</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-y0">y0</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-dx">dx</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-make_plots">make_plots</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-prop">prop</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-y%7E10">y</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-rtol%7E4">rtol</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-atol%7E4">atol</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-x%7E10">x</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-xend%7E3">xend</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-i">i</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-idid%7E3">idid</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-j">j</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-nfcn%7E4">nfcn</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-nstep%7E4">nstep</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-naccpt%7E4">naccpt</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-nrejct%7E4">nrejct</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-status_ok%7E2">status_ok</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-plt">plt</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-t_vec">t_vec</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-y_vec">y_vec</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-yp_vec">yp_vec</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#variable-istat">istat</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-1">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-1" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../program/dop853_test.html#proc-solout">solout</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#proc-solout2">solout2</a>
+      
+      <a class="list-group-item" href="../program/dop853_test.html#proc-fvpol">fvpol</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../program/dop853_test.html#src">dop853_test</a>
+  </div>
+</div>
+
+
+     </section>
+     <br class="visible-xs visible-sm hidden-md">
+
+     
 
     
     <section>
@@ -679,7 +814,7 @@ implementation in a submodule of an interface in a parent module.</p>
   
 <tr>
   
-  <td><span class="anchor" id="variable-i%7E5"></span>integer</td>
+  <td><span class="anchor" id="variable-i"></span>integer</td>
   
   
   <td></td><td>::</td>
@@ -707,7 +842,7 @@ implementation in a submodule of an interface in a parent module.</p>
   
 <tr>
   
-  <td><span class="anchor" id="variable-j%7E3"></span>integer</td>
+  <td><span class="anchor" id="variable-j"></span>integer</td>
   
   
   <td></td><td>::</td>
@@ -841,6 +976,20 @@ implementation in a submodule of an interface in a parent module.</p>
   
 </tr>
 
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-istat"></span>integer</td>
+  
+  
+  <td></td><td>::</td>
+  <td><strong>istat</strong></td><td></td><td></td><td><p>pyplot-fortran status flag</p></td>
+  
+</tr>
+
 </tbody>
 </table>
 
@@ -869,10 +1018,21 @@ implementation in a submodule of an interface in a parent module.</p>
 subroutine <a href='../proc/solout.html'>solout</a>(me, nr, xold, x, y, irtrn, xout)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+
+
+<p>Prints solution at equidistant output-points
+  by using <a href="../proc/contd8.html">contd8</a>, the continuous collocation solution.
+  This is for an <code>iout=3</code> case.</p>
     
     <h4>Arguments</h4>
     
@@ -998,17 +1158,6 @@ subroutine <a href='../proc/solout.html'>solout</a>(me, nr, xold, x, y, irtrn, x
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-
-       
-       <p>Prints solution at equidistant output-points
-  by using <a href="../proc/contd8.html">contd8</a>, the continuous collocation solution.
-  This is for an <code>iout=3</code> case.</p>
-        
 
   </div>
   </div>
@@ -1020,10 +1169,19 @@ subroutine <a href='../proc/solout.html'>solout</a>(me, nr, xold, x, y, irtrn, x
 subroutine <a href='../proc/solout2.html'>solout2</a>(me, nr, xold, x, y, irtrn, xout)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+
+
+<p>Prints a normal step from <a href="../proc/dop853.html">dop853</a> (for <code>iout=1</code>).</p>
     
     <h4>Arguments</h4>
     
@@ -1149,15 +1307,6 @@ subroutine <a href='../proc/solout2.html'>solout2</a>(me, nr, xold, x, y, irtrn,
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-
-       
-       <p>Prints a normal step from <a href="../proc/dop853.html">dop853</a> (for <code>iout=1</code>).</p>
-        
 
   </div>
   </div>
@@ -1169,10 +1318,20 @@ subroutine <a href='../proc/solout2.html'>solout2</a>(me, nr, xold, x, y, irtrn,
 subroutine <a href='../proc/fvpol.html'>fvpol</a>(me, x, y, f)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+
+
+<p>Right-hand side of van der Pol's equation:
+ \( y'' = \mu(1-y^2)y' - y \).</p>
     
     <h4>Arguments</h4>
     
@@ -1253,16 +1412,6 @@ subroutine <a href='../proc/fvpol.html'>fvpol</a>(me, x, y, f)
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-
-       
-       <p>Right-hand side of van der Pol's equation:
- \( y'' = \mu(1-y^2)y' - y \).</p>
-        
 
   </div>
   </div>
@@ -1274,7 +1423,7 @@ subroutine <a href='../proc/fvpol.html'>fvpol</a>(me, x, y, f)
     
     <section>
     <h2 id="src">Source Code</h2>
-    <div class="highlight"><pre>    <span class="k">program </span><span class="n">dop853_test</span>
+    <div class="highlight"><pre><span></span>    <span class="k">program </span><span class="n">dop853_test</span>
 
     <span class="k">use </span><span class="n">dop853_module</span>
     <span class="k">use </span><span class="n">dop853_constants</span>
@@ -1302,6 +1451,7 @@ subroutine <a href='../proc/fvpol.html'>fvpol</a>(me, x, y, f)
     <span class="kt">logical</span> <span class="kd">::</span> <span class="n">status_ok</span>
     <span class="k">type</span><span class="p">(</span><span class="n">pyplot</span><span class="p">)</span> <span class="kd">::</span> <span class="n">plt</span>
     <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span> <span class="kd">::</span> <span class="n">t_vec</span><span class="p">,</span> <span class="n">y_vec</span><span class="p">,</span> <span class="n">yp_vec</span>
+    <span class="kt">integer</span> <span class="kd">::</span> <span class="n">istat</span> <span class="c">!! pyplot-fortran status flag</span>
 
     <span class="n">x</span> <span class="o">=</span> <span class="n">x0</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">y0</span>
@@ -1343,8 +1493,8 @@ subroutine <a href='../proc/fvpol.html'>fvpol</a>(me, x, y, f)
                               <span class="n">title</span><span class="o">=</span><span class="s1">&#39;van der Pol&#39;&#39;s Equation ($\mu = 0.2$)&#39;</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="p">.</span><span class="n">true</span><span class="p">.)</span>
             <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">add_plot</span><span class="p">(</span><span class="n">y_vec</span><span class="p">,</span><span class="n">yp_vec</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Forward&#39;</span><span class="p">,&amp;</span>
                               <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,&amp;</span>
-                              <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">3.0_wp</span><span class="p">,</span><span class="mf">3.0_wp</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">3.0_wp</span><span class="p">,</span><span class="mf">3.0_wp</span><span class="p">])</span>
-            <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;dop853_forward.png&#39;</span><span class="p">)</span>
+                              <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">3.0_wp</span><span class="p">,</span><span class="mf">3.0_wp</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">3.0_wp</span><span class="p">,</span><span class="mf">3.0_wp</span><span class="p">],</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
+            <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;dop853_forward.png&#39;</span><span class="p">,</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
             <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span>
 
             <span class="k">deallocate</span><span class="p">(</span><span class="n">t_vec</span> <span class="p">)</span>
@@ -1373,9 +1523,9 @@ subroutine <a href='../proc/fvpol.html'>fvpol</a>(me, x, y, f)
 
             <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">add_plot</span><span class="p">(</span><span class="n">y_vec</span><span class="p">,</span><span class="n">yp_vec</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Backward&#39;</span><span class="p">,&amp;</span>
                             <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,&amp;</span>
-                            <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">3.0_wp</span><span class="p">,</span><span class="mf">3.0_wp</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">3.0_wp</span><span class="p">,</span><span class="mf">3.0_wp</span><span class="p">])</span>
+                            <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">3.0_wp</span><span class="p">,</span><span class="mf">3.0_wp</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">3.0_wp</span><span class="p">,</span><span class="mf">3.0_wp</span><span class="p">],</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
 
-            <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;dop853_backward.png&#39;</span><span class="p">)</span>
+            <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;dop853_backward.png&#39;</span><span class="p">,</span><span class="n">istat</span><span class="o">=</span><span class="n">istat</span><span class="p">)</span>
             <span class="k">call </span><span class="n">plt</span><span class="p">%</span><span class="n">destroy</span><span class="p">()</span>
         <span class="k">end if</span>
 
@@ -1516,17 +1666,42 @@ subroutine <a href='../proc/fvpol.html'>fvpol</a>(me, x, y, f)
     </div>
   </div>
 
+  <section class="visible-xs visible-sm hidden-md">
     <hr>
-    <footer>
-        <div class="row">
-        <div class="col-md-4">&copy; 2016 </div>
-	<div class="col-md-4"><span class="text-center"> dop853 was developed by Jacob Williams</span></div>
-        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
-        </div>
-        <br>
-    </footer>
-    </div> <!-- /container -->
+    
 
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allprogs-1">All Programs</a></h3></div>
+  <div id="allprogs-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../program/dop853_test.html">dop853_test</a>
+      
+    </div>
+  </div>
+</div>
+
+
+  </section>
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2017 </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> dop853 was developed by Jacob Williams</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -1551,6 +1726,6 @@ subroutine <a href='../proc/fvpol.html'>fvpol</a>(me, x, y, f)
         }
       });
     </script>
-    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   </body>
 </html>

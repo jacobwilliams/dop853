@@ -7,7 +7,7 @@
 	 
 	 <meta name="description" content="Modern Fortran Implementation of the DOP853 ODE Solver">
     
-    <meta name="author" content="Chris MacMackin" >
+    <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
     <title>dop853_module &ndash; dop853</title>
@@ -53,13 +53,20 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
 				
-                
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+		 aria-expanded="false">Contents <span class="caret"></span></a>
+	      <ul class="dropdown-menu">
+              
             <li><a href="../lists/files.html">Source Files</a></li>
 				
 				
             <li><a href="../lists/modules.html">Modules</a></li>
 				
-				
+            
+                                
             <li><a href="../lists/procedures.html">Procedures</a></li>
 				
 				
@@ -69,7 +76,27 @@
 				
 				
             <li><a href="../program/dop853_test.html">Program</a></li>
-				
+	    
+            </ul>
+            </li>
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/absint.html">Abstract Interfaces</a></li>
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/dop853_test.html">Program</a></li>
+
           </ul>
         
         <form action="../search.html" class="navbar-form navbar-right" role="search">
@@ -93,19 +120,26 @@
     <small>Module</small>
     
     </h1>
-	 
+    
 <div class="row">
-<div class="col-lg-12">
+  <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
      
-    <li><i class="fa fa-pencil"></i> Jacob Williams</li>
+     <li><i class="fa fa-pencil"></i> Jacob Williams</li>
      
      
      
      
     
     
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+	  data-placement="bottom" data-html="true"
+	  title="77.0% of total for modules and submodules.">532 statements</a>
+     </li> 
+     
+     
     <li><i class="fa fa-code"></i><a href="../src/dop853_module.f90"> Source File</a></li>
      
   </ul>
@@ -118,113 +152,119 @@
 </div>
 </div>
 </div>
-    
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
   </div>
   
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
     
 <div id="sidebar">
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#absints">Abstract Interfaces</a></h3></div>
-    <div id="absints" class="panel-collapse collapse">
-        <div class="list-group">
-          
-          <a class="list-group-item" href="../module/dop853_module.html#interface-deriv_func">deriv_func</a>
-          
-          <a class="list-group-item" href="../module/dop853_module.html#interface-solout_func">solout_func</a>
-          
-        </div>
-    </div>
-  </div>
-  
-  
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types">Derived Types</a></h3></div>
-    <div id="types" class="panel-collapse collapse">
-      <div class="list-group">
-        
-        <a class="list-group-item" href="../module/dop853_module.html#type-dop853_class">dop853_class</a>
-        
-      </div>
-    </div>
-  </div>
-  
-  
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#funcs">Functions</a></h3></div>
-    <div id="funcs" class="panel-collapse collapse">
-        <div class="list-group">
-          
-          <a class="list-group-item" href="../module/dop853_module.html#proc-hinit">hinit</a>
-          
-          <a class="list-group-item" href="../module/dop853_module.html#proc-contd8">contd8</a>
-          
-        </div>
-    </div>
-  </div>
-  
-  
-  
-  <div class="panel panel-primary">
-    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs">Subroutines</a></h3></div>
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#absints-0">Abstract Interfaces</a></h3></div>
+  <div id="absints-0" class="panel-collapse collapse">
     <div class="list-group">
-        <div id="subs" class="panel-collapse collapse">
-          
-          <a class="list-group-item" href="../module/dop853_module.html#proc-get_dop853_info">get_dop853_info</a>
-          
-          <a class="list-group-item" href="../module/dop853_module.html#proc-destroy_dop853">destroy_dop853</a>
-          
-          <a class="list-group-item" href="../module/dop853_module.html#proc-set_parameters">set_parameters</a>
-          
-          <a class="list-group-item" href="../module/dop853_module.html#proc-dop853">dop853</a>
-          
-          <a class="list-group-item" href="../module/dop853_module.html#proc-dp86co">dp86co</a>
-          
-        </div>
+      
+      <a class="list-group-item" href="../module/dop853_module.html#interface-deriv_func">deriv_func</a>
+      
+      <a class="list-group-item" href="../module/dop853_module.html#interface-solout_func">solout_func</a>
+      
     </div>
   </div>
-  
-  
-  
-  
-  
-  
-  
-  
+</div>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types-0">Derived Types</a></h3></div>
+  <div id="types-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/dop853_module.html#type-dop853_class">dop853_class</a>
+      
+    </div>
+  </div>
+</div>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#funcs-0">Functions</a></h3></div>
+  <div id="funcs-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/dop853_module.html#proc-hinit">hinit</a>
+      
+      <a class="list-group-item" href="../module/dop853_module.html#proc-contd8">contd8</a>
+      
+    </div>
+  </div>
+</div>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-0">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-0" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/dop853_module.html#proc-get_dop853_info">get_dop853_info</a>
+      
+      <a class="list-group-item" href="../module/dop853_module.html#proc-destroy_dop853">destroy_dop853</a>
+      
+      <a class="list-group-item" href="../module/dop853_module.html#proc-set_parameters">set_parameters</a>
+      
+      <a class="list-group-item" href="../module/dop853_module.html#proc-dop853">dop853</a>
+      
+      <a class="list-group-item" href="../module/dop853_module.html#proc-dp86co">dp86co</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
   <hr>
   
-  <div class="panel panel-default">
-    <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allmods">All Modules</a></h3></div>
-    <div id="allmods" class="panel-collapse collapse">
-        <div class="list-group">
-          
-          <a class="list-group-item" href="../module/dop853_constants.html">dop853_constants</a>
-          
-          <a class="list-group-item" href="../module/dop853_module.html">dop853_module</a>
-          
-        </div>
+
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allmods-0">All Modules</a></h3></div>
+  <div id="allmods-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/dop853_constants.html">dop853_constants</a>
+      
+      <a class="list-group-item" href="../module/dop853_module.html">dop853_module</a>
+      
     </div>
   </div>
-  
 </div>
+
+
+</div>  
 
     </div>
     
-    <div class="col-lg-9" id='text'>
-    
+    <div class="col-md-9" id='text'>
+      
     
   
     <ul class="list-inline">
@@ -235,8 +275,6 @@
       <li><a href="https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fFORTRAN_005fENV.html">iso_fortran_env</a></li>
       
     </ul>
-  
-
     
                 <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -254,34 +292,34 @@
 <polygon fill="none" stroke="black" points="350,-46 260,-46 260,-20 350,-20 350,-46"/>
 <text text-anchor="middle" x="305" y="-30.55" font-family="Helvetica,sans-Serif" font-size="10.50">dop853_module</text>
 </g>
-<!-- module~dop853_constants -->
-<g id="node2" class="node"><title>module~dop853_constants</title>
-<a xlink:href="../module/dop853_constants.html" xlink:title="dop853_constants">
-<polygon fill="#337ab7" stroke="#337ab7" points="224,-26 124,-26 124,-1.24345e-14 224,-3.55271e-15 224,-26"/>
-<text text-anchor="middle" x="174" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dop853_constants</text>
-</a>
-</g>
-<!-- module~dop853_constants&#45;&gt;module~dop853_module -->
-<g id="edge4" class="edge"><title>module~dop853_constants&#45;&gt;module~dop853_module</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M224.273,-20.6753C232.583,-21.944 241.24,-23.2656 249.666,-24.552"/>
-<polygon fill="black" stroke="black" points="249.377,-28.0485 259.791,-26.0979 250.434,-21.1287 249.377,-28.0485"/>
-</g>
 <!-- iso_fortran_env -->
-<g id="node3" class="node"><title>iso_fortran_env</title>
+<g id="node2" class="node"><title>iso_fortran_env</title>
 <a xlink:href="https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fFORTRAN_005fENV.html" xlink:title="iso_fortran_env">
 <polygon fill="#337ab7" stroke="#337ab7" points="87,-46 1,-46 1,-20 87,-20 87,-46"/>
 <text text-anchor="middle" x="44" y="-30.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
 </a>
 </g>
 <!-- iso_fortran_env&#45;&gt;module~dop853_module -->
-<g id="edge6" class="edge"><title>iso_fortran_env&#45;&gt;module~dop853_module</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M87.592,-34.2874C99.4052,-34.5824 112.192,-34.8524 124,-35 168.441,-35.5554 179.559,-35.5486 224,-35 232.2,-34.8988 240.866,-34.7399 249.36,-34.555"/>
-<polygon fill="black" stroke="black" points="249.676,-38.0487 259.593,-34.3185 249.515,-31.0506 249.676,-38.0487"/>
+<g id="edge4" class="edge"><title>iso_fortran_env&#45;&gt;module~dop853_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M87.592,-34.2874C99.4052,-34.5824 112.192,-34.8524 124,-35 168.441,-35.5554 179.559,-35.5486 224,-35 232.2,-34.8988 240.866,-34.7399 249.36,-34.555"/>
+<polygon fill="#000000" stroke="#000000" points="249.676,-38.0487 259.593,-34.3185 249.515,-31.0506 249.676,-38.0487"/>
+</g>
+<!-- module~dop853_constants -->
+<g id="node3" class="node"><title>module~dop853_constants</title>
+<a xlink:href="../module/dop853_constants.html" xlink:title="dop853_constants">
+<polygon fill="#337ab7" stroke="#337ab7" points="224,-26 124,-26 124,-1.24345e-14 224,-3.55271e-15 224,-26"/>
+<text text-anchor="middle" x="174" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dop853_constants</text>
+</a>
 </g>
 <!-- iso_fortran_env&#45;&gt;module~dop853_constants -->
 <g id="edge2" class="edge"><title>iso_fortran_env&#45;&gt;module~dop853_constants</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M87.6498,-26.2847C96.1175,-24.9819 105.129,-23.5955 114.015,-22.2285"/>
-<polygon fill="black" stroke="black" points="114.606,-25.6787 123.958,-20.6988 113.542,-18.7601 114.606,-25.6787"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M87.6498,-26.2847C96.1175,-24.9819 105.129,-23.5955 114.015,-22.2285"/>
+<polygon fill="#000000" stroke="#000000" points="114.606,-25.6787 123.958,-20.6988 113.542,-18.7601 114.606,-25.6787"/>
+</g>
+<!-- module~dop853_constants&#45;&gt;module~dop853_module -->
+<g id="edge6" class="edge"><title>module~dop853_constants&#45;&gt;module~dop853_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M224.273,-20.6753C232.583,-21.944 241.24,-23.2656 249.666,-24.552"/>
+<polygon fill="#000000" stroke="#000000" points="249.377,-28.0485 259.791,-26.0979 250.434,-21.1287 249.377,-28.0485"/>
 </g>
 </g>
 </svg>
@@ -296,18 +334,18 @@
                       </div>
                       <div class="modal-body">
                         
-Nodes of different colours represent the following:
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.26.3 (20100126.1600)
  -->
 <!-- Title: Graph Key Pages: 1 -->
-<svg width="641pt" height="28pt"
- viewBox="0.00 0.00 641.00 27.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph1" class="graph" transform="scale(0.817602 0.817602) rotate(0) translate(4 30)">
+<svg width="486pt" height="34pt"
+ viewBox="0.00 0.00 486.00 34.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 30)">
 <title>Graph Key</title>
-<polygon fill="white" stroke="white" points="-4,5 -4,-30 781,-30 781,5 -4,5"/>
+<polygon fill="white" stroke="white" points="-4,5 -4,-30 483,-30 483,5 -4,5"/>
 <!-- Module -->
 <g id="node1" class="node"><title>Module</title>
 <polygon fill="#337ab7" stroke="#337ab7" points="54,-26 2.13163e-14,-26 0,-1.24345e-14 54,-3.55271e-15 54,-26"/>
@@ -318,64 +356,42 @@ Nodes of different colours represent the following:
 <polygon fill="#5bc0de" stroke="#5bc0de" points="138,-26 72,-26 72,-1.24345e-14 138,-3.55271e-15 138,-26"/>
 <text text-anchor="middle" x="105" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
 </g>
-<!-- Type -->
-<g id="node3" class="node"><title>Type</title>
-<polygon fill="#5cb85c" stroke="#5cb85c" points="210,-26 156,-26 156,-1.24345e-14 210,-3.55271e-15 210,-26"/>
-<text text-anchor="middle" x="183" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
-</g>
 <!-- Subroutine -->
-<g id="node4" class="node"><title>Subroutine</title>
-<polygon fill="#d9534f" stroke="#d9534f" points="292,-26 228,-26 228,-1.24345e-14 292,-3.55271e-15 292,-26"/>
-<text text-anchor="middle" x="260" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+<g id="node3" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="220,-26 156,-26 156,-1.24345e-14 220,-3.55271e-15 220,-26"/>
+<text text-anchor="middle" x="188" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
 </g>
 <!-- Function -->
-<g id="node5" class="node"><title>Function</title>
-<polygon fill="#d94e8f" stroke="#d94e8f" points="364,-26 310,-26 310,-1.24345e-14 364,-3.55271e-15 364,-26"/>
-<text text-anchor="middle" x="337" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
-</g>
-<!-- Interface -->
-<g id="node6" class="node"><title>Interface</title>
-<polygon fill="#a7506f" stroke="#a7506f" points="436,-26 382,-26 382,-1.24345e-14 436,-3.55271e-15 436,-26"/>
-<text text-anchor="middle" x="409" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
-</g>
-<!-- Unknown Procedure Type -->
-<g id="node7" class="node"><title>Unknown Procedure Type</title>
-<polygon fill="#777777" stroke="#777777" points="590,-26 454,-26 454,-1.24345e-14 590,-3.55271e-15 590,-26"/>
-<text text-anchor="middle" x="522" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+<g id="node4" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="292,-26 238,-26 238,-1.24345e-14 292,-3.55271e-15 292,-26"/>
+<text text-anchor="middle" x="265" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
 </g>
 <!-- Program -->
-<g id="node8" class="node"><title>Program</title>
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="662,-26 608,-26 608,-1.24345e-14 662,-3.55271e-15 662,-26"/>
-<text text-anchor="middle" x="635" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+<g id="node5" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="364,-26 310,-26 310,-1.24345e-14 364,-3.55271e-15 364,-26"/>
+<text text-anchor="middle" x="337" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
 </g>
 <!-- This Page&#39;s Entity -->
-<g id="node9" class="node"><title>This Page&#39;s Entity</title>
-<polygon fill="none" stroke="black" points="776,-26 680,-26 680,-1.24345e-14 776,-3.55271e-15 776,-26"/>
-<text text-anchor="middle" x="728" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+<g id="node6" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="478,-26 382,-26 382,-1.24345e-14 478,-3.55271e-15 478,-26"/>
+<text text-anchor="middle" x="430" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
 </g>
 </g>
 </svg>
 
-<h5>Module Graph</h5>
-<p>Solid arrows point from a parent (sub)module to the submodule which is
-descended from it. Dashed arrows point from a module being used to the
-module using it.</p>
-<h5>Type Graph</h5>
-<p>Solid arrows point from one derived type to another which extends
-(inherits from) it. Dashed arrows point from a derived type to another
-type containing it as a components, with a label listing the name(s) of
-said component(s).</p>
-<h5>Call Graph</h5>
-<p>Solid arrows point from a procedure to one which it calls. Dashed 
-arrows point from an interface to procedures which implement that interface.
-This could include the module procedures in a generic interface or the
-implementation in a submodule of an interface in a parent module.</p>
-
+    
+    <p>Solid arrows point from a parent (sub)module to the submodule which is
+    descended from it. Dashed arrows point from a module being used to the
+    module or program unit using it.
+    </p>
+    
                       </div>
                     </div>
                   </div>
                 </div>
                 
+    
+
     
     <p>Modern Fortran Edition of the DOP853 ODE Solver.</p>
 <h1>See also</h1>
@@ -389,7 +405,7 @@ implementation in a submodule of an interface in a parent module.</p>
 </ul>
 <h1>License</h1>
 <h3>Original DOP853 license:</h3>
-<div class="codehilite"><pre>    Copyright (c) 2004, Ernst Hairer
+<div class="codehilite"><pre><span></span>    Copyright (c) 2004, Ernst Hairer
 
     Redistribution and use in source and binary forms, with or without
     modification, are permitted provided that the following conditions are
@@ -417,7 +433,7 @@ implementation in a submodule of an interface in a parent module.</p>
 
 
 <h3>License for updated version:</h3>
-<div class="codehilite"><pre>    Modern Fortran Edition of the DOP853 ODE Solver
+<div class="codehilite"><pre><span></span>    Modern Fortran Edition of the DOP853 ODE Solver
     https://github.com/jacobwilliams/dop853
 
     Copyright (c) 2015, Jacob Williams
@@ -479,8 +495,8 @@ implementation in a submodule of an interface in a parent module.</p>
 </g>
 <!-- module~dop853_module&#45;&gt;program~dop853_test -->
 <g id="edge2" class="edge"><title>module~dop853_module&#45;&gt;program~dop853_test</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M90.2353,-13C98.6471,-13 107.445,-13 115.883,-13"/>
-<polygon fill="black" stroke="black" points="115.946,-16.5001 125.946,-13 115.946,-9.5001 115.946,-16.5001"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M90.2353,-13C98.6471,-13 107.445,-13 115.883,-13"/>
+<polygon fill="#000000" stroke="#000000" points="115.946,-16.5001 125.946,-13 115.946,-9.5001 115.946,-16.5001"/>
 </g>
 </g>
 </svg>
@@ -495,18 +511,18 @@ implementation in a submodule of an interface in a parent module.</p>
                       </div>
                       <div class="modal-body">
                         
-Nodes of different colours represent the following:
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.26.3 (20100126.1600)
  -->
 <!-- Title: Graph Key Pages: 1 -->
-<svg width="641pt" height="28pt"
- viewBox="0.00 0.00 641.00 27.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph1" class="graph" transform="scale(0.817602 0.817602) rotate(0) translate(4 30)">
+<svg width="486pt" height="34pt"
+ viewBox="0.00 0.00 486.00 34.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 30)">
 <title>Graph Key</title>
-<polygon fill="white" stroke="white" points="-4,5 -4,-30 781,-30 781,5 -4,5"/>
+<polygon fill="white" stroke="white" points="-4,5 -4,-30 483,-30 483,5 -4,5"/>
 <!-- Module -->
 <g id="node1" class="node"><title>Module</title>
 <polygon fill="#337ab7" stroke="#337ab7" points="54,-26 2.13163e-14,-26 0,-1.24345e-14 54,-3.55271e-15 54,-26"/>
@@ -517,65 +533,125 @@ Nodes of different colours represent the following:
 <polygon fill="#5bc0de" stroke="#5bc0de" points="138,-26 72,-26 72,-1.24345e-14 138,-3.55271e-15 138,-26"/>
 <text text-anchor="middle" x="105" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
 </g>
-<!-- Type -->
-<g id="node3" class="node"><title>Type</title>
-<polygon fill="#5cb85c" stroke="#5cb85c" points="210,-26 156,-26 156,-1.24345e-14 210,-3.55271e-15 210,-26"/>
-<text text-anchor="middle" x="183" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
-</g>
 <!-- Subroutine -->
-<g id="node4" class="node"><title>Subroutine</title>
-<polygon fill="#d9534f" stroke="#d9534f" points="292,-26 228,-26 228,-1.24345e-14 292,-3.55271e-15 292,-26"/>
-<text text-anchor="middle" x="260" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+<g id="node3" class="node"><title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="220,-26 156,-26 156,-1.24345e-14 220,-3.55271e-15 220,-26"/>
+<text text-anchor="middle" x="188" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
 </g>
 <!-- Function -->
-<g id="node5" class="node"><title>Function</title>
-<polygon fill="#d94e8f" stroke="#d94e8f" points="364,-26 310,-26 310,-1.24345e-14 364,-3.55271e-15 364,-26"/>
-<text text-anchor="middle" x="337" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
-</g>
-<!-- Interface -->
-<g id="node6" class="node"><title>Interface</title>
-<polygon fill="#a7506f" stroke="#a7506f" points="436,-26 382,-26 382,-1.24345e-14 436,-3.55271e-15 436,-26"/>
-<text text-anchor="middle" x="409" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
-</g>
-<!-- Unknown Procedure Type -->
-<g id="node7" class="node"><title>Unknown Procedure Type</title>
-<polygon fill="#777777" stroke="#777777" points="590,-26 454,-26 454,-1.24345e-14 590,-3.55271e-15 590,-26"/>
-<text text-anchor="middle" x="522" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+<g id="node4" class="node"><title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="292,-26 238,-26 238,-1.24345e-14 292,-3.55271e-15 292,-26"/>
+<text text-anchor="middle" x="265" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
 </g>
 <!-- Program -->
-<g id="node8" class="node"><title>Program</title>
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="662,-26 608,-26 608,-1.24345e-14 662,-3.55271e-15 662,-26"/>
-<text text-anchor="middle" x="635" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+<g id="node5" class="node"><title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="364,-26 310,-26 310,-1.24345e-14 364,-3.55271e-15 364,-26"/>
+<text text-anchor="middle" x="337" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
 </g>
 <!-- This Page&#39;s Entity -->
-<g id="node9" class="node"><title>This Page&#39;s Entity</title>
-<polygon fill="none" stroke="black" points="776,-26 680,-26 680,-1.24345e-14 776,-3.55271e-15 776,-26"/>
-<text text-anchor="middle" x="728" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+<g id="node6" class="node"><title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="478,-26 382,-26 382,-1.24345e-14 478,-3.55271e-15 478,-26"/>
+<text text-anchor="middle" x="430" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
 </g>
 </g>
 </svg>
 
-<h5>Module Graph</h5>
-<p>Solid arrows point from a parent (sub)module to the submodule which is
-descended from it. Dashed arrows point from a module being used to the
-module using it.</p>
-<h5>Type Graph</h5>
-<p>Solid arrows point from one derived type to another which extends
-(inherits from) it. Dashed arrows point from a derived type to another
-type containing it as a components, with a label listing the name(s) of
-said component(s).</p>
-<h5>Call Graph</h5>
-<p>Solid arrows point from a procedure to one which it calls. Dashed 
-arrows point from an interface to procedures which implement that interface.
-This could include the module procedures in a generic interface or the
-implementation in a submodule of an interface in a parent module.</p>
-
+    
+    <p>Solid arrows point from a parent (sub)module to the submodule which is
+    descended from it. Dashed arrows point from a module being used to the
+    module or program unit using it.
+    </p>
+    
                       </div>
                     </div>
                   </div>
                 </div>
                 
     <br>
+    
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#absints-1">Abstract Interfaces</a></h3></div>
+  <div id="absints-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/dop853_module.html#interface-deriv_func">deriv_func</a>
+      
+      <a class="list-group-item" href="../module/dop853_module.html#interface-solout_func">solout_func</a>
+      
+    </div>
+  </div>
+</div>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types-1">Derived Types</a></h3></div>
+  <div id="types-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/dop853_module.html#type-dop853_class">dop853_class</a>
+      
+    </div>
+  </div>
+</div>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#funcs-1">Functions</a></h3></div>
+  <div id="funcs-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/dop853_module.html#proc-hinit">hinit</a>
+      
+      <a class="list-group-item" href="../module/dop853_module.html#proc-contd8">contd8</a>
+      
+    </div>
+  </div>
+</div>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-1">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-1" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/dop853_module.html#proc-get_dop853_info">get_dop853_info</a>
+      
+      <a class="list-group-item" href="../module/dop853_module.html#proc-destroy_dop853">destroy_dop853</a>
+      
+      <a class="list-group-item" href="../module/dop853_module.html#proc-set_parameters">set_parameters</a>
+      
+      <a class="list-group-item" href="../module/dop853_module.html#proc-dop853">dop853</a>
+      
+      <a class="list-group-item" href="../module/dop853_module.html#proc-dp86co">dp86co</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
     
 
     
@@ -602,8 +678,17 @@ implementation in a submodule of an interface in a parent module.</p>
 public subroutine <a href='../interface/deriv_func.html'>deriv_func</a>(me, x, y, f)
     
     
-    
+	 
 </h3>
+    
+
+
+
+
+
+
+
+<p>subroutine computing the value of \( dy/dx = f(x,y) \)</p>
     
     <h4>Arguments</h4>
     
@@ -684,15 +769,6 @@ public subroutine <a href='../interface/deriv_func.html'>deriv_func</a>(me, x, y
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-
-       
-       <p>subroutine computing the value of \( dy/dx = f(x,y) \)</p>
-        
 
     </li>
   </ul>
@@ -713,8 +789,19 @@ public subroutine <a href='../interface/deriv_func.html'>deriv_func</a>(me, x, y
 public subroutine <a href='../interface/solout_func.html'>solout_func</a>(me, nr, xold, x, y, irtrn, xout)
     
     
-    
+	 
 </h3>
+    
+
+
+
+
+
+
+
+<p><code>solout</code> furnishes the solution <code>y</code> at the <code>nr</code>-th
+ grid-point <code>x</code> (thereby the initial value is
+ the first grid-point).</p>
     
     <h4>Arguments</h4>
     
@@ -848,17 +935,6 @@ public subroutine <a href='../interface/solout_func.html'>solout_func</a>(me, nr
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-
-       
-       <p><code>solout</code> furnishes the solution <code>y</code> at the <code>nr</code>-th
- grid-point <code>x</code> (thereby the initial value is
- the first grid-point).</p>
-        
 
     </li>
   </ul>
@@ -879,6 +955,7 @@ public subroutine <a href='../interface/solout_func.html'>solout_func</a>(me, nr
     
   </h3></div>
   <div class="panel-body">
+    
      
      <h4>Components</h4>
     
@@ -1230,30 +1307,29 @@ public subroutine <a href='../interface/solout_func.html'>solout_func</a>(me, nr
       <table class="table table-striped varlist">
       <tbody>
       
-       <tr><td>procedure, public :: <strong>initialize</strong>  => set_parameters </td>
+       <tr><td>procedure, public :: <strong><a href='../type/dop853_class.html#boundprocedure-initialize'>initialize</a></strong>  => set_parameters </td>
        <td><p>initialization routine.</p></td></tr>
       
-       <tr><td>procedure, public :: <strong>integrate</strong>  => dop853 </td>
+       <tr><td>procedure, public :: <strong><a href='../type/dop853_class.html#boundprocedure-integrate'>integrate</a></strong>  => dop853 </td>
        <td><p>main integration routine.</p></td></tr>
       
-       <tr><td>procedure, public :: <strong>destroy</strong>  => destroy_dop853 </td>
+       <tr><td>procedure, public :: <strong><a href='../type/dop853_class.html#boundprocedure-destroy'>destroy</a></strong>  => destroy_dop853 </td>
        <td><p>destructor.</p></td></tr>
       
-       <tr><td>procedure, public :: <strong>info</strong>  => get_dop853_info </td>
+       <tr><td>procedure, public :: <strong><a href='../type/dop853_class.html#boundprocedure-info'>info</a></strong>  => get_dop853_info </td>
        <td><p>to get info after a run.</p></td></tr>
       
-       <tr><td>procedure, private :: <strong>dp86co</strong>  </td>
+       <tr><td>procedure, private :: <strong><a href='../type/dop853_class.html#boundprocedure-dp86co'>dp86co</a></strong>  </td>
        <td></td></tr>
       
-       <tr><td>procedure, private :: <strong>hinit</strong>  </td>
+       <tr><td>procedure, private :: <strong><a href='../type/dop853_class.html#boundprocedure-hinit'>hinit</a></strong>  </td>
        <td></td></tr>
       
-       <tr><td>procedure, public :: <strong>contd8</strong>  </td>
+       <tr><td>procedure, public :: <strong><a href='../type/dop853_class.html#boundprocedure-contd8'>contd8</a></strong>  </td>
        <td><p>can be called in user's <a href="../interface/solout_func.html">solout_func</a> for dense output.</p></td></tr>
       
        </tbody>
        </table>
-     
      
   </div>
 </div>
@@ -1273,10 +1349,19 @@ public subroutine <a href='../interface/solout_func.html'>solout_func</a>(me, nr
 public function <a href='../proc/hinit.html'>hinit</a>(me, x, y, posneg, f0, iord, hmax, atol, rtol, itol)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+
+
+<p>computation of an initial step size guess</p>
     
     <h4>Arguments</h4>
     
@@ -1456,15 +1541,6 @@ public function <a href='../proc/hinit.html'>hinit</a>(me, x, y, posneg, f0, ior
   </small></h4>
   
     
-    
-    <h4>Description</h4>
-       
-       
-
-
-       
-       <p>computation of an initial step size guess</p>
-        
 
   </div>
   </div>
@@ -1476,10 +1552,21 @@ public function <a href='../proc/hinit.html'>hinit</a>(me, x, y, posneg, f0, ior
 public function <a href='../proc/contd8.html'>contd8</a>(me, ii, x) result(y)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+
+
+<p>this function can be used for continuous output in connection
+  with the output-subroutine for <a href="../proc/dop853.html">dop853</a>. it provides an
+  approximation to the <code>ii</code>-th component of the solution at <code>x</code>.</p>
     
     <h4>Arguments</h4>
     
@@ -1554,17 +1641,6 @@ public function <a href='../proc/contd8.html'>contd8</a>(me, ii, x) result(y)
   </small></h4>
   
     
-    
-    <h4>Description</h4>
-       
-       
-
-
-       
-       <p>this function can be used for continuous output in connection
-  with the output-subroutine for <a href="../proc/dop853.html">dop853</a>. it provides an
-  approximation to the <code>ii</code>-th component of the solution at <code>x</code>.</p>
-        
 
   </div>
   </div>
@@ -1584,10 +1660,19 @@ public function <a href='../proc/contd8.html'>contd8</a>(me, ii, x) result(y)
 public subroutine <a href='../proc/get_dop853_info.html'>get_dop853_info</a>(me, n, nfcn, nstep, naccpt, nrejct, h)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+
+
+<p>Get info from a <a href="../type/dop853_class.html">dop853_class</a>.</p>
     
     <h4>Arguments</h4>
     
@@ -1714,15 +1799,6 @@ public subroutine <a href='../proc/get_dop853_info.html'>get_dop853_info</a>(me,
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-
-       
-       <p>Get info from a <a href="../type/dop853_class.html">dop853_class</a>.</p>
-        
 
   </div>
   </div>
@@ -1734,10 +1810,19 @@ public subroutine <a href='../proc/get_dop853_info.html'>get_dop853_info</a>(me,
 public subroutine <a href='../proc/destroy_dop853.html'>destroy_dop853</a>(me)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+
+
+<p>Destructor for <a href="../type/dop853_class.html">dop853_class</a>.</p>
     
     <h4>Arguments</h4>
     
@@ -1773,15 +1858,6 @@ public subroutine <a href='../proc/destroy_dop853.html'>destroy_dop853</a>(me)
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-
-       
-       <p>Destructor for <a href="../type/dop853_class.html">dop853_class</a>.</p>
-        
 
   </div>
   </div>
@@ -1793,10 +1869,19 @@ public subroutine <a href='../proc/destroy_dop853.html'>destroy_dop853</a>(me)
 public subroutine <a href='../proc/set_parameters.html'>set_parameters</a>(me, n, fcn, solout, iprint, nstiff, nmax, hinitial, hmax, safe, fac1, fac2, beta, icomp, status_ok)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+
+
+<p>Set the optional inputs for <a href="../proc/dop853.html">dop853</a>.</p>
     
     <h4>Arguments</h4>
     
@@ -1862,8 +1947,8 @@ public subroutine <a href='../proc/set_parameters.html'>set_parameters</a>(me, n
   
 <tr>
   
-  <td><span class="anchor" ></span>procedure(<a href='../interface/solout_func.html'>solout_func</a>)</td>
-  <td>,</td>
+  <td><span class="anchor" ></span>procedure(<a href='../interface/solout_func.html'>solout_func</a>),</td>
+  <td></td>
   <td>optional</td>
   
   <td></td><td>::</td>
@@ -2058,15 +2143,6 @@ public subroutine <a href='../proc/set_parameters.html'>set_parameters</a>(me, n
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-
-       
-       <p>Set the optional inputs for <a href="../proc/dop853.html">dop853</a>.</p>
-        
 
   </div>
   </div>
@@ -2078,10 +2154,23 @@ public subroutine <a href='../proc/set_parameters.html'>set_parameters</a>(me, n
 public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol, atol, iout, idid)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+
+
+<p>Numerical solution of a system of first order
+  ordinary differential equations \( y'=f(x,y) \).
+  This is an explicit Runge-Kutta method of order 8(5,3)
+  due to Dormand &amp; Prince (with stepsize control and
+  dense output).</p>
     
     <h4>Arguments</h4>
     
@@ -2239,19 +2328,6 @@ public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol,
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-
-       
-       <p>Numerical solution of a system of first order
-  ordinary differential equations \( y'=f(x,y) \).
-  This is an explicit Runge-Kutta method of order 8(5,3)
-  due to Dormand &amp; Prince (with stepsize control and
-  dense output).</p>
-        
 
   </div>
   </div>
@@ -2263,10 +2339,20 @@ public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol,
 public subroutine <a href='../proc/dp86co.html'>dp86co</a>(me, x, y, xend, hmax, h, rtol, atol, itol, iprint, iout, idid, nmax, nstiff, safe, beta, fac1, fac2, nfcn, nstep, naccpt, nrejct)
     
     
-    
+	 
 </h3></div>
   <div class="panel-body">
        
+    
+
+
+
+
+
+
+
+<p>Core integrator for <a href="../proc/dop853.html">dop853</a>.
+  parameters same as in <a href="../proc/dop853.html">dop853</a> with workspace added.</p>
     
     <h4>Arguments</h4>
     
@@ -2617,16 +2703,6 @@ public subroutine <a href='../proc/dp86co.html'>dp86co</a>(me, x, y, xend, hmax,
       
     
     
-    
-    <h4>Description</h4>
-       
-       
-
-
-       
-       <p>Core integrator for <a href="../proc/dop853.html">dop853</a>.
-  parameters same as in <a href="../proc/dop853.html">dop853</a> with workspace added.</p>
-        
 
   </div>
   </div>
@@ -2640,17 +2716,44 @@ public subroutine <a href='../proc/dp86co.html'>dp86co</a>(me, x, y, xend, hmax,
     </div>
   </div>
 
+  <section class="visible-xs visible-sm hidden-md">
     <hr>
-    <footer>
-        <div class="row">
-        <div class="col-md-4">&copy; 2016 </div>
-	<div class="col-md-4"><span class="text-center"> dop853 was developed by Jacob Williams</span></div>
-        <div class="col-md-4"><span class="pull-right">Documentation generated by <a href="https://github.com/cmacmackin/ford">FORD</a></span></div>
-        </div>
-        <br>
-    </footer>
-    </div> <!-- /container -->
+    
 
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allmods-1">All Modules</a></h3></div>
+  <div id="allmods-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/dop853_constants.html">dop853_constants</a>
+      
+      <a class="list-group-item" href="../module/dop853_module.html">dop853_module</a>
+      
+    </div>
+  </div>
+</div>
+
+
+  </section>
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2017 </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> dop853 was developed by Jacob Williams</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -2675,6 +2778,6 @@ public subroutine <a href='../proc/dp86co.html'>dp86co</a>(me, x, y, xend, hmax,
         }
       });
     </script>
-    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   </body>
 </html>
