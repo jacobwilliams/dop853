@@ -3,16 +3,16 @@
 !
 !  Modern Fortran Edition of the DOP853 ODE Solver.
 !
-!# See also
-!   * [DOP853.f](http://www.unige.ch/~hairer/prog/nonstiff/dop853.f)
+!### See also
+!   * [DOP853.f](http://www.unige.ch/~hairer/prog/nonstiff/dop853.f) -- The original code
 !
-!# History
+!### History
 !   * Jacob Williams : December 2015 : Created module from the DOP853 Fortran 77 code.
 !   * Development continues at [GitHub](https://github.com/jacobwilliams/dop853).
 !
-!# License
+!### License
 !
-!###Original DOP853 license:
+!### Original DOP853 license:
 !
 !        Copyright (c) 2004, Ernst Hairer
 !
@@ -39,12 +39,12 @@
 !        NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 !        SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 !
-!###License for updated version:
+!### License for updated version:
 !
 !        Modern Fortran Edition of the DOP853 ODE Solver
 !        https://github.com/jacobwilliams/dop853
 !
-!        Copyright (c) 2015, Jacob Williams
+!        Copyright (c) 2015-2017, Jacob Williams
 !        All rights reserved.
 !
 !        Redistribution and use in source and binary forms, with or without modification,
@@ -356,7 +356,7 @@
 !  due to Dormand & Prince (with stepsize control and
 !  dense output).
 !
-!# Authors
+!### Authors
 !  * E. Hairer and G. Wanner
 !    Universite de Geneve, Dept. De Mathematiques
 !    ch-1211 geneve 24, switzerland
@@ -366,7 +366,7 @@
 !    (new option `iout=3` for sparse dense output)
 !  * Jacob Williams, Dec 2015: significant refactoring into modern Fortran.
 !
-!# Reference
+!### Reference
 !  * E. Hairer, S.P. Norsett and G. Wanner, [Solving Ordinary
 !    Differential Equations I. Nonstiff Problems. 2nd Edition](http://www.unige.ch/~hairer/books.html).
 !    Springer Series in Computational Mathematics, Springer-Verlag (1993)
@@ -380,26 +380,29 @@
                                                         !! *output:* `x` for which the solution has been computed
                                                         !! (after successful return `x=xend`).
       real(wp),dimension(:),intent(inout)     :: y      !! *input:* initial values for `y`. [size n]
+                                                        !!
                                                         !! *output:* numerical solution at `x`.
-      real(wp),intent(in)                     :: xend   !! final x-value (xend-x may be positive or negative)
+      real(wp),intent(in)                     :: xend   !! final x-value (`xend`-`x` may be positive or negative)
       real(wp),dimension(:),intent(in)        :: rtol   !! relative error tolerance. `rtol` and `atol`
                                                         !! can be both scalars or else both vectors of length `n`.
       real(wp),dimension(:),intent(in)        :: atol   !! absolute error tolerance. `rtol` and `atol`
                                                         !! can be both scalars or else both vectors of length `n`.
                                                         !! `atol` should be strictly positive (possibly very small)
       integer,intent(in)                      :: iout   !! switch for calling the subroutine `solout`:
-                                                        !!  `iout=0`: subroutine is never called
-                                                        !!  `iout=1`: subroutine is called after every successful step
-                                                        !!  `iout=2`: dense output is performed after every successful step
-                                                        !!  `iout=3`: dense output is performed in steps defined by the user
+                                                        !!
+                                                        !! * `iout=0`: subroutine is never called
+                                                        !! * `iout=1`: subroutine is called after every successful step
+                                                        !! * `iout=2`: dense output is performed after every successful step
+                                                        !! * `iout=3`: dense output is performed in steps defined by the user
                                                         !!          (see `xout` above)
       integer,intent(out)                     :: idid   !! reports on successfulness upon return:
-                                                        !!  `idid=1`  computation successful,
-                                                        !!  `idid=2`  comput. successful (interrupted by [[solout]]),
-                                                        !!  `idid=-1` input is not consistent,
-                                                        !!  `idid=-2` larger `nmax` is needed,
-                                                        !!  `idid=-3` step size becomes too small.
-                                                        !!  `idid=-4` problem is probably stiff (interrupted).
+                                                        !!
+                                                        !! * `idid=1`  computation successful,
+                                                        !! * `idid=2`  comput. successful (interrupted by [[solout]]),
+                                                        !! * `idid=-1` input is not consistent,
+                                                        !! * `idid=-2` larger `nmax` is needed,
+                                                        !! * `idid=-3` step size becomes too small.
+                                                        !! * `idid=-4` problem is probably stiff (interrupted).
 
       real(wp) :: beta,fac1,fac2,h,hmax,safe
       integer  :: i,ieco,iprint,istore,nrdens,nstiff,nmax
