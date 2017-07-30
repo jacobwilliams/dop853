@@ -175,7 +175,7 @@
             implicit none
             class(dop853_class),intent(inout) :: me
             integer,intent(in)                :: nr    !! grid point (0,1,...)
-            real(wp),intent(in)               :: xold  !! the preceeding grid point
+            real(wp),intent(in)               :: xold  !! the preceding grid point
             real(wp),intent(in)               :: x     !! current grid point
             real(wp),dimension(:),intent(in)  :: y     !! state vector \( y(x) \) [size n]
             integer,intent(inout)             :: irtrn !! serves to interrupt the integration. if
@@ -408,10 +408,12 @@
       integer  :: i,ieco,iprint,istore,nrdens,nstiff,nmax
       logical  :: arret
       integer  :: itol    !! switch for `rtol` and `atol`:
-                          !!  `itol=0`: both `rtol` and `atol` are scalars.
+                          !!
+                          !! * `itol=0`: both `rtol` and `atol` are scalars.
                           !!    the code keeps, roughly, the local error of
                           !!    `y(i)` below `rtol*abs(y(i))+atol`.
-                          !!  `itol=1`: both `rtol` and `atol` are vectors.
+                          !!
+                          !! * `itol=1`: both `rtol` and `atol` are vectors.
                           !!    the code keeps the local error of `y(i)` below
                           !!    `rtol(i)*abs(y(i))+atol(i)`.
 
@@ -492,7 +494,7 @@
       h = me%hinitial     ! initial step size
       me%h = h
 
-      ! when a fail has occured, we return with idid=-1
+      ! when a fail has occurred, we return with idid=-1
       if ( arret ) then
 
          idid = -1

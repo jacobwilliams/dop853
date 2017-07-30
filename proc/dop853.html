@@ -518,10 +518,12 @@ public subroutine dop853(me, x, y, xend, rtol, atol, iout, idid)
       <span class="kt">integer</span>  <span class="kd">::</span> <span class="n">i</span><span class="p">,</span><span class="n">ieco</span><span class="p">,</span><span class="n">iprint</span><span class="p">,</span><span class="n">istore</span><span class="p">,</span><span class="n">nrdens</span><span class="p">,</span><span class="n">nstiff</span><span class="p">,</span><span class="n">nmax</span>
       <span class="kt">logical</span>  <span class="kd">::</span> <span class="n">arret</span>
       <span class="kt">integer</span>  <span class="kd">::</span> <span class="n">itol</span>    <span class="c">!! switch for `rtol` and `atol`:</span>
-                          <span class="c">!!  `itol=0`: both `rtol` and `atol` are scalars.</span>
+                          <span class="c">!!</span>
+                          <span class="c">!! * `itol=0`: both `rtol` and `atol` are scalars.</span>
                           <span class="c">!!    the code keeps, roughly, the local error of</span>
                           <span class="c">!!    `y(i)` below `rtol*abs(y(i))+atol`.</span>
-                          <span class="c">!!  `itol=1`: both `rtol` and `atol` are vectors.</span>
+                          <span class="c">!!</span>
+                          <span class="c">!! * `itol=1`: both `rtol` and `atol` are vectors.</span>
                           <span class="c">!!    the code keeps the local error of `y(i)` below</span>
                           <span class="c">!!    `rtol(i)*abs(y(i))+atol(i)`.</span>
 
@@ -602,7 +604,7 @@ public subroutine dop853(me, x, y, xend, rtol, atol, iout, idid)
 <span class="k">      </span><span class="n">h</span> <span class="o">=</span> <span class="n">me</span><span class="p">%</span><span class="n">hinitial</span>     <span class="c">! initial step size</span>
       <span class="n">me</span><span class="p">%</span><span class="n">h</span> <span class="o">=</span> <span class="n">h</span>
 
-      <span class="c">! when a fail has occured, we return with idid=-1</span>
+      <span class="c">! when a fail has occurred, we return with idid=-1</span>
       <span class="k">if</span> <span class="p">(</span> <span class="n">arret</span> <span class="p">)</span> <span class="k">then</span>
 
 <span class="k">         </span><span class="n">idid</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
