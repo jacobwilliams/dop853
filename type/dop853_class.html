@@ -1158,8 +1158,7 @@ public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol,
   <td></td>
   
   <td>dimension(:)</td><td>::</td>
-  <td><strong>y</strong></td><td><p><em>input:</em> initial values for <code>y</code>. [size n]
- <em>output:</em> numerical solution at <code>x</code>.</p></td>
+  <td><strong>y</strong></td><td><p><em>input:</em> initial values for <code>y</code>. [size n]</p></td>
   
 </tr>
 
@@ -1174,7 +1173,7 @@ public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol,
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>xend</strong></td><td><p>final x-value (xend-x may be positive or negative)</p></td>
+  <td><strong>xend</strong></td><td><p>final x-value (<code>xend</code>-<code>x</code> may be positive or negative)</p></td>
   
 </tr>
 
@@ -1222,12 +1221,7 @@ public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol,
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>iout</strong></td><td><p>switch for calling the subroutine <code>solout</code>:
-  <code>iout=0</code>: subroutine is never called
-  <code>iout=1</code>: subroutine is called after every successful step
-  <code>iout=2</code>: dense output is performed after every successful step
-  <code>iout=3</code>: dense output is performed in steps defined by the user
-          (see <code>xout</code> above)</p></td>
+  <td><strong>iout</strong></td><td><p>switch for calling the subroutine <code>solout</code>:</p></td>
   
 </tr>
 
@@ -1242,13 +1236,7 @@ public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol,
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>idid</strong></td><td><p>reports on successfulness upon return:
-  <code>idid=1</code>  computation successful,
-  <code>idid=2</code>  comput. successful (interrupted by <a href="../proc/solout.html">solout</a>),
-  <code>idid=-1</code> input is not consistent,
-  <code>idid=-2</code> larger <code>nmax</code> is needed,
-  <code>idid=-3</code> step size becomes too small.
-  <code>idid=-4</code> problem is probably stiff (interrupted).</p></td>
+  <td><strong>idid</strong></td><td><p>reports on successfulness upon return:</p></td>
   
 </tr>
 

@@ -292,34 +292,34 @@
 <polygon fill="none" stroke="black" points="350,-46 260,-46 260,-20 350,-20 350,-46"/>
 <text text-anchor="middle" x="305" y="-30.55" font-family="Helvetica,sans-Serif" font-size="10.50">dop853_module</text>
 </g>
+<!-- module~dop853_constants -->
+<g id="node2" class="node"><title>module~dop853_constants</title>
+<a xlink:href="../module/dop853_constants.html" xlink:title="dop853_constants">
+<polygon fill="#337ab7" stroke="#337ab7" points="224,-26 124,-26 124,-1.24345e-14 224,-3.55271e-15 224,-26"/>
+<text text-anchor="middle" x="174" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dop853_constants</text>
+</a>
+</g>
+<!-- module~dop853_constants&#45;&gt;module~dop853_module -->
+<g id="edge4" class="edge"><title>module~dop853_constants&#45;&gt;module~dop853_module</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M224.273,-20.6753C232.583,-21.944 241.24,-23.2656 249.666,-24.552"/>
+<polygon fill="#000000" stroke="#000000" points="249.377,-28.0485 259.791,-26.0979 250.434,-21.1287 249.377,-28.0485"/>
+</g>
 <!-- iso_fortran_env -->
-<g id="node2" class="node"><title>iso_fortran_env</title>
+<g id="node3" class="node"><title>iso_fortran_env</title>
 <a xlink:href="https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fFORTRAN_005fENV.html" xlink:title="iso_fortran_env">
 <polygon fill="#337ab7" stroke="#337ab7" points="87,-46 1,-46 1,-20 87,-20 87,-46"/>
 <text text-anchor="middle" x="44" y="-30.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
 </a>
 </g>
 <!-- iso_fortran_env&#45;&gt;module~dop853_module -->
-<g id="edge4" class="edge"><title>iso_fortran_env&#45;&gt;module~dop853_module</title>
+<g id="edge6" class="edge"><title>iso_fortran_env&#45;&gt;module~dop853_module</title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M87.592,-34.2874C99.4052,-34.5824 112.192,-34.8524 124,-35 168.441,-35.5554 179.559,-35.5486 224,-35 232.2,-34.8988 240.866,-34.7399 249.36,-34.555"/>
 <polygon fill="#000000" stroke="#000000" points="249.676,-38.0487 259.593,-34.3185 249.515,-31.0506 249.676,-38.0487"/>
-</g>
-<!-- module~dop853_constants -->
-<g id="node3" class="node"><title>module~dop853_constants</title>
-<a xlink:href="../module/dop853_constants.html" xlink:title="dop853_constants">
-<polygon fill="#337ab7" stroke="#337ab7" points="224,-26 124,-26 124,-1.24345e-14 224,-3.55271e-15 224,-26"/>
-<text text-anchor="middle" x="174" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dop853_constants</text>
-</a>
 </g>
 <!-- iso_fortran_env&#45;&gt;module~dop853_constants -->
 <g id="edge2" class="edge"><title>iso_fortran_env&#45;&gt;module~dop853_constants</title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M87.6498,-26.2847C96.1175,-24.9819 105.129,-23.5955 114.015,-22.2285"/>
 <polygon fill="#000000" stroke="#000000" points="114.606,-25.6787 123.958,-20.6988 113.542,-18.7601 114.606,-25.6787"/>
-</g>
-<!-- module~dop853_constants&#45;&gt;module~dop853_module -->
-<g id="edge6" class="edge"><title>module~dop853_constants&#45;&gt;module~dop853_module</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M224.273,-20.6753C232.583,-21.944 241.24,-23.2656 249.666,-24.552"/>
-<polygon fill="#000000" stroke="#000000" points="249.377,-28.0485 259.791,-26.0979 250.434,-21.1287 249.377,-28.0485"/>
 </g>
 </g>
 </svg>
@@ -394,16 +394,16 @@
 
     
     <p>Modern Fortran Edition of the DOP853 ODE Solver.</p>
-<h1>See also</h1>
+<h3>See also</h3>
 <ul>
-<li><a href="http://www.unige.ch/~hairer/prog/nonstiff/dop853.f">DOP853.f</a></li>
+<li><a href="http://www.unige.ch/~hairer/prog/nonstiff/dop853.f">DOP853.f</a> -- The original code</li>
 </ul>
-<h1>History</h1>
+<h3>History</h3>
 <ul>
 <li>Jacob Williams : December 2015 : Created module from the DOP853 Fortran 77 code.</li>
 <li>Development continues at <a href="https://github.com/jacobwilliams/dop853">GitHub</a>.</li>
 </ul>
-<h1>License</h1>
+<h3>License</h3>
 <h3>Original DOP853 license:</h3>
 <div class="codehilite"><pre><span></span>    Copyright (c) 2004, Ernst Hairer
 
@@ -436,7 +436,7 @@
 <div class="codehilite"><pre><span></span>    Modern Fortran Edition of the DOP853 ODE Solver
     https://github.com/jacobwilliams/dop853
 
-    Copyright (c) 2015, Jacob Williams
+    Copyright (c) 2015-2017, Jacob Williams
     All rights reserved.
 
     Redistribution and use in source and binary forms, with or without modification,
@@ -2228,8 +2228,7 @@ public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol,
   <td></td>
   
   <td>dimension(:)</td><td>::</td>
-  <td><strong>y</strong></td><td><p><em>input:</em> initial values for <code>y</code>. [size n]
- <em>output:</em> numerical solution at <code>x</code>.</p></td>
+  <td><strong>y</strong></td><td><p><em>input:</em> initial values for <code>y</code>. [size n]</p></td>
   
 </tr>
 
@@ -2244,7 +2243,7 @@ public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol,
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>xend</strong></td><td><p>final x-value (xend-x may be positive or negative)</p></td>
+  <td><strong>xend</strong></td><td><p>final x-value (<code>xend</code>-<code>x</code> may be positive or negative)</p></td>
   
 </tr>
 
@@ -2292,12 +2291,7 @@ public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol,
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>iout</strong></td><td><p>switch for calling the subroutine <code>solout</code>:
-  <code>iout=0</code>: subroutine is never called
-  <code>iout=1</code>: subroutine is called after every successful step
-  <code>iout=2</code>: dense output is performed after every successful step
-  <code>iout=3</code>: dense output is performed in steps defined by the user
-          (see <code>xout</code> above)</p></td>
+  <td><strong>iout</strong></td><td><p>switch for calling the subroutine <code>solout</code>:</p></td>
   
 </tr>
 
@@ -2312,13 +2306,7 @@ public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol,
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>idid</strong></td><td><p>reports on successfulness upon return:
-  <code>idid=1</code>  computation successful,
-  <code>idid=2</code>  comput. successful (interrupted by <a href="../proc/solout.html">solout</a>),
-  <code>idid=-1</code> input is not consistent,
-  <code>idid=-2</code> larger <code>nmax</code> is needed,
-  <code>idid=-3</code> step size becomes too small.
-  <code>idid=-4</code> problem is probably stiff (interrupted).</p></td>
+  <td><strong>idid</strong></td><td><p>reports on successfulness upon return:</p></td>
   
 </tr>
 

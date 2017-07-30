@@ -247,7 +247,7 @@ public subroutine dop853(me, x, y, xend, rtol, atol, iout, idid)
   This is an explicit Runge-Kutta method of order 8(5,3)
   due to Dormand &amp; Prince (with stepsize control and
   dense output).</p>
-<h1>Authors</h1>
+<h3>Authors</h3>
 <ul>
 <li>E. Hairer and G. Wanner
     Universite de Geneve, Dept. De Mathematiques
@@ -258,7 +258,7 @@ public subroutine dop853(me, x, y, xend, rtol, atol, iout, idid)
     (new option <code>iout=3</code> for sparse dense output)</li>
 <li>Jacob Williams, Dec 2015: significant refactoring into modern Fortran.</li>
 </ul>
-<h1>Reference</h1>
+<h3>Reference</h3>
 <ul>
 <li>E. Hairer, S.P. Norsett and G. Wanner, <a href="http://www.unige.ch/~hairer/books.html">Solving Ordinary
     Differential Equations I. Nonstiff Problems. 2nd Edition</a>.
@@ -321,8 +321,8 @@ public subroutine dop853(me, x, y, xend, rtol, atol, iout, idid)
   <td></td>
   
   <td>dimension(:)</td><td>::</td>
-  <td><strong>y</strong></td><td><p><em>input:</em> initial values for <code>y</code>. [size n]
- <em>output:</em> numerical solution at <code>x</code>.</p></td>
+  <td><strong>y</strong></td><td><p><em>input:</em> initial values for <code>y</code>. [size n]</p>
+<p><em>output:</em> numerical solution at <code>x</code>.</p></td>
   
 </tr>
 
@@ -337,7 +337,7 @@ public subroutine dop853(me, x, y, xend, rtol, atol, iout, idid)
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>xend</strong></td><td><p>final x-value (xend-x may be positive or negative)</p></td>
+  <td><strong>xend</strong></td><td><p>final x-value (<code>xend</code>-<code>x</code> may be positive or negative)</p></td>
   
 </tr>
 
@@ -385,12 +385,14 @@ public subroutine dop853(me, x, y, xend, rtol, atol, iout, idid)
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>iout</strong></td><td><p>switch for calling the subroutine <code>solout</code>:
-  <code>iout=0</code>: subroutine is never called
-  <code>iout=1</code>: subroutine is called after every successful step
-  <code>iout=2</code>: dense output is performed after every successful step
-  <code>iout=3</code>: dense output is performed in steps defined by the user
-          (see <code>xout</code> above)</p></td>
+  <td><strong>iout</strong></td><td><p>switch for calling the subroutine <code>solout</code>:</p>
+<ul>
+<li><code>iout=0</code>: subroutine is never called</li>
+<li><code>iout=1</code>: subroutine is called after every successful step</li>
+<li><code>iout=2</code>: dense output is performed after every successful step</li>
+<li><code>iout=3</code>: dense output is performed in steps defined by the user
+          (see <code>xout</code> above)</li>
+</ul></td>
   
 </tr>
 
@@ -405,13 +407,15 @@ public subroutine dop853(me, x, y, xend, rtol, atol, iout, idid)
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>idid</strong></td><td><p>reports on successfulness upon return:
-  <code>idid=1</code>  computation successful,
-  <code>idid=2</code>  comput. successful (interrupted by <a href="../proc/solout.html">solout</a>),
-  <code>idid=-1</code> input is not consistent,
-  <code>idid=-2</code> larger <code>nmax</code> is needed,
-  <code>idid=-3</code> step size becomes too small.
-  <code>idid=-4</code> problem is probably stiff (interrupted).</p></td>
+  <td><strong>idid</strong></td><td><p>reports on successfulness upon return:</p>
+<ul>
+<li><code>idid=1</code>  computation successful,</li>
+<li><code>idid=2</code>  comput. successful (interrupted by <a href="../proc/solout.html">solout</a>),</li>
+<li><code>idid=-1</code> input is not consistent,</li>
+<li><code>idid=-2</code> larger <code>nmax</code> is needed,</li>
+<li><code>idid=-3</code> step size becomes too small.</li>
+<li><code>idid=-4</code> problem is probably stiff (interrupted).</li>
+</ul></td>
   
 </tr>
 
@@ -486,26 +490,29 @@ public subroutine dop853(me, x, y, xend, rtol, atol, iout, idid)
                                                         <span class="c">!! *output:* `x` for which the solution has been computed</span>
                                                         <span class="c">!! (after successful return `x=xend`).</span>
       <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span>     <span class="kd">::</span> <span class="n">y</span>      <span class="c">!! *input:* initial values for `y`. [size n]</span>
+                                                        <span class="c">!!</span>
                                                         <span class="c">!! *output:* numerical solution at `x`.</span>
-      <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>                     <span class="kd">::</span> <span class="n">xend</span>   <span class="c">!! final x-value (xend-x may be positive or negative)</span>
+      <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>                     <span class="kd">::</span> <span class="n">xend</span>   <span class="c">!! final x-value (`xend`-`x` may be positive or negative)</span>
       <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">rtol</span>   <span class="c">!! relative error tolerance. `rtol` and `atol`</span>
                                                         <span class="c">!! can be both scalars or else both vectors of length `n`.</span>
       <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>        <span class="kd">::</span> <span class="n">atol</span>   <span class="c">!! absolute error tolerance. `rtol` and `atol`</span>
                                                         <span class="c">!! can be both scalars or else both vectors of length `n`.</span>
                                                         <span class="c">!! `atol` should be strictly positive (possibly very small)</span>
       <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>                      <span class="kd">::</span> <span class="n">iout</span>   <span class="c">!! switch for calling the subroutine `solout`:</span>
-                                                        <span class="c">!!  `iout=0`: subroutine is never called</span>
-                                                        <span class="c">!!  `iout=1`: subroutine is called after every successful step</span>
-                                                        <span class="c">!!  `iout=2`: dense output is performed after every successful step</span>
-                                                        <span class="c">!!  `iout=3`: dense output is performed in steps defined by the user</span>
+                                                        <span class="c">!!</span>
+                                                        <span class="c">!! * `iout=0`: subroutine is never called</span>
+                                                        <span class="c">!! * `iout=1`: subroutine is called after every successful step</span>
+                                                        <span class="c">!! * `iout=2`: dense output is performed after every successful step</span>
+                                                        <span class="c">!! * `iout=3`: dense output is performed in steps defined by the user</span>
                                                         <span class="c">!!          (see `xout` above)</span>
       <span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>                     <span class="kd">::</span> <span class="n">idid</span>   <span class="c">!! reports on successfulness upon return:</span>
-                                                        <span class="c">!!  `idid=1`  computation successful,</span>
-                                                        <span class="c">!!  `idid=2`  comput. successful (interrupted by [[solout]]),</span>
-                                                        <span class="c">!!  `idid=-1` input is not consistent,</span>
-                                                        <span class="c">!!  `idid=-2` larger `nmax` is needed,</span>
-                                                        <span class="c">!!  `idid=-3` step size becomes too small.</span>
-                                                        <span class="c">!!  `idid=-4` problem is probably stiff (interrupted).</span>
+                                                        <span class="c">!!</span>
+                                                        <span class="c">!! * `idid=1`  computation successful,</span>
+                                                        <span class="c">!! * `idid=2`  comput. successful (interrupted by [[solout]]),</span>
+                                                        <span class="c">!! * `idid=-1` input is not consistent,</span>
+                                                        <span class="c">!! * `idid=-2` larger `nmax` is needed,</span>
+                                                        <span class="c">!! * `idid=-3` step size becomes too small.</span>
+                                                        <span class="c">!! * `idid=-4` problem is probably stiff (interrupted).</span>
 
       <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span> <span class="kd">::</span> <span class="n">beta</span><span class="p">,</span><span class="n">fac1</span><span class="p">,</span><span class="n">fac2</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">hmax</span><span class="p">,</span><span class="n">safe</span>
       <span class="kt">integer</span>  <span class="kd">::</span> <span class="n">i</span><span class="p">,</span><span class="n">ieco</span><span class="p">,</span><span class="n">iprint</span><span class="p">,</span><span class="n">istore</span><span class="p">,</span><span class="n">nrdens</span><span class="p">,</span><span class="n">nstiff</span><span class="p">,</span><span class="n">nmax</span>
