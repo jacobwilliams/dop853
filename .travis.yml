@@ -23,6 +23,7 @@ before_script:
 
 script:
   - ./bin/dop853_test
+  - ./bin/dop853_example_original
 
 after_success:
   - mv *.png media
