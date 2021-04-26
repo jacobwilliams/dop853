@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	 
-	 <meta name="description" content="Modern Fortran Implementation of the DOP853 ODE Solver">
+   
+   <meta name="description" content="Modern Fortran Implementation of the DOP853 ODE Solver">
     
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
@@ -17,6 +17,9 @@
     <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link href="../css/local.css" rel="stylesheet">
     
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,13 +29,6 @@
     
     <script src="../js/jquery-2.1.3.min.js"></script>
     <script src="../js/svg-pan-zoom.min.js"></script>
-
-    
-    <script src="../tipuesearch/tipuesearch_content.js"></script>
-    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-    <script src="../tipuesearch/tipuesearch_set.js"></script>
-    <script src="../tipuesearch/tipuesearch.js"></script>
-    
 
   </head>
 
@@ -52,35 +48,37 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-				
+        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
-		 aria-expanded="false">Contents <span class="caret"></span></a>
-	      <ul class="dropdown-menu">
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
               
             <li><a href="../lists/files.html">Source Files</a></li>
-				
-				
+        
+        
+        
             <li><a href="../lists/modules.html">Modules</a></li>
-				
+        
             
                                 
             <li><a href="../lists/procedures.html">Procedures</a></li>
-				
-				
+        
+        
             <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
-								
+               
             <li><a href="../lists/types.html">Derived Types</a></li>
-				
-				
-            <li><a href="../program/dop853_test.html">Program</a></li>
-	    
+        
+        
             </ul>
             </li>
 
+
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
 
 
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
@@ -94,8 +92,6 @@
                              
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
 
-
-<li class="visible-xs hidden-sm visible-lg"><a href="../program/dop853_test.html">Program</a></li>
 
           </ul>
         
@@ -135,17 +131,21 @@
     
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
-	  data-placement="bottom" data-html="true"
-	  title="77.0% of total for modules and submodules.">532 statements</a>
+    data-placement="bottom" data-html="true"
+    title="77.0% of total for modules and submodules.">532 statements</a>
      </li> 
+     
      
      
     <li><i class="fa fa-code"></i><a href="../src/dop853_module.f90"> Source File</a></li>
      
+     
   </ul>
   <ol class="breadcrumb in-well text-right">
   
+    
      <li><a href='../sourcefile/dop853_module.f90.html'>dop853_module.f90</a></li>
+    
   
      <li class="active">dop853_module</li>
   </ol>
@@ -165,6 +165,9 @@
     
 <div id="sidebar">
   
+<h3>Contents</h3>
+ 
+
 
 
 
@@ -189,6 +192,7 @@
 </div>
 
 
+
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types-0">Derived Types</a></h3></div>
   <div id="types-0" class="panel-collapse collapse">
@@ -199,6 +203,7 @@
     </div>
   </div>
 </div>
+
 
 
 <div class="panel panel-primary">
@@ -213,6 +218,7 @@
     </div>
   </div>
 </div>
+
 
 
 <div class="panel panel-primary">
@@ -242,157 +248,12 @@
 
 
 
-  <hr>
-  
 
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allmods-0">All Modules</a></h3></div>
-  <div id="allmods-0" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../module/dop853_constants.html">dop853_constants</a>
-      
-      <a class="list-group-item" href="../module/dop853_module.html">dop853_module</a>
-      
-    </div>
-  </div>
 </div>
-
-
-</div>  
 
     </div>
     
     <div class="col-md-9" id='text'>
-      
-    
-  
-    <ul class="list-inline">
-      <li><h4>Uses:</h4></li>
-      
-      <li><a href='../module/dop853_constants.html'>dop853_constants</a></li>
-      
-      <li><a href="https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fFORTRAN_005fENV.html">iso_fortran_env</a></li>
-      
-    </ul>
-    
-                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.26.3 (20100126.1600)
- -->
-<!-- Title: module~~dop853_module~~UsesGraph Pages: 1 -->
-<svg id="moduledop853_moduleUsesGraph" width="358pt" height="54pt"
- viewBox="0.00 0.00 358.00 54.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="module~~dop853_module~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 50)">
-<title>module~~dop853_module~~UsesGraph</title>
-<polygon fill="white" stroke="white" points="-4,5 -4,-50 355,-50 355,5 -4,5"/>
-<!-- module~dop853_module -->
-<g id="node1" class="node"><title>module~dop853_module</title>
-<polygon fill="none" stroke="black" points="350,-46 260,-46 260,-20 350,-20 350,-46"/>
-<text text-anchor="middle" x="305" y="-30.55" font-family="Helvetica,sans-Serif" font-size="10.50">dop853_module</text>
-</g>
-<!-- module~dop853_constants -->
-<g id="node2" class="node"><title>module~dop853_constants</title>
-<a xlink:href="../module/dop853_constants.html" xlink:title="dop853_constants">
-<polygon fill="#337ab7" stroke="#337ab7" points="224,-26 124,-26 124,-1.24345e-14 224,-3.55271e-15 224,-26"/>
-<text text-anchor="middle" x="174" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dop853_constants</text>
-</a>
-</g>
-<!-- module~dop853_constants&#45;&gt;module~dop853_module -->
-<g id="edge4" class="edge"><title>module~dop853_constants&#45;&gt;module~dop853_module</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M224.273,-20.6753C232.583,-21.944 241.24,-23.2656 249.666,-24.552"/>
-<polygon fill="#000000" stroke="#000000" points="249.377,-28.0485 259.791,-26.0979 250.434,-21.1287 249.377,-28.0485"/>
-</g>
-<!-- iso_fortran_env -->
-<g id="node3" class="node"><title>iso_fortran_env</title>
-<a xlink:href="https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fFORTRAN_005fENV.html" xlink:title="iso_fortran_env">
-<polygon fill="#337ab7" stroke="#337ab7" points="87,-46 1,-46 1,-20 87,-20 87,-46"/>
-<text text-anchor="middle" x="44" y="-30.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
-</a>
-</g>
-<!-- iso_fortran_env&#45;&gt;module~dop853_module -->
-<g id="edge6" class="edge"><title>iso_fortran_env&#45;&gt;module~dop853_module</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M87.592,-34.2874C99.4052,-34.5824 112.192,-34.8524 124,-35 168.441,-35.5554 179.559,-35.5486 224,-35 232.2,-34.8988 240.866,-34.7399 249.36,-34.555"/>
-<polygon fill="#000000" stroke="#000000" points="249.676,-38.0487 259.593,-34.3185 249.515,-31.0506 249.676,-38.0487"/>
-</g>
-<!-- iso_fortran_env&#45;&gt;module~dop853_constants -->
-<g id="edge2" class="edge"><title>iso_fortran_env&#45;&gt;module~dop853_constants</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M87.6498,-26.2847C96.1175,-24.9819 105.129,-23.5955 114.015,-22.2285"/>
-<polygon fill="#000000" stroke="#000000" points="114.606,-25.6787 123.958,-20.6988 113.542,-18.7601 114.606,-25.6787"/>
-</g>
-</g>
-</svg>
-</div>
-                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
-                      </div>
-                      <div class="modal-body">
-                        
-    <p>Nodes of different colours represent the following: </p>
-    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.26.3 (20100126.1600)
- -->
-<!-- Title: Graph Key Pages: 1 -->
-<svg width="486pt" height="34pt"
- viewBox="0.00 0.00 486.00 34.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 30)">
-<title>Graph Key</title>
-<polygon fill="white" stroke="white" points="-4,5 -4,-30 483,-30 483,5 -4,5"/>
-<!-- Module -->
-<g id="node1" class="node"><title>Module</title>
-<polygon fill="#337ab7" stroke="#337ab7" points="54,-26 2.13163e-14,-26 0,-1.24345e-14 54,-3.55271e-15 54,-26"/>
-<text text-anchor="middle" x="27" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
-</g>
-<!-- Submodule -->
-<g id="node2" class="node"><title>Submodule</title>
-<polygon fill="#5bc0de" stroke="#5bc0de" points="138,-26 72,-26 72,-1.24345e-14 138,-3.55271e-15 138,-26"/>
-<text text-anchor="middle" x="105" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
-</g>
-<!-- Subroutine -->
-<g id="node3" class="node"><title>Subroutine</title>
-<polygon fill="#d9534f" stroke="#d9534f" points="220,-26 156,-26 156,-1.24345e-14 220,-3.55271e-15 220,-26"/>
-<text text-anchor="middle" x="188" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
-</g>
-<!-- Function -->
-<g id="node4" class="node"><title>Function</title>
-<polygon fill="#d94e8f" stroke="#d94e8f" points="292,-26 238,-26 238,-1.24345e-14 292,-3.55271e-15 292,-26"/>
-<text text-anchor="middle" x="265" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
-</g>
-<!-- Program -->
-<g id="node5" class="node"><title>Program</title>
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="364,-26 310,-26 310,-1.24345e-14 364,-3.55271e-15 364,-26"/>
-<text text-anchor="middle" x="337" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
-</g>
-<!-- This Page&#39;s Entity -->
-<g id="node6" class="node"><title>This Page&#39;s Entity</title>
-<polygon fill="none" stroke="black" points="478,-26 382,-26 382,-1.24345e-14 478,-3.55271e-15 478,-26"/>
-<text text-anchor="middle" x="430" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
-</g>
-</g>
-</svg>
-
-    
-    <p>Solid arrows point from a parent (sub)module to the submodule which is
-    descended from it. Dashed arrows point from a module being used to the
-    module or program unit using it.
-    </p>
-    
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-    
-
-    
     <p>Modern Fortran Edition of the DOP853 ODE Solver.</p>
 <h3>See also</h3>
 <ul>
@@ -405,173 +266,216 @@
 </ul>
 <h3>License</h3>
 <h3>Original DOP853 license:</h3>
-<div class="codehilite"><pre><span></span>    Copyright (c) 2004, Ernst Hairer
+<div class="codehilite"><pre><span></span><code>    <span class="nt">Copyright</span> <span class="o">(</span><span class="nt">c</span><span class="o">)</span> <span class="nt">2004</span><span class="o">,</span> <span class="nt">Ernst</span> <span class="nt">Hairer</span>
 
-    Redistribution and use in source and binary forms, with or without
-    modification, are permitted provided that the following conditions are
-    met:
+    <span class="nt">Redistribution</span> <span class="nt">and</span> <span class="nt">use</span> <span class="nt">in</span> <span class="nt">source</span> <span class="nt">and</span> <span class="nt">binary</span> <span class="nt">forms</span><span class="o">,</span> <span class="nt">with</span> <span class="nt">or</span> <span class="nt">without</span>
+    <span class="nt">modification</span><span class="o">,</span> <span class="nt">are</span> <span class="nt">permitted</span> <span class="nt">provided</span> <span class="nt">that</span> <span class="nt">the</span> <span class="nt">following</span> <span class="nt">conditions</span> <span class="nt">are</span>
+    <span class="nt">met</span><span class="o">:</span>
 
-    - Redistributions of source code must retain the above copyright
-    notice, this list of conditions and the following disclaimer.
+    <span class="nt">-</span> <span class="nt">Redistributions</span> <span class="nt">of</span> <span class="nt">source</span> <span class="nt">code</span> <span class="nt">must</span> <span class="nt">retain</span> <span class="nt">the</span> <span class="nt">above</span> <span class="nt">copyright</span>
+    <span class="nt">notice</span><span class="o">,</span> <span class="nt">this</span> <span class="nt">list</span> <span class="nt">of</span> <span class="nt">conditions</span> <span class="nt">and</span> <span class="nt">the</span> <span class="nt">following</span> <span class="nt">disclaimer</span><span class="o">.</span>
 
-    - Redistributions in binary form must reproduce the above copyright
-    notice, this list of conditions and the following disclaimer in the
-    documentation and/or other materials provided with the distribution.
+    <span class="nt">-</span> <span class="nt">Redistributions</span> <span class="nt">in</span> <span class="nt">binary</span> <span class="nt">form</span> <span class="nt">must</span> <span class="nt">reproduce</span> <span class="nt">the</span> <span class="nt">above</span> <span class="nt">copyright</span>
+    <span class="nt">notice</span><span class="o">,</span> <span class="nt">this</span> <span class="nt">list</span> <span class="nt">of</span> <span class="nt">conditions</span> <span class="nt">and</span> <span class="nt">the</span> <span class="nt">following</span> <span class="nt">disclaimer</span> <span class="nt">in</span> <span class="nt">the</span>
+    <span class="nt">documentation</span> <span class="nt">and</span><span class="o">/</span><span class="nt">or</span> <span class="nt">other</span> <span class="nt">materials</span> <span class="nt">provided</span> <span class="nt">with</span> <span class="nt">the</span> <span class="nt">distribution</span><span class="o">.</span>
 
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS
-    IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
-    TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
-    PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR
-    CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-    EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-    PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-    PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-    LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-</pre></div>
-
+    <span class="nt">THIS</span> <span class="nt">SOFTWARE</span> <span class="nt">IS</span> <span class="nt">PROVIDED</span> <span class="nt">BY</span> <span class="nt">THE</span> <span class="nt">COPYRIGHT</span> <span class="nt">HOLDERS</span> <span class="nt">AND</span> <span class="nt">CONTRIBUTORS</span> <span class="s2">&quot;AS</span>
+<span class="s2">    IS&quot;</span> <span class="nt">AND</span> <span class="nt">ANY</span> <span class="nt">EXPRESS</span> <span class="nt">OR</span> <span class="nt">IMPLIED</span> <span class="nt">WARRANTIES</span><span class="o">,</span> <span class="nt">INCLUDING</span><span class="o">,</span> <span class="nt">BUT</span> <span class="nt">NOT</span> <span class="nt">LIMITED</span>
+    <span class="nt">TO</span><span class="o">,</span> <span class="nt">THE</span> <span class="nt">IMPLIED</span> <span class="nt">WARRANTIES</span> <span class="nt">OF</span> <span class="nt">MERCHANTABILITY</span> <span class="nt">AND</span> <span class="nt">FITNESS</span> <span class="nt">FOR</span> <span class="nt">A</span>
+    <span class="nt">PARTICULAR</span> <span class="nt">PURPOSE</span> <span class="nt">ARE</span> <span class="nt">DISCLAIMED</span><span class="o">.</span> <span class="nt">IN</span> <span class="nt">NO</span> <span class="nt">EVENT</span> <span class="nt">SHALL</span> <span class="nt">THE</span> <span class="nt">REGENTS</span> <span class="nt">OR</span>
+    <span class="nt">CONTRIBUTORS</span> <span class="nt">BE</span> <span class="nt">LIABLE</span> <span class="nt">FOR</span> <span class="nt">ANY</span> <span class="nt">DIRECT</span><span class="o">,</span> <span class="nt">INDIRECT</span><span class="o">,</span> <span class="nt">INCIDENTAL</span><span class="o">,</span> <span class="nt">SPECIAL</span><span class="o">,</span>
+    <span class="nt">EXEMPLARY</span><span class="o">,</span> <span class="nt">OR</span> <span class="nt">CONSEQUENTIAL</span> <span class="nt">DAMAGES</span> <span class="o">(</span><span class="nt">INCLUDING</span><span class="o">,</span> <span class="nt">BUT</span> <span class="nt">NOT</span> <span class="nt">LIMITED</span> <span class="nt">TO</span><span class="o">,</span>
+    <span class="nt">PROCUREMENT</span> <span class="nt">OF</span> <span class="nt">SUBSTITUTE</span> <span class="nt">GOODS</span> <span class="nt">OR</span> <span class="nt">SERVICES</span><span class="o">;</span> <span class="nt">LOSS</span> <span class="nt">OF</span> <span class="nt">USE</span><span class="o">,</span> <span class="nt">DATA</span><span class="o">,</span> <span class="nt">OR</span>
+    <span class="nt">PROFITS</span><span class="o">;</span> <span class="nt">OR</span> <span class="nt">BUSINESS</span> <span class="nt">INTERRUPTION</span><span class="o">)</span> <span class="nt">HOWEVER</span> <span class="nt">CAUSED</span> <span class="nt">AND</span> <span class="nt">ON</span> <span class="nt">ANY</span> <span class="nt">THEORY</span> <span class="nt">OF</span>
+    <span class="nt">LIABILITY</span><span class="o">,</span> <span class="nt">WHETHER</span> <span class="nt">IN</span> <span class="nt">CONTRACT</span><span class="o">,</span> <span class="nt">STRICT</span> <span class="nt">LIABILITY</span><span class="o">,</span> <span class="nt">OR</span> <span class="nt">TORT</span> <span class="o">(</span><span class="nt">INCLUDING</span>
+    <span class="nt">NEGLIGENCE</span> <span class="nt">OR</span> <span class="nt">OTHERWISE</span><span class="o">)</span> <span class="nt">ARISING</span> <span class="nt">IN</span> <span class="nt">ANY</span> <span class="nt">WAY</span> <span class="nt">OUT</span> <span class="nt">OF</span> <span class="nt">THE</span> <span class="nt">USE</span> <span class="nt">OF</span> <span class="nt">THIS</span>
+    <span class="nt">SOFTWARE</span><span class="o">,</span> <span class="nt">EVEN</span> <span class="nt">IF</span> <span class="nt">ADVISED</span> <span class="nt">OF</span> <span class="nt">THE</span> <span class="nt">POSSIBILITY</span> <span class="nt">OF</span> <span class="nt">SUCH</span> <span class="nt">DAMAGE</span><span class="o">.</span>
+</code></pre></div>
 
 <h3>License for updated version:</h3>
-<div class="codehilite"><pre><span></span>    Modern Fortran Edition of the DOP853 ODE Solver
-    https://github.com/jacobwilliams/dop853
+<div class="codehilite"><pre><span></span><code>    <span class="nt">Modern</span> <span class="nt">Fortran</span> <span class="nt">Edition</span> <span class="nt">of</span> <span class="nt">the</span> <span class="nt">DOP853</span> <span class="nt">ODE</span> <span class="nt">Solver</span>
+    <span class="nt">https</span><span class="o">://</span><span class="nt">github</span><span class="p">.</span><span class="nc">com</span><span class="o">/</span><span class="nt">jacobwilliams</span><span class="o">/</span><span class="nt">dop853</span>
 
-    Copyright (c) 2015-2017, Jacob Williams
-    All rights reserved.
+    <span class="nt">Copyright</span> <span class="o">(</span><span class="nt">c</span><span class="o">)</span> <span class="nt">2015-2017</span><span class="o">,</span> <span class="nt">Jacob</span> <span class="nt">Williams</span>
+    <span class="nt">All</span> <span class="nt">rights</span> <span class="nt">reserved</span><span class="o">.</span>
 
-    Redistribution and use in source and binary forms, with or without modification,
-    are permitted provided that the following conditions are met:
+    <span class="nt">Redistribution</span> <span class="nt">and</span> <span class="nt">use</span> <span class="nt">in</span> <span class="nt">source</span> <span class="nt">and</span> <span class="nt">binary</span> <span class="nt">forms</span><span class="o">,</span> <span class="nt">with</span> <span class="nt">or</span> <span class="nt">without</span> <span class="nt">modification</span><span class="o">,</span>
+    <span class="nt">are</span> <span class="nt">permitted</span> <span class="nt">provided</span> <span class="nt">that</span> <span class="nt">the</span> <span class="nt">following</span> <span class="nt">conditions</span> <span class="nt">are</span> <span class="nt">met</span><span class="o">:</span>
 
-    * Redistributions of source code must retain the above copyright notice, this
-      list of conditions and the following disclaimer.
+    <span class="o">*</span> <span class="nt">Redistributions</span> <span class="nt">of</span> <span class="nt">source</span> <span class="nt">code</span> <span class="nt">must</span> <span class="nt">retain</span> <span class="nt">the</span> <span class="nt">above</span> <span class="nt">copyright</span> <span class="nt">notice</span><span class="o">,</span> <span class="nt">this</span>
+      <span class="nt">list</span> <span class="nt">of</span> <span class="nt">conditions</span> <span class="nt">and</span> <span class="nt">the</span> <span class="nt">following</span> <span class="nt">disclaimer</span><span class="o">.</span>
 
-    * Redistributions in binary form must reproduce the above copyright notice, this
-      list of conditions and the following disclaimer in the documentation and/or
-      other materials provided with the distribution.
+    <span class="o">*</span> <span class="nt">Redistributions</span> <span class="nt">in</span> <span class="nt">binary</span> <span class="nt">form</span> <span class="nt">must</span> <span class="nt">reproduce</span> <span class="nt">the</span> <span class="nt">above</span> <span class="nt">copyright</span> <span class="nt">notice</span><span class="o">,</span> <span class="nt">this</span>
+      <span class="nt">list</span> <span class="nt">of</span> <span class="nt">conditions</span> <span class="nt">and</span> <span class="nt">the</span> <span class="nt">following</span> <span class="nt">disclaimer</span> <span class="nt">in</span> <span class="nt">the</span> <span class="nt">documentation</span> <span class="nt">and</span><span class="o">/</span><span class="nt">or</span>
+      <span class="nt">other</span> <span class="nt">materials</span> <span class="nt">provided</span> <span class="nt">with</span> <span class="nt">the</span> <span class="nt">distribution</span><span class="o">.</span>
 
-    * The names of its contributors may not be used to endorse or promote products
-      derived from this software without specific prior written permission.
+    <span class="o">*</span> <span class="nt">The</span> <span class="nt">names</span> <span class="nt">of</span> <span class="nt">its</span> <span class="nt">contributors</span> <span class="nt">may</span> <span class="nt">not</span> <span class="nt">be</span> <span class="nt">used</span> <span class="nt">to</span> <span class="nt">endorse</span> <span class="nt">or</span> <span class="nt">promote</span> <span class="nt">products</span>
+      <span class="nt">derived</span> <span class="nt">from</span> <span class="nt">this</span> <span class="nt">software</span> <span class="nt">without</span> <span class="nt">specific</span> <span class="nt">prior</span> <span class="nt">written</span> <span class="nt">permission</span><span class="o">.</span>
 
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND
-    ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
-    ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-    ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-</pre></div>
-
+    <span class="nt">THIS</span> <span class="nt">SOFTWARE</span> <span class="nt">IS</span> <span class="nt">PROVIDED</span> <span class="nt">BY</span> <span class="nt">THE</span> <span class="nt">COPYRIGHT</span> <span class="nt">HOLDERS</span> <span class="nt">AND</span> <span class="nt">CONTRIBUTORS</span> <span class="s2">&quot;AS IS&quot;</span> <span class="nt">AND</span>
+    <span class="nt">ANY</span> <span class="nt">EXPRESS</span> <span class="nt">OR</span> <span class="nt">IMPLIED</span> <span class="nt">WARRANTIES</span><span class="o">,</span> <span class="nt">INCLUDING</span><span class="o">,</span> <span class="nt">BUT</span> <span class="nt">NOT</span> <span class="nt">LIMITED</span> <span class="nt">TO</span><span class="o">,</span> <span class="nt">THE</span> <span class="nt">IMPLIED</span>
+    <span class="nt">WARRANTIES</span> <span class="nt">OF</span> <span class="nt">MERCHANTABILITY</span> <span class="nt">AND</span> <span class="nt">FITNESS</span> <span class="nt">FOR</span> <span class="nt">A</span> <span class="nt">PARTICULAR</span> <span class="nt">PURPOSE</span> <span class="nt">ARE</span>
+    <span class="nt">DISCLAIMED</span><span class="o">.</span> <span class="nt">IN</span> <span class="nt">NO</span> <span class="nt">EVENT</span> <span class="nt">SHALL</span> <span class="nt">THE</span> <span class="nt">COPYRIGHT</span> <span class="nt">HOLDER</span> <span class="nt">OR</span> <span class="nt">CONTRIBUTORS</span> <span class="nt">BE</span> <span class="nt">LIABLE</span> <span class="nt">FOR</span>
+    <span class="nt">ANY</span> <span class="nt">DIRECT</span><span class="o">,</span> <span class="nt">INDIRECT</span><span class="o">,</span> <span class="nt">INCIDENTAL</span><span class="o">,</span> <span class="nt">SPECIAL</span><span class="o">,</span> <span class="nt">EXEMPLARY</span><span class="o">,</span> <span class="nt">OR</span> <span class="nt">CONSEQUENTIAL</span> <span class="nt">DAMAGES</span>
+    <span class="o">(</span><span class="nt">INCLUDING</span><span class="o">,</span> <span class="nt">BUT</span> <span class="nt">NOT</span> <span class="nt">LIMITED</span> <span class="nt">TO</span><span class="o">,</span> <span class="nt">PROCUREMENT</span> <span class="nt">OF</span> <span class="nt">SUBSTITUTE</span> <span class="nt">GOODS</span> <span class="nt">OR</span> <span class="nt">SERVICES</span><span class="o">;</span>
+    <span class="nt">LOSS</span> <span class="nt">OF</span> <span class="nt">USE</span><span class="o">,</span> <span class="nt">DATA</span><span class="o">,</span> <span class="nt">OR</span> <span class="nt">PROFITS</span><span class="o">;</span> <span class="nt">OR</span> <span class="nt">BUSINESS</span> <span class="nt">INTERRUPTION</span><span class="o">)</span> <span class="nt">HOWEVER</span> <span class="nt">CAUSED</span> <span class="nt">AND</span> <span class="nt">ON</span>
+    <span class="nt">ANY</span> <span class="nt">THEORY</span> <span class="nt">OF</span> <span class="nt">LIABILITY</span><span class="o">,</span> <span class="nt">WHETHER</span> <span class="nt">IN</span> <span class="nt">CONTRACT</span><span class="o">,</span> <span class="nt">STRICT</span> <span class="nt">LIABILITY</span><span class="o">,</span> <span class="nt">OR</span> <span class="nt">TORT</span>
+    <span class="o">(</span><span class="nt">INCLUDING</span> <span class="nt">NEGLIGENCE</span> <span class="nt">OR</span> <span class="nt">OTHERWISE</span><span class="o">)</span> <span class="nt">ARISING</span> <span class="nt">IN</span> <span class="nt">ANY</span> <span class="nt">WAY</span> <span class="nt">OUT</span> <span class="nt">OF</span> <span class="nt">THE</span> <span class="nt">USE</span> <span class="nt">OF</span> <span class="nt">THIS</span>
+    <span class="nt">SOFTWARE</span><span class="o">,</span> <span class="nt">EVEN</span> <span class="nt">IF</span> <span class="nt">ADVISED</span> <span class="nt">OF</span> <span class="nt">THE</span> <span class="nt">POSSIBILITY</span> <span class="nt">OF</span> <span class="nt">SUCH</span> <span class="nt">DAMAGE</span><span class="o">.</span>
+</code></pre></div>
 
 <hr>
+      <br>
     
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+      
+      <li class="list-group-item">
+  <ul class="list-inline">
     
-    <h3>Used By</h3>
+    <li><a href='../module/dop853_constants.html'>dop853_constants</a></li>
     
-                <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <li><a href="https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fFORTRAN_005fENV.html">iso_fortran_env</a></li>
+    
+  </ul>
+      </li>
+      
+      
+      
+      <li class="list-group-item">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.26.3 (20100126.1600)
+<!-- Generated by graphviz version 2.43.0 (0)
  -->
-<!-- Title: module~~dop853_module~~UsedByGraph Pages: 1 -->
-<svg id="moduledop853_moduleUsedByGraph" width="206pt" height="34pt"
- viewBox="0.00 0.00 206.00 34.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="module~~dop853_module~~UsedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 30)">
-<title>module~~dop853_module~~UsedByGraph</title>
-<polygon fill="white" stroke="white" points="-4,5 -4,-30 203,-30 203,5 -4,5"/>
+<!-- Title: module~~dop853_module~~UsesGraph Pages: 1 -->
+<svg id="moduledop853_moduleUsesGraph" width="382pt" height="52pt"
+ viewBox="0.00 0.00 382.00 52.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~dop853_module~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 48)">
+<title>module~~dop853_module~~UsesGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-48 378,-48 378,4 -4,4"/>
 <!-- module~dop853_module -->
-<g id="node1" class="node"><title>module~dop853_module</title>
-<polygon fill="none" stroke="black" points="90,-26 4.26326e-14,-26 0,-1.24345e-14 90,-3.55271e-15 90,-26"/>
-<text text-anchor="middle" x="45" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">dop853_module</text>
+<g id="module~~dop853_module~~UsesGraph_node1" class="node">
+<title>module~dop853_module</title>
+<polygon fill="none" stroke="black" points="374,-44 275,-44 275,-20 374,-20 374,-44"/>
+<text text-anchor="middle" x="324.5" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50">dop853_module</text>
 </g>
-<!-- program~dop853_test -->
-<g id="node2" class="node"><title>program~dop853_test</title>
-<a xlink:href="../program/dop853_test.html" xlink:title="dop853_test">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="198,-26 126,-26 126,-1.24345e-14 198,-3.55271e-15 198,-26"/>
-<text text-anchor="middle" x="162" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dop853_test</text>
+<!-- iso_fortran_env -->
+<g id="module~~dop853_module~~UsesGraph_node2" class="node">
+<title>iso_fortran_env</title>
+<g id="a_module~~dop853_module~~UsesGraph_node2"><a xlink:href="https://gcc.gnu.org/onlinedocs/gfortran/ISO_005fFORTRAN_005fENV.html" xlink:title="iso_fortran_env">
+<polygon fill="#337ab7" stroke="#337ab7" points="94,-44 0,-44 0,-20 94,-20 94,-44"/>
+<text text-anchor="middle" x="47" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">iso_fortran_env</text>
 </a>
 </g>
-<!-- module~dop853_module&#45;&gt;program~dop853_test -->
-<g id="edge2" class="edge"><title>module~dop853_module&#45;&gt;program~dop853_test</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M90.2353,-13C98.6471,-13 107.445,-13 115.883,-13"/>
-<polygon fill="#000000" stroke="#000000" points="115.946,-16.5001 125.946,-13 115.946,-9.5001 115.946,-16.5001"/>
+</g>
+<!-- module~dop853_module&#45;&gt;iso_fortran_env -->
+<g id="module~~dop853_module~~UsesGraph_edge1" class="edge">
+<title>module~dop853_module&#45;&gt;iso_fortran_env</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M274.8,-32.67C263.07,-32.81 250.59,-32.93 239,-33 190.56,-33.29 178.44,-33.3 130,-33 121.8,-32.95 113.14,-32.87 104.64,-32.78"/>
+<polygon fill="#000000" stroke="#000000" points="104.44,-29.28 94.4,-32.66 104.36,-36.28 104.44,-29.28"/>
+</g>
+<!-- module~dop853_constants -->
+<g id="module~~dop853_module~~UsesGraph_node3" class="node">
+<title>module~dop853_constants</title>
+<g id="a_module~~dop853_module~~UsesGraph_node3"><a xlink:href=".././module/dop853_constants.html" xlink:title="dop853_constants">
+<polygon fill="#337ab7" stroke="#337ab7" points="239,-24 130,-24 130,0 239,0 239,-24"/>
+<text text-anchor="middle" x="184.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dop853_constants</text>
+</a>
+</g>
+</g>
+<!-- module~dop853_module&#45;&gt;module~dop853_constants -->
+<g id="module~~dop853_module~~UsesGraph_edge2" class="edge">
+<title>module~dop853_module&#45;&gt;module~dop853_constants</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M274.85,-24.95C266.59,-23.75 257.91,-22.49 249.34,-21.25"/>
+<polygon fill="#000000" stroke="#000000" points="249.75,-17.78 239.35,-19.8 248.75,-24.7 249.75,-17.78"/>
+</g>
+<!-- module~dop853_constants&#45;&gt;iso_fortran_env -->
+<g id="module~~dop853_module~~UsesGraph_edge3" class="edge">
+<title>module~dop853_constants&#45;&gt;iso_fortran_env</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M129.95,-19.9C121.44,-21.16 112.62,-22.46 104.06,-23.73"/>
+<polygon fill="#000000" stroke="#000000" points="103.54,-20.26 94.16,-25.19 104.56,-27.19 103.54,-20.26"/>
 </g>
 </g>
 </svg>
-</div>
-                <div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div>
-                <div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog">
-                  <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
-                      </div>
-                      <div class="modal-body">
-                        
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
     <p>Nodes of different colours represent the following: </p>
     <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.26.3 (20100126.1600)
+<!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: Graph Key Pages: 1 -->
-<svg width="486pt" height="34pt"
- viewBox="0.00 0.00 486.00 34.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 30)">
+<svg width="518pt" height="32pt"
+ viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
 <title>Graph Key</title>
-<polygon fill="white" stroke="white" points="-4,5 -4,-30 483,-30 483,5 -4,5"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
 <!-- Module -->
-<g id="node1" class="node"><title>Module</title>
-<polygon fill="#337ab7" stroke="#337ab7" points="54,-26 2.13163e-14,-26 0,-1.24345e-14 54,-3.55271e-15 54,-26"/>
-<text text-anchor="middle" x="27" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
 </g>
 <!-- Submodule -->
-<g id="node2" class="node"><title>Submodule</title>
-<polygon fill="#5bc0de" stroke="#5bc0de" points="138,-26 72,-26 72,-1.24345e-14 138,-3.55271e-15 138,-26"/>
-<text text-anchor="middle" x="105" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
+<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
 </g>
 <!-- Subroutine -->
-<g id="node3" class="node"><title>Subroutine</title>
-<polygon fill="#d9534f" stroke="#d9534f" points="220,-26 156,-26 156,-1.24345e-14 220,-3.55271e-15 220,-26"/>
-<text text-anchor="middle" x="188" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
+<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
 </g>
 <!-- Function -->
-<g id="node4" class="node"><title>Function</title>
-<polygon fill="#d94e8f" stroke="#d94e8f" points="292,-26 238,-26 238,-1.24345e-14 292,-3.55271e-15 292,-26"/>
-<text text-anchor="middle" x="265" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
+<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
 </g>
 <!-- Program -->
-<g id="node5" class="node"><title>Program</title>
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="364,-26 310,-26 310,-1.24345e-14 364,-3.55271e-15 364,-26"/>
-<text text-anchor="middle" x="337" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
+<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
 </g>
 <!-- This Page&#39;s Entity -->
-<g id="node6" class="node"><title>This Page&#39;s Entity</title>
-<polygon fill="none" stroke="black" points="478,-26 382,-26 382,-1.24345e-14 478,-3.55271e-15 478,-26"/>
-<text text-anchor="middle" x="430" y="-10.55" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
 </g>
 </g>
 </svg>
 
     
-    <p>Solid arrows point from a parent (sub)module to the submodule which is
-    descended from it. Dashed arrows point from a module being used to the
-    module or program unit using it.
+    <p>Solid arrows point from a submodule to the (sub)module which it is
+    descended from. Dashed arrows point from a module or program unit to 
+    modules which it uses.
     </p>
+    </div></div></div></div>
+      </li>
+      
+      </ul>
+    </div>
     
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
+
+    
+    
+
     <br>
-    
 
     <section class="visible-xs visible-sm hidden-md">
       
+<h3>Contents</h3>
+ 
+
 
 
 
@@ -596,6 +500,7 @@
 </div>
 
 
+
 <div class="panel panel-primary">
   <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types-1">Derived Types</a></h3></div>
   <div id="types-1" class="panel-collapse collapse">
@@ -606,6 +511,7 @@
     </div>
   </div>
 </div>
+
 
 
 <div class="panel panel-primary">
@@ -620,6 +526,7 @@
     </div>
   </div>
 </div>
+
 
 
 <div class="panel panel-primary">
@@ -649,6 +556,7 @@
 
 
 
+
     </section>
     <br class="visible-xs visible-sm hidden-md">
 
@@ -663,8 +571,8 @@
     
     <section>
      <h2>Abstract Interfaces</h2>
-	 
-	   
+   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="interface-deriv_func"></span><h3>abstract interface
     
@@ -675,20 +583,17 @@
     
     
     <h3>
-public subroutine <a href='../interface/deriv_func.html'>deriv_func</a>(me, x, y, f)
+public subroutine deriv_func(me, x, y, f)
     
     
-	 
+   
 </h3>
     
 
 
 
-
-
-
-
-<p>subroutine computing the value of \( dy/dx = f(x,y) \)</p>
+<p>subroutine computing the value of <script type="math/tex"> dy/dx = f(x,y) </script>
+</p>
     
     <h4>Arguments</h4>
     
@@ -729,7 +634,8 @@ public subroutine <a href='../interface/deriv_func.html'>deriv_func</a>(me, x, y
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>x</strong></td><td><p>independent variable \(x\)</p></td>
+  <td><strong>x</strong></td><td><p>independent variable <script type="math/tex">x</script>
+</p></td>
   
 </tr>
 
@@ -744,7 +650,7 @@ public subroutine <a href='../interface/deriv_func.html'>deriv_func</a>(me, x, y
   <td></td>
   
   <td>dimension(:)</td><td>::</td>
-  <td><strong>y</strong></td><td><p>state vector \( y(x) \) [size n]</p></td>
+  <td><strong>y</strong></td><td><p>state vector <script type="math/tex"> y(x) </script> [size n]</p></td>
   
 </tr>
 
@@ -759,7 +665,7 @@ public subroutine <a href='../interface/deriv_func.html'>deriv_func</a>(me, x, y
   <td></td>
   
   <td>dimension(:)</td><td>::</td>
-  <td><strong>f</strong></td><td><p>derivative vector \( f(x,y) = dy/dx \) [size n]</p></td>
+  <td><strong>f</strong></td><td><p>derivative vector <script type="math/tex"> f(x,y) = dy/dx </script> [size n]</p></td>
   
 </tr>
 
@@ -775,7 +681,7 @@ public subroutine <a href='../interface/deriv_func.html'>deriv_func</a>(me, x, y
 </div>
 
     
-	   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="interface-solout_func"></span><h3>abstract interface
     
@@ -786,16 +692,12 @@ public subroutine <a href='../interface/deriv_func.html'>deriv_func</a>(me, x, y
     
     
     <h3>
-public subroutine <a href='../interface/solout_func.html'>solout_func</a>(me, nr, xold, x, y, irtrn, xout)
+public subroutine solout_func(me, nr, xold, x, y, irtrn, xout)
     
     
-	 
+   
 </h3>
     
-
-
-
-
 
 
 
@@ -887,7 +789,7 @@ public subroutine <a href='../interface/solout_func.html'>solout_func</a>(me, nr
   <td></td>
   
   <td>dimension(:)</td><td>::</td>
-  <td><strong>y</strong></td><td><p>state vector \( y(x) \) [size n]</p></td>
+  <td><strong>y</strong></td><td><p>state vector <script type="math/tex"> y(x) </script> [size n]</p></td>
   
 </tr>
 
@@ -942,14 +844,14 @@ public subroutine <a href='../interface/solout_func.html'>solout_func</a>(me, nr
 
     
     </section>
-	<br>
+  <br>
     
     
     
     <section>
      <h2>Derived Types</h2>
-	 
-	   
+   
+     
 <div class="panel panel-default">
   <div class="panel-heading codesum"><span class="anchor" id="type-dop853_class"></span><h3>type, public :: <a href='../type/dop853_class.html'>dop853_class</a>
     
@@ -1336,7 +1238,7 @@ public subroutine <a href='../interface/solout_func.html'>solout_func</a>(me, nr
 
      
     </section>
-	<br>
+  <br>
     
     
      
@@ -1349,7 +1251,7 @@ public subroutine <a href='../interface/solout_func.html'>solout_func</a>(me, nr
 public function <a href='../proc/hinit.html'>hinit</a>(me, x, y, posneg, f0, iord, hmax, atol, rtol, itol)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -1552,7 +1454,7 @@ public function <a href='../proc/hinit.html'>hinit</a>(me, x, y, posneg, f0, ior
 public function <a href='../proc/contd8.html'>contd8</a>(me, ii, x) result(y)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -1660,7 +1562,7 @@ public function <a href='../proc/contd8.html'>contd8</a>(me, ii, x) result(y)
 public subroutine <a href='../proc/get_dop853_info.html'>get_dop853_info</a>(me, n, nfcn, nstep, naccpt, nrejct, h)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -1810,7 +1712,7 @@ public subroutine <a href='../proc/get_dop853_info.html'>get_dop853_info</a>(me,
 public subroutine <a href='../proc/destroy_dop853.html'>destroy_dop853</a>(me)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -1869,7 +1771,7 @@ public subroutine <a href='../proc/destroy_dop853.html'>destroy_dop853</a>(me)
 public subroutine <a href='../proc/set_parameters.html'>set_parameters</a>(me, n, fcn, solout, iprint, nstiff, nmax, hinitial, hmax, safe, fac1, fac2, beta, icomp, status_ok)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -1881,7 +1783,7 @@ public subroutine <a href='../proc/set_parameters.html'>set_parameters</a>(me, n
 
 
 
-<p>Set the optional inputs for <a href="../proc/dop853.html">dop853</a>.</p>
+<p>Set the optional inputs for <a href="../proc/dop853.html">dop853</a>.</p><a href="../proc/set_parameters.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -1922,7 +1824,7 @@ public subroutine <a href='../proc/set_parameters.html'>set_parameters</a>(me, n
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>n</strong></td><td><p>the dimension of the system (size of \(y\) and \(y'\) vectors)</p></td>
+  <td><strong>n</strong></td><td><p>the dimension of the system (size of <script type="math/tex">y</script> and <script type="math/tex">y'</script> vectors)</p></td>
   
 </tr>
 
@@ -1937,7 +1839,8 @@ public subroutine <a href='../proc/set_parameters.html'>set_parameters</a>(me, n
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>fcn</strong></td><td><p>subroutine computing the value of \( y' = f(x,y) \)</p></td>
+  <td><strong>fcn</strong></td><td><p>subroutine computing the value of <script type="math/tex"> y' = f(x,y) </script>
+</p></td>
   
 </tr>
 
@@ -2154,7 +2057,7 @@ public subroutine <a href='../proc/set_parameters.html'>set_parameters</a>(me, n
 public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol, atol, iout, idid)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -2167,10 +2070,10 @@ public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol,
 
 
 <p>Numerical solution of a system of first order
-  ordinary differential equations \( y'=f(x,y) \).
+  ordinary differential equations <script type="math/tex"> y'=f(x,y) </script>.
   This is an explicit Runge-Kutta method of order 8(5,3)
   due to Dormand &amp; Prince (with stepsize control and
-  dense output).</p>
+  dense output).</p><a href="../proc/dop853.html" class="pull-right"><emph>Read more&hellip;</emph></a>
     
     <h4>Arguments</h4>
     
@@ -2228,7 +2131,7 @@ public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol,
   <td></td>
   
   <td>dimension(:)</td><td>::</td>
-  <td><strong>y</strong></td><td><p><em>input:</em> initial values for <code>y</code>. [size n]</p></td>
+  <td><strong>y</strong></td><td><p><em>input:</em> initial values for <code>y</code>. [size n]</p><a href="None" class="pull-right"><emph>Read more&hellip;</emph></a></td>
   
 </tr>
 
@@ -2291,7 +2194,7 @@ public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol,
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>iout</strong></td><td><p>switch for calling the subroutine <code>solout</code>:</p></td>
+  <td><strong>iout</strong></td><td><p>switch for calling the subroutine <code>solout</code>:</p><a href="None" class="pull-right"><emph>Read more&hellip;</emph></a></td>
   
 </tr>
 
@@ -2306,7 +2209,7 @@ public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol,
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>idid</strong></td><td><p>reports on successfulness upon return:</p></td>
+  <td><strong>idid</strong></td><td><p>reports on successfulness upon return:</p><a href="None" class="pull-right"><emph>Read more&hellip;</emph></a></td>
   
 </tr>
 
@@ -2327,7 +2230,7 @@ public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol,
 public subroutine <a href='../proc/dp86co.html'>dp86co</a>(me, x, y, xend, hmax, h, rtol, atol, itol, iprint, iout, idid, nmax, nstiff, safe, beta, fac1, fac2, nfcn, nstep, naccpt, nrejct)
     
     
-	 
+   
 </h3></div>
   <div class="panel-body">
        
@@ -2704,32 +2607,14 @@ public subroutine <a href='../proc/dp86co.html'>dp86co</a>(me, x, y, xend, hmax,
     </div>
   </div>
 
-  <section class="visible-xs visible-sm hidden-md">
-    <hr>
-    
-
-<div class="panel panel-default">
-  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allmods-1">All Modules</a></h3></div>
-  <div id="allmods-1" class="panel-collapse collapse">
-    <div class="list-group">
-      
-      <a class="list-group-item" href="../module/dop853_constants.html">dop853_constants</a>
-      
-      <a class="list-group-item" href="../module/dop853_module.html">dop853_module</a>
-      
-    </div>
-  </div>
-</div>
-
-
-  </section>
   
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2017 </p></div>
+        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
+                                          </p></div>
         <div class="col-xs-6 col-md-4 col-md-push-4">
           <p class="text-right">
             Documentation generated by 
@@ -2760,12 +2645,17 @@ public subroutine <a href='../proc/dp86co.html'>dp86co</a>(me, x, y, xend, hmax,
       MathJax.Hub.Config({
         TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
         jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
-        'HTML-CSS': { 
-           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
-        }
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
   </body>
 </html>
