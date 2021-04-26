@@ -75,9 +75,26 @@ x =100.00 y = -0.1360372426E+01  0.1325538438E+01
 
 For dense output, see the example in the `src/tests` directory.
 
-# Documentation
+## Building DOP853
 
-The latest API documentation for the `master` branch can be found [here](http://jacobwilliams.github.io/dop853/). This was generated from the source code using [FORD](https://github.com/cmacmackin/ford) (note that the `build.sh` script will also generate these files if FORD is installed).
+DOP853 and the test programs will build with any modern Fortran compiler. A [FoBiS](https://github.com/szaghi/FoBiS) configuration file (`dop853.fobis`) is provided that can build the library and/or the example programs. Use the `mode` flag to indicate what to build. For example:
+
+  * To build all the examples using gfortran: `FoBiS.py build -f dop853.fobis -mode tests-gnu`
+  * To build all the examples using ifort:    `FoBiS.py build -f dop853.fobis -mode tests-intel`
+  * To build a static library using gfortran: `FoBiS.py build -f dop853.fobis -mode static-gnu`
+  * To build a static library using ifort:    `FoBiS.py build -f dop853.fobis -mode static-intel`
+
+The full set of modes are: `static-gnu`, `static-gnu-debug`, `static-intel`, `static-intel-debug`, `shared-gnu`, `shared-gnu-debug`, `shared-intel`, `shared-intel-debug`, `tests-gnu`, `tests-gnu-debug`, `tests-intel`, `tests-intel-debug`
+
+To generate the documentation using [ford](https://github.com/Fortran-FOSS-Programmers/ford), run:
+
+```
+  FoBis.py rule --execute makedoc -f dop853.fobis
+```
+
+## Documentation
+
+The latest API documentation for the `master` branch can be found [here](http://jacobwilliams.github.io/dop853/).
 
 ## References
 
