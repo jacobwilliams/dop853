@@ -4,6 +4,10 @@ This is a modern Fortran (2003/2008) implementation of Hairer's DOP853 ODE solve
 
 This project is hosted on [GitHub](https://github.com/jacobwilliams/dop853).
 
+# Status
+
+![Build Status](https://github.com/jacobwilliams/dop853/actions/workflows/CI.yml/badge.svg)
+
 ## Example
 
 Basic use of the solver is shown here. The main methods in the `dop853_class` are `initialize()` and `integrate()`.
