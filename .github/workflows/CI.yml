@@ -45,13 +45,12 @@ jobs:
 
     - name: Compile
       run: |
-        mkdir bin
-        gfortran -O2 ./src/linear_interpolation_module.f90 ./test/test.f90 -o ./bin/test
-        gfortran -O2 ./src/linear_interpolation_module.f90 ./test/test_nearest.f90 -o ./bin/test_nearest
+        FoBiS.py build -f dop853.fobis -mode tests-gnu
 
     - name: Run tests
       run: |
-        FoBiS.py build -f dop853.fobis -mode tests-gnu
+        ./bin/dop853_example_original
+        ./bin/dop853_test
 
     - name: Build documentation
       run: ford ./dop853.md
