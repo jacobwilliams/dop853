@@ -72,8 +72,11 @@
                
             <li><a href="../lists/types.html">Derived Types</a></li>
         
+               
+        
         
             </ul>
+        
             </li>
 
 
@@ -91,6 +94,8 @@
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/absint.html">Abstract Interfaces</a></li>
                              
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
 
 
           </ul>
@@ -121,6 +126,7 @@
   <div class="col-lg-12">
 <div class="well well-sm">
   <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
      
      
      
@@ -280,7 +286,7 @@
     </div>
     
     <div class="col-md-9" id='text'>
-      <h2>type, public :: dop853_class</h2>
+      <h2>type, private :: dop853_class</h2>
     
     
     
@@ -482,7 +488,7 @@
   <td>private</td>
   <td></td><td>::</td>
   <td><strong>nrejct</strong></td><td> =</td><td>0</td><td><p>number of rejected steps (due to error test),
- (step rejections in the first step are not counted)</p></td>
+(step rejections in the first step are not counted)</p></td>
   
 </tr>
 
@@ -497,9 +503,9 @@
   <td>private</td>
   <td></td><td>::</td>
   <td><strong>nrdens</strong></td><td> =</td><td>0</td><td><p>number of components, for which dense output
- is required. for <code>0 &lt; nrdens &lt; n</code> the components
- (for which dense output is required) have to be
- specified in <code>icomp(1),...,icomp(nrdens)</code>.</p></td>
+is required. for <code>0 &lt; nrdens &lt; n</code> the components
+(for which dense output is required) have to be
+specified in <code>icomp(1),...,icomp(nrdens)</code>.</p></td>
   
 </tr>
 
@@ -528,9 +534,9 @@
   <td>private</td>
   <td></td><td>::</td>
   <td><strong>iprint</strong></td><td> =</td><td>output_unit</td><td><p>switch for printing error messages
- if <code>iprint==0</code> no messages are being printed
- if <code>iprint/=0</code> messages are printed with
- <code>write (iprint,*)</code> ...</p></td>
+if <code>iprint==0</code> no messages are being printed
+if <code>iprint/=0</code> messages are printed with
+<code>write (iprint,*)</code> ...</p></td>
   
 </tr>
 
@@ -559,9 +565,9 @@
   <td>private</td>
   <td></td><td>::</td>
   <td><strong>nstiff</strong></td><td> =</td><td>1000</td><td><p>test for stiffness is activated after step number
- <code>j*nstiff</code> (<code>j</code> integer), provided <code>nstiff&gt;0</code>.
- for negative <code>nstiff</code> the stiffness test is
- never activated.</p></td>
+<code>j*nstiff</code> (<code>j</code> integer), provided <code>nstiff&gt;0</code>.
+for negative <code>nstiff</code> the stiffness test is
+never activated.</p></td>
   
 </tr>
 
@@ -576,7 +582,7 @@
   <td>private</td>
   <td></td><td>::</td>
   <td><strong>hinitial</strong></td><td> =</td><td>0.0_wp</td><td><p>initial step size, for <code>hinitial=0</code> an initial guess
- is computed with help of the function <a href="../proc/hinit.html">hinit</a>.</p></td>
+is computed with help of the function <a href="../proc/hinit.html">hinit</a>.</p></td>
   
 </tr>
 
@@ -619,8 +625,8 @@
   <td>private</td>
   <td></td><td>::</td>
   <td><strong>fac1</strong></td><td> =</td><td>0.333_wp</td><td><p>parameter for step size selection.
- the new step size is chosen subject to the restriction
- <code>fac1 &lt;= hnew/hold &lt;= fac2</code></p></td>
+the new step size is chosen subject to the restriction
+<code>fac1 &lt;= hnew/hold &lt;= fac2</code></p></td>
   
 </tr>
 
@@ -635,8 +641,8 @@
   <td>private</td>
   <td></td><td>::</td>
   <td><strong>fac2</strong></td><td> =</td><td>6.0_wp</td><td><p>parameter for step size selection.
- the new step size is chosen subject to the restriction
- <code>fac1 &lt;= hnew/hold &lt;= fac2</code></p></td>
+the new step size is chosen subject to the restriction
+<code>fac1 &lt;= hnew/hold &lt;= fac2</code></p></td>
   
 </tr>
 
@@ -651,8 +657,8 @@
   <td>private</td>
   <td></td><td>::</td>
   <td><strong>beta</strong></td><td> =</td><td>0.0_wp</td><td><p>is the <code>beta</code> for stabilized step size control
- (see section iv.2). positive values of beta ( &lt;= 0.04 )
- make the step size control more stable.</p></td>
+(see section iv.2). positive values of beta ( &lt;= 0.04 )
+make the step size control more stable.</p></td>
   
 </tr>
 
@@ -667,7 +673,7 @@
   <td>private,</td>
   <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>icomp</strong></td><td></td><td></td><td><p><code>dimension(nrdens)</code>
- the components for which dense output is required</p></td>
+the components for which dense output is required</p></td>
   
 </tr>
 
@@ -738,8 +744,8 @@
   <td>private,</td>
   <td>pointer</td><td>::</td>
   <td><strong>solout</strong></td><td>=> </td><td>null()</td><td><p>subroutine providing the
- numerical solution during integration.
- if <code>iout&gt;=1</code>, it is called during integration.</p></td>
+numerical solution during integration.
+if <code>iout&gt;=1</code>, it is called during integration.</p></td>
   
 </tr>
 
@@ -865,9 +871,9 @@ public subroutine <a href='../proc/set_parameters.html'>set_parameters</a>(me, n
   
   <td></td><td>::</td>
   <td><strong>solout</strong></td><td><p>subroutine providing the
- numerical solution during integration.
- if <code>iout&gt;=1</code>, it is called during integration.
- supply a dummy subroutine if <code>iout=0</code>.</p></td>
+numerical solution during integration.
+if <code>iout&gt;=1</code>, it is called during integration.
+supply a dummy subroutine if <code>iout=0</code>.</p></td>
   
 </tr>
 
@@ -883,9 +889,9 @@ public subroutine <a href='../proc/set_parameters.html'>set_parameters</a>(me, n
   
   <td></td><td>::</td>
   <td><strong>iprint</strong></td><td><p>switch for printing error messages
- if <code>iprint==0</code> no messages are being printed
- if <code>iprint/=0</code> messages are printed with
- <code>write (iprint,*)</code> ...</p></td>
+if <code>iprint==0</code> no messages are being printed
+if <code>iprint/=0</code> messages are printed with
+<code>write (iprint,*)</code> ...</p></td>
   
 </tr>
 
@@ -901,9 +907,9 @@ public subroutine <a href='../proc/set_parameters.html'>set_parameters</a>(me, n
   
   <td></td><td>::</td>
   <td><strong>nstiff</strong></td><td><p>test for stiffness is activated after step number
- <code>j*nstiff</code> (<code>j</code> integer), provided <code>nstiff&gt;0</code>.
- for negative <code>nstiff</code> the stiffness test is
- never activated.</p></td>
+<code>j*nstiff</code> (<code>j</code> integer), provided <code>nstiff&gt;0</code>.
+for negative <code>nstiff</code> the stiffness test is
+never activated.</p></td>
   
 </tr>
 
@@ -934,7 +940,7 @@ public subroutine <a href='../proc/set_parameters.html'>set_parameters</a>(me, n
   
   <td></td><td>::</td>
   <td><strong>hinitial</strong></td><td><p>initial step size, for <code>hinitial=0</code> an initial guess
- is computed with help of the function <a href="../proc/hinit.html">hinit</a>.</p></td>
+is computed with help of the function <a href="../proc/hinit.html">hinit</a>.</p></td>
   
 </tr>
 
@@ -980,8 +986,8 @@ public subroutine <a href='../proc/set_parameters.html'>set_parameters</a>(me, n
   
   <td></td><td>::</td>
   <td><strong>fac1</strong></td><td><p>parameter for step size selection.
- the new step size is chosen subject to the restriction
- <code>fac1 &lt;= hnew/hold &lt;= fac2</code></p></td>
+the new step size is chosen subject to the restriction
+<code>fac1 &lt;= hnew/hold &lt;= fac2</code></p></td>
   
 </tr>
 
@@ -997,8 +1003,8 @@ public subroutine <a href='../proc/set_parameters.html'>set_parameters</a>(me, n
   
   <td></td><td>::</td>
   <td><strong>fac2</strong></td><td><p>parameter for step size selection.
- the new step size is chosen subject to the restriction
- <code>fac1 &lt;= hnew/hold &lt;= fac2</code></p></td>
+the new step size is chosen subject to the restriction
+<code>fac1 &lt;= hnew/hold &lt;= fac2</code></p></td>
   
 </tr>
 
@@ -1014,8 +1020,8 @@ public subroutine <a href='../proc/set_parameters.html'>set_parameters</a>(me, n
   
   <td></td><td>::</td>
   <td><strong>beta</strong></td><td><p>is the <code>beta</code> for stabilized step size control
- (see section iv.2). positive values of <code>beta</code> ( &lt;= 0.04 )
- make the step size control more stable.</p></td>
+(see section iv.2). positive values of <code>beta</code> ( &lt;= 0.04 )
+make the step size control more stable.</p></td>
   
 </tr>
 
@@ -1144,8 +1150,8 @@ public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol,
   
   <td></td><td>::</td>
   <td><strong>x</strong></td><td><p><em>input:</em> initial value of independent variable.
- <em>output:</em> <code>x</code> for which the solution has been computed
- (after successful return <code>x=xend</code>).</p></td>
+<em>output:</em> <code>x</code> for which the solution has been computed
+(after successful return <code>x=xend</code>).</p></td>
   
 </tr>
 
@@ -1160,7 +1166,8 @@ public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol,
   <td></td>
   
   <td>dimension(:)</td><td>::</td>
-  <td><strong>y</strong></td><td><p><em>input:</em> initial values for <code>y</code>. [size n]</p><a href="None" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+  <td><strong>y</strong></td><td><p><em>input:</em> initial values for <code>y</code>. [size n]</p>
+<p><em>output:</em> numerical solution at <code>x</code>.</p></td>
   
 </tr>
 
@@ -1191,7 +1198,7 @@ public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol,
   
   <td>dimension(:)</td><td>::</td>
   <td><strong>rtol</strong></td><td><p>relative error tolerance. <code>rtol</code> and <code>atol</code>
- can be both scalars or else both vectors of length <code>n</code>.</p></td>
+can be both scalars or else both vectors of length <code>n</code>.</p></td>
   
 </tr>
 
@@ -1207,8 +1214,8 @@ public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol,
   
   <td>dimension(:)</td><td>::</td>
   <td><strong>atol</strong></td><td><p>absolute error tolerance. <code>rtol</code> and <code>atol</code>
- can be both scalars or else both vectors of length <code>n</code>.
- <code>atol</code> should be strictly positive (possibly very small)</p></td>
+can be both scalars or else both vectors of length <code>n</code>.
+<code>atol</code> should be strictly positive (possibly very small)</p></td>
   
 </tr>
 
@@ -1223,7 +1230,14 @@ public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol,
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>iout</strong></td><td><p>switch for calling the subroutine <code>solout</code>:</p><a href="None" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+  <td><strong>iout</strong></td><td><p>switch for calling the subroutine <code>solout</code>:</p>
+<ul>
+<li><code>iout=0</code>: subroutine is never called</li>
+<li><code>iout=1</code>: subroutine is called after every successful step</li>
+<li><code>iout=2</code>: dense output is performed after every successful step</li>
+<li><code>iout=3</code>: dense output is performed in steps defined by the user
+         (see <code>xout</code> above)</li>
+</ul></td>
   
 </tr>
 
@@ -1238,7 +1252,15 @@ public subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol,
   <td></td>
   
   <td></td><td>::</td>
-  <td><strong>idid</strong></td><td><p>reports on successfulness upon return:</p><a href="None" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+  <td><strong>idid</strong></td><td><p>reports on successfulness upon return:</p>
+<ul>
+<li><code>idid=1</code>  computation successful,</li>
+<li><code>idid=2</code>  comput. successful (interrupted by <a>solout</a>),</li>
+<li><code>idid=-1</code> input is not consistent,</li>
+<li><code>idid=-2</code> larger <code>nmax</code> is needed,</li>
+<li><code>idid=-3</code> step size becomes too small.</li>
+<li><code>idid=-4</code> problem is probably stiff (interrupted).</li>
+</ul></td>
   
 </tr>
 
@@ -1472,7 +1494,7 @@ public subroutine <a href='../proc/get_dop853_info.html'>get_dop853_info</a>(me,
   
   <td></td><td>::</td>
   <td><strong>nrejct</strong></td><td><p>number of rejected steps (due to error test),
- (step rejections in the first step are not counted)</p></td>
+(step rejections in the first step are not counted)</p></td>
   
 </tr>
 
@@ -1534,7 +1556,7 @@ public subroutine <a href='../proc/dp86co.html'>dp86co</a>(me, x, y, xend, hmax,
 
 
 <p>Core integrator for <a href="../proc/dop853.html">dop853</a>.
-  parameters same as in <a href="../proc/dop853.html">dop853</a> with workspace added.</p>
+parameters same as in <a href="../proc/dop853.html">dop853</a> with workspace added.</p>
     
     <h4>Arguments</h4>
     
@@ -2145,8 +2167,8 @@ public function <a href='../proc/contd8.html'>contd8</a>(me, ii, x) result(y)
 
 
 <p>this function can be used for continuous output in connection
-  with the output-subroutine for <a href="../proc/dop853.html">dop853</a>. it provides an
-  approximation to the <code>ii</code>-th component of the solution at <code>x</code>.</p>
+with the output-subroutine for <a href="../proc/dop853.html">dop853</a>. it provides an
+approximation to the <code>ii</code>-th component of the solution at <code>x</code>.</p>
     
     <h4>Arguments</h4>
     
@@ -2324,16 +2346,17 @@ public function <a href='../proc/contd8.html'>contd8</a>(me, ii, x) result(y)
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>dop853 was developed by Jacob Williams<br>&copy; 2021 
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
             
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> dop853 was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    

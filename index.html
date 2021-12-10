@@ -72,8 +72,11 @@
                
             <li><a href="./lists/types.html">Derived Types</a></li>
         
+               
+        
         
             </ul>
+        
             </li>
 
 
@@ -91,6 +94,8 @@
 <li class="visible-xs hidden-sm visible-lg"><a href="./lists/absint.html">Abstract Interfaces</a></li>
                              
 <li class="visible-xs hidden-sm visible-lg"><a href="./lists/types.html">Derived Types</a></li>
+
+
 
 
           </ul>
@@ -116,8 +121,9 @@
         	 
 	<p> Find us on&hellip;</p>
         <p>
-        	 
+			 
           <a class="btn btn-lg btn-primary" href="https://github.com/jacobwilliams/dop853" role="button">GitHub</a>
+			 
 			 
 			 
 			 
@@ -135,64 +141,64 @@
           <h1>dop853</h1>
 <p>This is a modern Fortran (2003/2008) implementation of Hairer's DOP853 ODE solver. The original FORTRAN 77 code has been extensively refactored, and is now object-oriented and thread-safe, with an easy-to-use class interface.  DOP853 is an explicit Runge-Kutta method of order 8(5,3) due to Dormand &amp; Prince (with stepsize control and dense output).</p>
 <p>This project is hosted on <a href="https://github.com/jacobwilliams/dop853">GitHub</a>.</p>
-<h1>Status</h1>
+<h2>Status</h2>
 <p><img alt="Build Status" src="https://github.com/jacobwilliams/dop853/actions/workflows/CI.yml/badge.svg"></p>
 <h2>Example</h2>
 <p>Basic use of the solver is shown here. The main methods in the <code>dop853_class</code> are <code>initialize()</code> and <code>integrate()</code>.</p>
-<div class="codehilite"><pre><span></span><code>    <span class="k">program </span><span class="n">dop853_example</span>
+<div class="codehilite"><pre><span></span><code>  <span class="k">program </span><span class="n">dop853_example</span>
 
-    <span class="k">use </span><span class="n">dop853_module</span>
-    <span class="k">use </span><span class="n">dop853_constants</span>
+  <span class="k">use </span><span class="n">dop853_module</span>
+  <span class="k">use </span><span class="n">dop853_constants</span>
 
-    <span class="k">implicit none</span>
+  <span class="k">implicit none</span>
 
-<span class="k">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span>               <span class="kd">::</span> <span class="n">n</span>   <span class="o">=</span> <span class="mi">2</span>               <span class="c">!! dimension of the system</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span>              <span class="kd">::</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1.0e-12_wp</span>      <span class="c">!! integration tolerance</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span>              <span class="kd">::</span> <span class="n">x0</span>  <span class="o">=</span> <span class="mf">0.0_wp</span>          <span class="c">!! initial x value</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span>              <span class="kd">::</span> <span class="n">xf</span>  <span class="o">=</span> <span class="mi">10</span><span class="mf">0.0_wp</span>        <span class="c">!! endpoint of integration</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">y0</span>  <span class="o">=</span> <span class="p">[</span><span class="mf">0.0_wp</span><span class="p">,</span><span class="mf">0.1_wp</span><span class="p">]</span> <span class="c">!! initial y value</span>
+<span class="k">  </span><span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span>               <span class="kd">::</span> <span class="n">n</span>   <span class="o">=</span> <span class="mi">2</span>               <span class="c">!! dimension of the system</span>
+  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span>              <span class="kd">::</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1.0e-12_wp</span>      <span class="c">!! integration tolerance</span>
+  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span>              <span class="kd">::</span> <span class="n">x0</span>  <span class="o">=</span> <span class="mf">0.0_wp</span>          <span class="c">!! initial x value</span>
+  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span>              <span class="kd">::</span> <span class="n">xf</span>  <span class="o">=</span> <span class="mi">10</span><span class="mf">0.0_wp</span>        <span class="c">!! endpoint of integration</span>
+  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">y0</span>  <span class="o">=</span> <span class="p">[</span><span class="mf">0.0_wp</span><span class="p">,</span><span class="mf">0.1_wp</span><span class="p">]</span> <span class="c">!! initial y value</span>
 
-    <span class="k">type</span><span class="p">(</span><span class="n">dop853_class</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">prop</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="kd">::</span> <span class="n">y</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rtol</span><span class="p">,</span><span class="n">atol</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span>              <span class="kd">::</span> <span class="n">x</span>
-    <span class="kt">integer</span>               <span class="kd">::</span> <span class="n">idid</span>
-    <span class="kt">logical</span>               <span class="kd">::</span> <span class="n">status_ok</span>
+  <span class="k">type</span><span class="p">(</span><span class="n">dop853_class</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">prop</span>
+  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="kd">::</span> <span class="n">y</span>
+  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rtol</span><span class="p">,</span><span class="n">atol</span>
+  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span>              <span class="kd">::</span> <span class="n">x</span>
+  <span class="kt">integer</span>               <span class="kd">::</span> <span class="n">idid</span>
+  <span class="kt">logical</span>               <span class="kd">::</span> <span class="n">status_ok</span>
 
-    <span class="n">x</span>    <span class="o">=</span> <span class="n">x0</span>   <span class="c">! initial conditions</span>
-    <span class="n">y</span>    <span class="o">=</span> <span class="n">y0</span>   <span class="c">!</span>
-    <span class="n">rtol</span> <span class="o">=</span> <span class="n">tol</span>  <span class="c">! set tolerances</span>
-    <span class="n">atol</span> <span class="o">=</span> <span class="n">tol</span>  <span class="c">!</span>
+  <span class="n">x</span>    <span class="o">=</span> <span class="n">x0</span>   <span class="c">! initial conditions</span>
+  <span class="n">y</span>    <span class="o">=</span> <span class="n">y0</span>   <span class="c">!</span>
+  <span class="n">rtol</span> <span class="o">=</span> <span class="n">tol</span>  <span class="c">! set tolerances</span>
+  <span class="n">atol</span> <span class="o">=</span> <span class="n">tol</span>  <span class="c">!</span>
 
-    <span class="c">!initialize the integrator:</span>
-    <span class="k">call </span><span class="n">prop</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">fcn</span><span class="o">=</span><span class="n">fvpol</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span><span class="n">status_ok</span><span class="o">=</span><span class="n">status_ok</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">(.</span><span class="nb">not</span><span class="p">.</span> <span class="n">status_ok</span><span class="p">)</span> <span class="k">error stop</span> <span class="s1">&#39;initialization error&#39;</span>
+  <span class="c">!initialize the integrator:</span>
+  <span class="k">call </span><span class="n">prop</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">fcn</span><span class="o">=</span><span class="n">fvpol</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span><span class="n">status_ok</span><span class="o">=</span><span class="n">status_ok</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">(.</span><span class="nb">not</span><span class="p">.</span> <span class="n">status_ok</span><span class="p">)</span> <span class="k">error stop</span> <span class="s1">&#39;initialization error&#39;</span>
 
-    <span class="c">!now, perform the integration:</span>
-    <span class="k">call </span><span class="n">prop</span><span class="p">%</span><span class="n">integrate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">xf</span><span class="p">,</span><span class="n">rtol</span><span class="p">,</span><span class="n">atol</span><span class="p">,</span><span class="n">iout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">idid</span><span class="o">=</span><span class="n">idid</span><span class="p">)</span>
+  <span class="c">!now, perform the integration:</span>
+  <span class="k">call </span><span class="n">prop</span><span class="p">%</span><span class="n">integrate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">xf</span><span class="p">,</span><span class="n">rtol</span><span class="p">,</span><span class="n">atol</span><span class="p">,</span><span class="n">iout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">idid</span><span class="o">=</span><span class="n">idid</span><span class="p">)</span>
 
-    <span class="c">!print solution:</span>
-    <span class="k">write</span> <span class="p">(</span><span class="n">output_unit</span><span class="p">,</span><span class="s1">&#39;(1X,A,F6.2,A,2E18.10)&#39;</span><span class="p">)</span> <span class="p">&amp;</span>
-                <span class="s1">&#39;x =&#39;</span><span class="p">,</span><span class="n">x</span> <span class="p">,</span><span class="s1">&#39; y =&#39;</span><span class="p">,</span><span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+  <span class="c">!print solution:</span>
+  <span class="k">write</span> <span class="p">(</span><span class="n">output_unit</span><span class="p">,</span><span class="s1">&#39;(1X,A,F6.2,A,2E18.10)&#39;</span><span class="p">)</span> <span class="p">&amp;</span>
+              <span class="s1">&#39;x =&#39;</span><span class="p">,</span><span class="n">x</span> <span class="p">,</span><span class="s1">&#39; y =&#39;</span><span class="p">,</span><span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="k">contains</span>
 
-<span class="k">    subroutine </span><span class="n">fvpol</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
-    <span class="c">!! Right-hand side of van der Pol&#39;s equation</span>
+<span class="k">  subroutine </span><span class="n">fvpol</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
+  <span class="c">!! Right-hand side of van der Pol&#39;s equation</span>
 
-    <span class="k">implicit none</span>
+  <span class="k">implicit none</span>
 
-<span class="k">    class</span><span class="p">(</span><span class="n">dop853_class</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span> <span class="kd">::</span> <span class="n">me</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>               <span class="kd">::</span> <span class="n">x</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">y</span>
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">f</span>
+<span class="k">  class</span><span class="p">(</span><span class="n">dop853_class</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span> <span class="kd">::</span> <span class="n">me</span>
+  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>               <span class="kd">::</span> <span class="n">x</span>
+  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">y</span>
+  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">f</span>
 
-    <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">mu</span>  <span class="o">=</span> <span class="mf">0.2_wp</span>
+  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">mu</span>  <span class="o">=</span> <span class="mf">0.2_wp</span>
 
-    <span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">mu</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="o">-</span><span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+  <span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">mu</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="o">-</span><span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="k">end subroutine </span><span class="n">fvpol</span>
+  <span class="k">end subroutine </span><span class="n">fvpol</span>
 
 <span class="k">end program </span><span class="n">dop853_example</span>
 </code></pre></div>
@@ -203,20 +209,24 @@
 
 <p>For dense output, see the example in the <code>src/tests</code> directory.</p>
 <h2>Building DOP853</h2>
-<p>DOP853 and the test programs will build with any modern Fortran compiler. A <a href="https://github.com/szaghi/FoBiS">FoBiS</a> configuration file (<code>dop853.fobis</code>) is provided that can build the library and/or the example programs. Use the <code>mode</code> flag to indicate what to build. For example:</p>
-<ul>
-<li>To build all the examples using gfortran: <code>FoBiS.py build -f dop853.fobis -mode tests-gnu</code></li>
-<li>To build all the examples using ifort:    <code>FoBiS.py build -f dop853.fobis -mode tests-intel</code></li>
-<li>To build a static library using gfortran: <code>FoBiS.py build -f dop853.fobis -mode static-gnu</code></li>
-<li>To build a static library using ifort:    <code>FoBiS.py build -f dop853.fobis -mode static-intel</code></li>
-</ul>
-<p>The full set of modes are: <code>static-gnu</code>, <code>static-gnu-debug</code>, <code>static-intel</code>, <code>static-intel-debug</code>, <code>shared-gnu</code>, <code>shared-gnu-debug</code>, <code>shared-intel</code>, <code>shared-intel-debug</code>, <code>tests-gnu</code>, <code>tests-gnu-debug</code>, <code>tests-intel</code>, <code>tests-intel-debug</code></p>
-<p>To generate the documentation using <a href="https://github.com/Fortran-FOSS-Programmers/ford">ford</a>, run:</p>
-<div class="codehilite"><pre><span></span><code>  FoBis.py rule --execute makedoc -f dop853.fobis
+<p>A <a href="https://github.com/fortran-lang/fpm">Fortran Package Manager</a> manifest file is included, so that the library and tests cases can be compiled with FPM. For example:</p>
+<div class="codehilite"><pre><span></span><code>fpm build --profile release
+fpm test --profile release
 </code></pre></div>
 
+<p>To use <code>dop853</code> within your FPM project, add the following to your <code>fpm.toml</code> file:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[dependencies]</span>
+<span class="n">dop853</span> <span class="o">=</span> <span class="p">{</span> <span class="n">git</span><span class="o">=</span><span class="s">&quot;https://github.com/jacobwilliams/dop853.git&quot;</span> <span class="p">}</span>
+</code></pre></div>
+
+<p>To generate the documentation using <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>, run:</p>
+<div class="codehilite"><pre><span></span><code>  ford dop853.fobis
+</code></pre></div>
+
+<h2>3rd Party Dependencies</h2>
+<p>The unit tests require <a href="https://github.com/jacobwilliams/pyplot-fortran">pyplot-fortran</a> which will be automatically downloaded by FPM.</p>
 <h2>Documentation</h2>
-<p>The latest API documentation for the <code>master</code> branch can be found <a href="http://jacobwilliams.github.io/dop853/">here</a>.</p>
+<p>The latest API documentation for the <code>master</code> branch can be found <a href="http://jacobwilliams.github.io/dop853/">here</a>. This is generated by processing the source files with <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>.</p>
 <h2>References</h2>
 <ol>
 <li>E. Hairer, S.P. Norsett and G. Wanner, "<a href="http://www.unige.ch/~hairer/books.html">Solving ordinary
@@ -244,7 +254,8 @@
               
               
               <a class="btn btn-lg btn-primary" href="https://github.com/jacobwilliams"><i class="fa fa-github fa-lg"></i></a>
-				  
+              
+              
 				  
               
               
@@ -260,103 +271,78 @@
       
       
       
+      
+      
 		
+        
       <div class="row">
+        
         <div class="col-xs-6 col-sm-3">
               <h3>Source Files</h3>
               <ul>
-                
-                  
                     <li><a href='./sourcefile/dop853_constants.f90.html'>dop853_constants.f90</a></li>
                   
-                
-                  
                     <li><a href='./sourcefile/dop853_module.f90.html'>dop853_module.f90</a></li>
-                  
-                
-              </ul>
+                  </ul>
           </div>
+        
           
 		  <div class="col-xs-6 col-sm-3">
               <h3>Modules</h3>
               <ul>
-                
-                  
                     <li><a href='./module/dop853_constants.html'>dop853_constants</a></li>
                   
-                
-                  
                     <li><a href='./module/dop853_module.html'>dop853_module</a></li>
-                  
-                
-              </ul>
+                  </ul>
           </div>
           
           
 		  <div class="col-xs-6 col-sm-3">
               <h3>Procedures</h3>
               <ul>
-                
-                  
                     <li><a href='./proc/contd8.html'>contd8</a></li>
-                  
-                
                   
                     <li><a href='./proc/destroy_dop853.html'>destroy_dop853</a></li>
                   
-                
-                  
                     <li><a href='./proc/dop853.html'>dop853</a></li>
-                  
-                
                   
                     <li><a href='./proc/dp86co.html'>dp86co</a></li>
                   
-                
-                  
                     <li><a href='./proc/get_dop853_info.html'>get_dop853_info</a></li>
-                  
-                
                   
                     <li><a href='./proc/hinit.html'>hinit</a></li>
                   
-                
-                  
                     <li><a href='./proc/set_parameters.html'>set_parameters</a></li>
-                  
-                
-              </ul>
+                  </ul>
           </div>
           
           
 		  <div class="col-xs-6 col-sm-3">
               <h3>Derived Types</h3>
               <ul>
-                
-                  
                     <li><a href='./type/dop853_class.html'>dop853_class</a></li>
-                  
-                
-              </ul>
+                  </ul>
           </div>
           
       </div>
+      
 
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-4"><p>&copy; 2021 
-                                          </p></div>
-        <div class="col-xs-6 col-md-4 col-md-push-4">
+        <div class="col-xs-6 col-md-6"><p>dop853 was developed by Jacob Williams<br>&copy; 2021 
+                                          </p>
+        </div>
+        <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
-            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            
             
           </p>
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> dop853 was developed by Jacob Williams</p></div>
       </div>
       <br>
       </div> <!-- /container -->    
