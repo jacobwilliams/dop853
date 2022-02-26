@@ -97,7 +97,7 @@ dop853 = { git="https://github.com/jacobwilliams/dop853.git" }
 To generate the documentation using [FORD](https://github.com/Fortran-FOSS-Programmers/ford), run:
 
 ```
-  ford dop853.fobis
+  ford dop853.md
 ```
 
 ## 3rd Party Dependencies

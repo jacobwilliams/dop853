@@ -197,9 +197,9 @@
     real(wp),intent(out)              :: xout   !! not used for `iout=1`.
 
     write (output_unit,'(1X,A,F6.2,A,2E18.10,A,I4)') &
-                    'x =',x,&
-                    '    y =',y(1),y(2),&
-                    '    nstep =',nr - 1
+                       'x =',x,&
+                       '    y =',y(1),y(2),&
+                       '    nstep =',nr - 1
 
     if (make_plots) then
         if (allocated(t_vec)) then
