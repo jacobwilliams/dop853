@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
    <meta name="description" content="Modern Fortran Implementation of the DOP853 ODE Solver">
-    
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="./favicon.png">
 
@@ -16,10 +14,7 @@
     <link href="./css/pygments.css" rel="stylesheet">
     <link href="./css/font-awesome.min.css" rel="stylesheet">
     <link href="./css/local.css" rel="stylesheet">
-    
     <link  href="./tipuesearch/tipuesearch.css" rel="stylesheet">
-    
-    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,58 +43,27 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-        
             <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
               <a href="#" class="dropdown-toggle"
               data-toggle="dropdown" role="button"
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          
-              
             <li><a href="./lists/files.html">Source Files</a></li>
-        
-        
-        
             <li><a href="./lists/modules.html">Modules</a></li>
-        
-            
-                                
             <li><a href="./lists/procedures.html">Procedures</a></li>
-        
-        
             <li><a href="./lists/absint.html">Abstract Interfaces</a></li>
-               
-            <li><a href="./lists/types.html">Derived Types</a></li>
-        
-               
-        
-        
+                   <li><a href="./lists/types.html">Derived Types</a></li>
+       
             </ul>
         
             </li>
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="./lists/files.html">Source Files</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="./lists/modules.html">Modules</a></li>
-
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="./lists/procedures.html">Procedures</a></li>
-
-
 <li class="visible-xs hidden-sm visible-lg"><a href="./lists/absint.html">Abstract Interfaces</a></li>
-                             
-<li class="visible-xs hidden-sm visible-lg"><a href="./lists/types.html">Derived Types</a></li>
-
-
-
-
+                             <li class="visible-xs hidden-sm visible-lg"><a href="./lists/types.html">Derived Types</a></li>
           </ul>
-        
         <form action="./search.html" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
@@ -108,35 +72,22 @@
         <button type="submit" class="btn btn-default">Submit</button>
 -->
         </form>
-        
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-    
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
         <p>Modern Fortran Implementation of the DOP853 ODE Solver</p>
-        	 
 	<p> Find us on&hellip;</p>
         <p>
-			 
           <a class="btn btn-lg btn-primary" href="https://github.com/jacobwilliams/dop853" role="button">GitHub</a>
-			 
-			 
-			 
-			 
-			 
-	         
-			 
         </p>
       </div>
 
       <div class="row" id='text'>
-		  
         <div class="col-md-8">
-		  
           <h1>dop853</h1>
           <h1>dop853</h1>
 <p>This is a modern Fortran (2003/2008) implementation of Hairer's DOP853 ODE solver. The original FORTRAN 77 code has been extensively refactored, and is now object-oriented and thread-safe, with an easy-to-use class interface.  DOP853 is an explicit Runge-Kutta method of order 8(5,3) due to Dormand &amp; Prince (with stepsize control and dense output).</p>
@@ -145,62 +96,62 @@
 <p><img alt="Build Status" src="https://github.com/jacobwilliams/dop853/actions/workflows/CI.yml/badge.svg"></p>
 <h2>Example</h2>
 <p>Basic use of the solver is shown here. The main methods in the <code>dop853_class</code> are <code>initialize()</code> and <code>integrate()</code>.</p>
-<div class="codehilite"><pre><span></span><code>  <span class="k">program </span><span class="n">dop853_example</span>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="k">program </span><span class="n">dop853_example</span><span class="w"></span>
 
-  <span class="k">use </span><span class="n">dop853_module</span>
-  <span class="k">use </span><span class="n">dop853_constants</span>
+<span class="w">  </span><span class="k">use </span><span class="n">dop853_module</span><span class="w"></span>
+<span class="w">  </span><span class="k">use </span><span class="n">dop853_constants</span><span class="w"></span>
 
-  <span class="k">implicit none</span>
+<span class="w">  </span><span class="k">implicit none</span>
 
-<span class="k">  </span><span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span>               <span class="kd">::</span> <span class="n">n</span>   <span class="o">=</span> <span class="mi">2</span>               <span class="c">!! dimension of the system</span>
-  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span>              <span class="kd">::</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1.0e-12_wp</span>      <span class="c">!! integration tolerance</span>
-  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span>              <span class="kd">::</span> <span class="n">x0</span>  <span class="o">=</span> <span class="mf">0.0_wp</span>          <span class="c">!! initial x value</span>
-  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span>              <span class="kd">::</span> <span class="n">xf</span>  <span class="o">=</span> <span class="mi">10</span><span class="mf">0.0_wp</span>        <span class="c">!! endpoint of integration</span>
-  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">y0</span>  <span class="o">=</span> <span class="p">[</span><span class="mf">0.0_wp</span><span class="p">,</span><span class="mf">0.1_wp</span><span class="p">]</span> <span class="c">!! initial y value</span>
+<span class="k">  </span><span class="kt">integer</span><span class="p">,</span><span class="k">parameter</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">               </span><span class="c">!! dimension of the system</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span><span class="w">              </span><span class="kd">::</span><span class="w"> </span><span class="n">tol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0e-12_wp</span><span class="w">      </span><span class="c">!! integration tolerance</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span><span class="w">              </span><span class="kd">::</span><span class="w"> </span><span class="n">x0</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w">          </span><span class="c">!! initial x value</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span><span class="w">              </span><span class="kd">::</span><span class="w"> </span><span class="n">xf</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="mf">0.0_wp</span><span class="w">        </span><span class="c">!! endpoint of integration</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">y0</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.0_wp</span><span class="p">,</span><span class="mf">0.1_wp</span><span class="p">]</span><span class="w"> </span><span class="c">!! initial y value</span>
 
-  <span class="k">type</span><span class="p">(</span><span class="n">dop853_class</span><span class="p">)</span>    <span class="kd">::</span> <span class="n">prop</span>
-  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="kd">::</span> <span class="n">y</span>
-  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="kd">::</span> <span class="n">rtol</span><span class="p">,</span><span class="n">atol</span>
-  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span>              <span class="kd">::</span> <span class="n">x</span>
-  <span class="kt">integer</span>               <span class="kd">::</span> <span class="n">idid</span>
-  <span class="kt">logical</span>               <span class="kd">::</span> <span class="n">status_ok</span>
+<span class="w">  </span><span class="k">type</span><span class="p">(</span><span class="n">dop853_class</span><span class="p">)</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">prop</span><span class="w"></span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rtol</span><span class="p">,</span><span class="n">atol</span><span class="w"></span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w">              </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="w">  </span><span class="kt">integer</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">idid</span><span class="w"></span>
+<span class="w">  </span><span class="kt">logical</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">status_ok</span><span class="w"></span>
 
-  <span class="n">x</span>    <span class="o">=</span> <span class="n">x0</span>   <span class="c">! initial conditions</span>
-  <span class="n">y</span>    <span class="o">=</span> <span class="n">y0</span>   <span class="c">!</span>
-  <span class="n">rtol</span> <span class="o">=</span> <span class="n">tol</span>  <span class="c">! set tolerances</span>
-  <span class="n">atol</span> <span class="o">=</span> <span class="n">tol</span>  <span class="c">!</span>
+<span class="w">  </span><span class="n">x</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">x0</span><span class="w">   </span><span class="c">! initial conditions</span>
+<span class="w">  </span><span class="n">y</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">y0</span><span class="w">   </span><span class="c">!</span>
+<span class="w">  </span><span class="n">rtol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tol</span><span class="w">  </span><span class="c">! set tolerances</span>
+<span class="w">  </span><span class="n">atol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tol</span><span class="w">  </span><span class="c">!</span>
 
-  <span class="c">!initialize the integrator:</span>
-  <span class="k">call </span><span class="n">prop</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">fcn</span><span class="o">=</span><span class="n">fvpol</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span><span class="n">status_ok</span><span class="o">=</span><span class="n">status_ok</span><span class="p">)</span>
-  <span class="k">if</span> <span class="p">(.</span><span class="nb">not</span><span class="p">.</span> <span class="n">status_ok</span><span class="p">)</span> <span class="k">error stop</span> <span class="s1">&#39;initialization error&#39;</span>
+<span class="w">  </span><span class="c">!initialize the integrator:</span>
+<span class="w">  </span><span class="k">call </span><span class="n">prop</span><span class="p">%</span><span class="n">initialize</span><span class="p">(</span><span class="n">fcn</span><span class="o">=</span><span class="n">fvpol</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span><span class="n">status_ok</span><span class="o">=</span><span class="n">status_ok</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">status_ok</span><span class="p">)</span><span class="w"> </span><span class="k">error stop</span><span class="w"> </span><span class="s1">&#39;initialization error&#39;</span><span class="w"></span>
 
-  <span class="c">!now, perform the integration:</span>
-  <span class="k">call </span><span class="n">prop</span><span class="p">%</span><span class="n">integrate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">xf</span><span class="p">,</span><span class="n">rtol</span><span class="p">,</span><span class="n">atol</span><span class="p">,</span><span class="n">iout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">idid</span><span class="o">=</span><span class="n">idid</span><span class="p">)</span>
+<span class="w">  </span><span class="c">!now, perform the integration:</span>
+<span class="w">  </span><span class="k">call </span><span class="n">prop</span><span class="p">%</span><span class="n">integrate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">xf</span><span class="p">,</span><span class="n">rtol</span><span class="p">,</span><span class="n">atol</span><span class="p">,</span><span class="n">iout</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">idid</span><span class="o">=</span><span class="n">idid</span><span class="p">)</span><span class="w"></span>
 
-  <span class="c">!print solution:</span>
-  <span class="k">write</span> <span class="p">(</span><span class="n">output_unit</span><span class="p">,</span><span class="s1">&#39;(1X,A,F6.2,A,2E18.10)&#39;</span><span class="p">)</span> <span class="p">&amp;</span>
-              <span class="s1">&#39;x =&#39;</span><span class="p">,</span><span class="n">x</span> <span class="p">,</span><span class="s1">&#39; y =&#39;</span><span class="p">,</span><span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">  </span><span class="c">!print solution:</span>
+<span class="w">  </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="n">output_unit</span><span class="p">,</span><span class="s1">&#39;(1X,A,F6.2,A,2E18.10)&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">              </span><span class="s1">&#39;x =&#39;</span><span class="p">,</span><span class="n">x</span><span class="w"> </span><span class="p">,</span><span class="s1">&#39; y =&#39;</span><span class="p">,</span><span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
 
 <span class="k">contains</span>
 
-<span class="k">  subroutine </span><span class="n">fvpol</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
-  <span class="c">!! Right-hand side of van der Pol&#39;s equation</span>
+<span class="k">  subroutine </span><span class="n">fvpol</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">f</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="c">!! Right-hand side of van der Pol&#39;s equation</span>
 
-  <span class="k">implicit none</span>
+<span class="w">  </span><span class="k">implicit none</span>
 
-<span class="k">  class</span><span class="p">(</span><span class="n">dop853_class</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span> <span class="kd">::</span> <span class="n">me</span>
-  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>               <span class="kd">::</span> <span class="n">x</span>
-  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span>  <span class="kd">::</span> <span class="n">y</span>
-  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="kd">::</span> <span class="n">f</span>
+<span class="k">  class</span><span class="p">(</span><span class="n">dop853_class</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span><span class="w"></span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">f</span><span class="w"></span>
 
-  <span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span> <span class="kd">::</span> <span class="n">mu</span>  <span class="o">=</span> <span class="mf">0.2_wp</span>
+<span class="w">  </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">mu</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2_wp</span><span class="w"></span>
 
-  <span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-  <span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="n">mu</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="o">-</span><span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">  </span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mu</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="o">-</span><span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
 
-  <span class="k">end subroutine </span><span class="n">fvpol</span>
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">fvpol</span><span class="w"></span>
 
-<span class="k">end program </span><span class="n">dop853_example</span>
+<span class="k">end program </span><span class="n">dop853_example</span><span class="w"></span>
 </code></pre></div>
 
 <p>The result is:</p>
@@ -215,12 +166,12 @@ fpm test --profile release
 </code></pre></div>
 
 <p>To use <code>dop853</code> within your FPM project, add the following to your <code>fpm.toml</code> file:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">[dependencies]</span>
-<span class="n">dop853</span> <span class="o">=</span> <span class="p">{</span> <span class="n">git</span><span class="o">=</span><span class="s">&quot;https://github.com/jacobwilliams/dop853.git&quot;</span> <span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="k">[dependencies]</span><span class="w"></span>
+<span class="n">dop853</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">git</span><span class="o">=</span><span class="s">&quot;https://github.com/jacobwilliams/dop853.git&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
 <p>To generate the documentation using <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>, run:</p>
-<div class="codehilite"><pre><span></span><code>  ford dop853.fobis
+<div class="codehilite"><pre><span></span><code>  ford dop853.md
 </code></pre></div>
 
 <h2>3rd Party Dependencies</h2>
@@ -241,106 +192,59 @@ fpm test --profile release
 <li>The updates are released under a <a href="https://raw.githubusercontent.com/jacobwilliams/dop853/master/LICENSE">similar BSD-style license</a>.</li>
 </ul>
         </div>
-		  
         <div class="col-md-4">
 	  <div class="well">
           <h2>Developer Info</h2>
           <h4>Jacob Williams</h4>
           
-          
-			   
             <div class="text-center"><div class="btn-group" role="group">
-              
-              
-              
               <a class="btn btn-lg btn-primary" href="https://github.com/jacobwilliams"><i class="fa fa-github fa-lg"></i></a>
-              
-              
-				  
-              
-              
-              
-              
             </div></div>
-            
        </div>
        </div>
-       
       </div>
-      
-      
-      
-      
-      
-      
-		
-        
       <div class="row">
-        
         <div class="col-xs-6 col-sm-3">
               <h3>Source Files</h3>
-              <ul>
-                    <li><a href='./sourcefile/dop853_constants.f90.html'>dop853_constants.f90</a></li>
-                  
+              <ul>                    <li><a href='./sourcefile/dop853_constants.f90.html'>dop853_constants.f90</a></li>
                     <li><a href='./sourcefile/dop853_module.f90.html'>dop853_module.f90</a></li>
-                  </ul>
+</ul>
           </div>
-        
-          
 		  <div class="col-xs-6 col-sm-3">
               <h3>Modules</h3>
-              <ul>
-                    <li><a href='./module/dop853_constants.html'>dop853_constants</a></li>
-                  
+              <ul>                    <li><a href='./module/dop853_constants.html'>dop853_constants</a></li>
                     <li><a href='./module/dop853_module.html'>dop853_module</a></li>
-                  </ul>
+</ul>
           </div>
-          
-          
 		  <div class="col-xs-6 col-sm-3">
               <h3>Procedures</h3>
-              <ul>
-                    <li><a href='./proc/contd8.html'>contd8</a></li>
-                  
+              <ul>                    <li><a href='./proc/contd8.html'>contd8</a></li>
                     <li><a href='./proc/destroy_dop853.html'>destroy_dop853</a></li>
-                  
                     <li><a href='./proc/dop853.html'>dop853</a></li>
-                  
                     <li><a href='./proc/dp86co.html'>dp86co</a></li>
-                  
                     <li><a href='./proc/get_dop853_info.html'>get_dop853_info</a></li>
-                  
                     <li><a href='./proc/hinit.html'>hinit</a></li>
-                  
                     <li><a href='./proc/set_parameters.html'>set_parameters</a></li>
-                  </ul>
+</ul>
           </div>
-          
-          
 		  <div class="col-xs-6 col-sm-3">
               <h3>Derived Types</h3>
-              <ul>
-                    <li><a href='./type/dop853_class.html'>dop853_class</a></li>
-                  </ul>
+              <ul>                    <li><a href='./type/dop853_class.html'>dop853_class</a></li>
+</ul>
           </div>
-          
       </div>
-      
-
     <hr>    
     </div> <!-- /container -->
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-6"><p>dop853 was developed by Jacob Williams<br>&copy; 2021 
-                                          </p>
+        <div class="col-xs-6 col-md-6"><p>dop853 was developed by Jacob Williams<br>&copy; 2022 
+</p>
         </div>
         <div class="col-xs-6 col-md-6">
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
-            
-            
           </p>
         </div>
       </div>
@@ -368,14 +272,11 @@ fpm test --profile release
         extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
       });
     </script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
     
     <script src="./tipuesearch/tipuesearch_content.js"></script>
     <script src="./tipuesearch/tipuesearch_set.js"></script>
     <script src="./tipuesearch/tipuesearch.js"></script>
-    
     
   </body>
 </html>

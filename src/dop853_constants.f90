@@ -1,7 +1,7 @@
 !*****************************************************************************************
 !>
 !  Constants used by [[dop853_module]].
-!
+
     module dop853_constants
 
     use iso_fortran_env,    only: wp => real64
