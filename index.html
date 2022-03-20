@@ -93,7 +93,9 @@
 <p>This is a modern Fortran (2003/2008) implementation of Hairer's DOP853 ODE solver. The original FORTRAN 77 code has been extensively refactored, and is now object-oriented and thread-safe, with an easy-to-use class interface.  DOP853 is an explicit Runge-Kutta method of order 8(5,3) due to Dormand &amp; Prince (with stepsize control and dense output).</p>
 <p>This project is hosted on <a href="https://github.com/jacobwilliams/dop853">GitHub</a>.</p>
 <h2>Status</h2>
-<p><img alt="Build Status" src="https://github.com/jacobwilliams/dop853/actions/workflows/CI.yml/badge.svg"></p>
+<p><a href="https://github.com/jacobwilliams/dop853/releases/latest"><img alt="GitHub release" src="https://img.shields.io/github/release/jacobwilliams/dop853.svg?style=plastic"></a>
+<img alt="Build Status" src="https://github.com/jacobwilliams/dop853/actions/workflows/CI.yml/badge.svg">
+<a href="https://codecov.io/gh/jacobwilliams/dop853"><img alt="codecov" src="https://codecov.io/gh/jacobwilliams/dop853/branch/master/graph/badge.svg?token=43HK33CSMY"></a></p>
 <h2>Example</h2>
 <p>Basic use of the solver is shown here. The main methods in the <code>dop853_class</code> are <code>initialize()</code> and <code>integrate()</code>.</p>
 <div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="k">program </span><span class="n">dop853_example</span><span class="w"></span>
