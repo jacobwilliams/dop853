@@ -7,7 +7,9 @@ This project is hosted on [GitHub](https://github.com/jacobwilliams/dop853).
 
 ## Status
 
+[![GitHub release](https://img.shields.io/github/release/jacobwilliams/dop853.svg?style=plastic)](https://github.com/jacobwilliams/dop853/releases/latest)
 ![Build Status](https://github.com/jacobwilliams/dop853/actions/workflows/CI.yml/badge.svg)
+[![codecov](https://codecov.io/gh/jacobwilliams/dop853/branch/master/graph/badge.svg?token=43HK33CSMY)](https://codecov.io/gh/jacobwilliams/dop853)
 
 ## Example
 

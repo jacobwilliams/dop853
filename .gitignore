@@ -34,3 +34,6 @@
 
 # mac
 .DS_Store
+
+# misc
+/*.png
