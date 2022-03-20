@@ -88,7 +88,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title=" 3.4% of total for procedures.">16 statements</a>
+    title=" 3.8% of total for procedures.">18 statements</a>
      </li> 
     <li><i class="fa fa-code"></i><a href="../src/dop853_module.f90"> Source File</a></li>
   </ul>
@@ -113,14 +113,19 @@
     <div id="sidebar">
   <h3>Contents</h3>
  
-<em>None</em>
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/get_dop853_info.html#src">get_dop853_info</a>
+  </div>
+</div>
 
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>public subroutine get_dop853_info(me, n, nfcn, nstep, naccpt, nrejct, h)</h2>
+    <h2>public subroutine get_dop853_info(me, n, nfcn, nstep, naccpt, nrejct, h, iout)</h2>
     
 
     <p>Get info from a <a href="../type/dop853_class.html">dop853_class</a>.</p>
@@ -167,10 +172,17 @@
 (step rejections in the first step are not counted)</p></td>
 </tr>
 <tr>
-  <td><span class="anchor" id="variable-h~3"></span>real(kind=wp),</td>
+  <td><span class="anchor" id="variable-h~2"></span>real(kind=wp),</td>
 <td>intent(out),</td>
   <td>optional</td>  <td></td><td>::</td>
   <td><strong>h</strong></td><td><p>predicted step size of the last accepted step</p></td>
+</tr>
+<tr>
+  <td><span class="anchor" id="variable-iout~2"></span>integer,</td>
+<td>intent(out),</td>
+  <td>optional</td>  <td></td><td>::</td>
+  <td><strong>iout</strong></td><td><p><code>iout</code> flag passed into <a href="../proc/dop853.html">dop853</a>, used to 
+specify how <code>solout</code> is called during integration.</p></td>
 </tr>
 </tbody>
 </table>
@@ -180,7 +192,12 @@
     <section class="visible-xs visible-sm hidden-md">
       <h3>Contents</h3>
  
-<em>None</em>
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../proc/get_dop853_info.html#src">get_dop853_info</a>
+  </div>
+</div>
 
     </section>
     <br class="visible-xs visible-sm hidden-md">
@@ -194,6 +211,36 @@
 
 
     
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">get_dop853_info</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">nfcn</span><span class="p">,</span><span class="n">nstep</span><span class="p">,</span><span class="n">naccpt</span><span class="p">,</span><span class="n">nrejct</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">iout</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">implicit none</span>
+
+<span class="k">    class</span><span class="p">(</span><span class="n">dop853_class</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span><span class="w"></span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="k">optional</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span><span class="w">      </span><span class="c">!! dimension of the system</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="k">optional</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">nfcn</span><span class="w">   </span><span class="c">!! number of function evaluations</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="k">optional</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">nstep</span><span class="w">  </span><span class="c">!! number of computed steps</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="k">optional</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">naccpt</span><span class="w"> </span><span class="c">!! number of accepted steps</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="k">optional</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">nrejct</span><span class="w"> </span><span class="c">!! number of rejected steps (due to error test),</span>
+<span class="w">                                             </span><span class="c">!! (step rejections in the first step are not counted)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="k">optional</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">h</span><span class="w">      </span><span class="c">!! predicted step size of the last accepted step</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="k">optional</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">iout</span><span class="w">   </span><span class="c">!! `iout` flag passed into [[dop853]], used to </span>
+<span class="w">                                             </span><span class="c">!! specify how `solout` is called during integration.</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">n</span><span class="w">     </span><span class="p">))</span><span class="w"> </span><span class="n">n</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">n</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">nfcn</span><span class="w">  </span><span class="p">))</span><span class="w"> </span><span class="n">nfcn</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">nfcn</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">nstep</span><span class="w"> </span><span class="p">))</span><span class="w"> </span><span class="n">nstep</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">nstep</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">naccpt</span><span class="p">))</span><span class="w"> </span><span class="n">naccpt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">naccpt</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">nrejct</span><span class="p">))</span><span class="w"> </span><span class="n">nrejct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">nrejct</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">h</span><span class="p">))</span><span class="w">      </span><span class="n">h</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">h</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">iout</span><span class="p">))</span><span class="w">   </span><span class="n">iout</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">iout</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">end subroutine </span><span class="n">get_dop853_info</span><span class="w"></span>
+</pre></div>
+
+    </section>
+    <br>
     
     </div>
   </div>

@@ -88,7 +88,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="<p>100.0% of total for derived types.</p>Including implementation: 505 statements, 100.0% of total for derived types.">34 statements</a>
+    title="<p>100.0% of total for derived types.</p>Including implementation: 509 statements, 100.0% of total for derived types.">35 statements</a>
      </li> 
     <li><i class="fa fa-code"></i><a href="../src/dop853_module.f90"> Source File</a></li>
   </ul>
@@ -135,6 +135,7 @@
       <a class="list-group-item" href="../type/dop853_class.html#variable-beta">beta</a>
       <a class="list-group-item" href="../type/dop853_class.html#variable-icomp">icomp</a>
       <a class="list-group-item" href="../type/dop853_class.html#variable-cont">cont</a>
+      <a class="list-group-item" href="../type/dop853_class.html#variable-iout">iout</a>
       <a class="list-group-item" href="../type/dop853_class.html#variable-xold">xold</a>
       <a class="list-group-item" href="../type/dop853_class.html#variable-hout">hout</a>
       <a class="list-group-item" href="../type/dop853_class.html#variable-fcn">fcn</a>
@@ -156,13 +157,19 @@
     </div>
   </div>
 </div>
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/dop853_class.html#src">dop853_class</a>
+  </div>
+</div>
 
 </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-      <h2>type, private :: dop853_class</h2>
+      <h2>type, public :: dop853_class</h2>
     
     <br>
 
@@ -191,6 +198,7 @@
       <a class="list-group-item" href="../type/dop853_class.html#variable-beta">beta</a>
       <a class="list-group-item" href="../type/dop853_class.html#variable-icomp">icomp</a>
       <a class="list-group-item" href="../type/dop853_class.html#variable-cont">cont</a>
+      <a class="list-group-item" href="../type/dop853_class.html#variable-iout">iout</a>
       <a class="list-group-item" href="../type/dop853_class.html#variable-xold">xold</a>
       <a class="list-group-item" href="../type/dop853_class.html#variable-hout">hout</a>
       <a class="list-group-item" href="../type/dop853_class.html#variable-fcn">fcn</a>
@@ -212,6 +220,12 @@
     </div>
   </div>
 </div>
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/dop853_class.html#src">dop853_class</a>
+  </div>
+</div>
 
     </section>
     <br class="visible-xs visible-sm hidden-md">
@@ -223,33 +237,33 @@
 <tbody>
 <tr>
   <td><span class="anchor" id="variable-n"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>n</strong></td><td> =</td><td>0</td><td><p>the dimension of the system</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-nfcn"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>nfcn</strong></td><td> =</td><td>0</td><td><p>number of function evaluations</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-nstep"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>nstep</strong></td><td> =</td><td>0</td><td><p>number of computed steps</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-naccpt"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>naccpt</strong></td><td> =</td><td>0</td><td><p>number of accepted steps</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-nrejct"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>nrejct</strong></td><td> =</td><td>0</td><td><p>number of rejected steps (due to error test),
 (step rejections in the first step are not counted)</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-nrdens"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>nrdens</strong></td><td> =</td><td>0</td><td><p>number of components, for which dense output
 is required. for <code>0 &lt; nrdens &lt; n</code> the components
 (for which dense output is required) have to be
@@ -257,12 +271,12 @@ specified in <code>icomp(1),...,icomp(nrdens)</code>.</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-h"></span>real(kind=wp),</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>h</strong></td><td> =</td><td>0.0_wp</td><td><p>predicted step size of the last accepted step</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-iprint"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>iprint</strong></td><td> =</td><td>output_unit</td><td><p>switch for printing error messages
 if <code>iprint==0</code> no messages are being printed
 if <code>iprint/=0</code> messages are printed with
@@ -270,12 +284,12 @@ if <code>iprint/=0</code> messages are printed with
 </tr>
 <tr>
   <td><span class="anchor" id="variable-nmax"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>nmax</strong></td><td> =</td><td>100000</td><td><p>the maximal number of allowed steps.</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-nstiff"></span>integer,</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>nstiff</strong></td><td> =</td><td>1000</td><td><p>test for stiffness is activated after step number
 <code>j*nstiff</code> (<code>j</code> integer), provided <code>nstiff&gt;0</code>.
 for negative <code>nstiff</code> the stiffness test is
@@ -283,70 +297,75 @@ never activated.</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-hinitial"></span>real(kind=wp),</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>hinitial</strong></td><td> =</td><td>0.0_wp</td><td><p>initial step size, for <code>hinitial=0</code> an initial guess
 is computed with help of the function <a href="../proc/hinit.html">hinit</a>.</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-hmax"></span>real(kind=wp),</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>hmax</strong></td><td> =</td><td>0.0_wp</td><td><p>maximal step size, defaults to <code>xend-x</code> if <code>hmax=0</code>.</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-safe"></span>real(kind=wp),</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>safe</strong></td><td> =</td><td>0.9_wp</td><td><p>safety factor in step size prediction</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-fac1"></span>real(kind=wp),</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>fac1</strong></td><td> =</td><td>0.333_wp</td><td><p>parameter for step size selection.
 the new step size is chosen subject to the restriction
 <code>fac1 &lt;= hnew/hold &lt;= fac2</code></p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-fac2"></span>real(kind=wp),</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>fac2</strong></td><td> =</td><td>6.0_wp</td><td><p>parameter for step size selection.
 the new step size is chosen subject to the restriction
 <code>fac1 &lt;= hnew/hold &lt;= fac2</code></p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-beta"></span>real(kind=wp),</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>beta</strong></td><td> =</td><td>0.0_wp</td><td><p>is the <code>beta</code> for stabilized step size control
 (see section iv.2). positive values of beta ( &lt;= 0.04 )
 make the step size control more stable.</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-icomp"></span>integer,</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>icomp</strong></td><td></td><td></td><td><p><code>dimension(nrdens)</code>
 the components for which dense output is required</p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-cont"></span>real(kind=wp),</td>
-<td>private,</td>  <td>dimension(:), allocatable</td><td>::</td>
+<td>public,</td>  <td>dimension(:), allocatable</td><td>::</td>
   <td><strong>cont</strong></td><td></td><td></td><td><p><code>dimension(8*nrdens)</code></p></td>
 </tr>
 <tr>
+  <td><span class="anchor" id="variable-iout"></span>integer,</td>
+<td>public</td>  <td></td><td>::</td>
+  <td><strong>iout</strong></td><td> =</td><td>0</td><td><p>copy of <code>iout</code> input to <a href="../proc/dop853.html">dop853</a> </p></td>
+</tr>
+<tr>
   <td><span class="anchor" id="variable-xold"></span>real(kind=wp),</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>xold</strong></td><td> =</td><td>0.0_wp</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-hout"></span>real(kind=wp),</td>
-<td>private</td>  <td></td><td>::</td>
+<td>public</td>  <td></td><td>::</td>
   <td><strong>hout</strong></td><td> =</td><td>0.0_wp</td><td></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-fcn"></span>procedure(<a href='../interface/deriv_func.html'>deriv_func</a>),</td>
-<td>private,</td>  <td>pointer</td><td>::</td>
+<td>public,</td>  <td>pointer</td><td>::</td>
   <td><strong>fcn</strong></td><td>=> </td><td>null()</td><td><p>subroutine computing the value of <code>f(x,y)</code></p></td>
 </tr>
 <tr>
   <td><span class="anchor" id="variable-solout"></span>procedure(<a href='../interface/solout_func.html'>solout_func</a>),</td>
-<td>private,</td>  <td>pointer</td><td>::</td>
+<td>public,</td>  <td>pointer</td><td>::</td>
   <td><strong>solout</strong></td><td>=> </td><td>null()</td><td><p>subroutine providing the
 numerical solution during integration.
 if <code>iout&gt;=1</code>, it is called during integration.</p></td>
@@ -622,7 +641,7 @@ can be both scalars or else both vectors of length <code>n</code>.
   </div>
   <ul class="list-group">
       <li class="list-group-item">
-          <h3>public subroutine <a href='../proc/get_dop853_info.html'>get_dop853_info</a>(me, n, nfcn, nstep, naccpt, nrejct, h)</h3>
+          <h3>public subroutine <a href='../proc/get_dop853_info.html'>get_dop853_info</a>(me, n, nfcn, nstep, naccpt, nrejct, h, iout)</h3>
 <p>Get info from a <a href="../type/dop853_class.html">dop853_class</a>.</p>
     
 <h4>Arguments</h4>      <table class="table table-striped varlist">
@@ -671,6 +690,13 @@ can be both scalars or else both vectors of length <code>n</code>.
   <td>optional</td>  <td></td><td>::</td>
   <td><strong>h</strong></td><td><p>predicted step size of the last accepted step</p></td>
 </tr>
+<tr>
+  <td><span class="anchor" ></span>integer,</td>
+<td>intent(out),</td>
+  <td>optional</td>  <td></td><td>::</td>
+  <td><strong>iout</strong></td><td><p><code>iout</code> flag passed into <a href="../proc/dop853.html">dop853</a>, used to 
+specify how <code>solout</code> is called during integration.</p></td>
+</tr>
 </tbody>
 </table>
 
@@ -680,7 +706,7 @@ can be both scalars or else both vectors of length <code>n</code>.
 </div>
 
      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-dp86co"></span><h3>procedure, private :: <strong>dp86co</strong>    </h3></div>
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-dp86co"></span><h3>procedure, public :: <strong>dp86co</strong>    </h3></div>
   <ul class="list-group">
       <li class="list-group-item">
           <h3>public subroutine <a href='../proc/dp86co.html'>dp86co</a>(me, x, y, xend, hmax, h, rtol, atol, itol, iprint, iout, idid, nmax, nstiff, safe, beta, fac1, fac2, nfcn, nstep, naccpt, nrejct)</h3>
@@ -831,7 +857,7 @@ parameters same as in <a href="../proc/dop853.html">dop853</a> with workspace ad
 </div>
 
      <div class="panel panel-default">
-  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-hinit"></span><h3>procedure, private :: <strong>hinit</strong>    </h3></div>
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-hinit"></span><h3>procedure, public :: <strong>hinit</strong>    </h3></div>
   <ul class="list-group">
       <li class="list-group-item">
           <h3>public function <a href='../proc/hinit.html'>hinit</a>(me, x, y, posneg, f0, iord, hmax, atol, rtol, itol)</h3>
@@ -954,6 +980,87 @@ approximation to the <code>ii</code>-th component of the solution at <code>x</co
 
     </section>
     
+    <section>
+    <h3><span class="anchor" id="src"></span>Source Code</h3>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">type</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dop853_class</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">private</span><span class="w"></span>
+
+<span class="w">        </span><span class="c">!internal variables:</span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">   </span><span class="c">!! the dimension of the system</span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nfcn</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">   </span><span class="c">!! number of function evaluations</span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nstep</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">   </span><span class="c">!! number of computed steps</span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">naccpt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">   </span><span class="c">!! number of accepted steps</span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nrejct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">   </span><span class="c">!! number of rejected steps (due to error test),</span>
+<span class="w">                                </span><span class="c">!! (step rejections in the first step are not counted)</span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nrdens</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">   </span><span class="c">!! number of components, for which dense output</span>
+<span class="w">                                </span><span class="c">!! is required. for `0 &lt; nrdens &lt; n` the components</span>
+<span class="w">                                </span><span class="c">!! (for which dense output is required) have to be</span>
+<span class="w">                                </span><span class="c">!! specified in `icomp(1),...,icomp(nrdens)`.</span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w">  </span><span class="c">!! predicted step size of the last accepted step</span>
+
+<span class="w">        </span><span class="c">!input paramters:</span>
+<span class="w">        </span><span class="c">!  these parameters allow</span>
+<span class="w">        </span><span class="c">!  to adapt the code to the problem and to the needs of</span>
+<span class="w">        </span><span class="c">!  the user. set them on class initialization.</span>
+
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iprint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">output_unit</span><span class="w">   </span><span class="c">!! switch for printing error messages</span>
+<span class="w">                                          </span><span class="c">!! if `iprint==0` no messages are being printed</span>
+<span class="w">                                          </span><span class="c">!! if `iprint/=0` messages are printed with</span>
+<span class="w">                                          </span><span class="c">!! `write (iprint,*)` ...</span>
+
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100000</span><span class="w">       </span><span class="c">!! the maximal number of allowed steps.</span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nstiff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="w">       </span><span class="c">!! test for stiffness is activated after step number</span>
+<span class="w">                                       </span><span class="c">!! `j*nstiff` (`j` integer), provided `nstiff&gt;0`.</span>
+<span class="w">                                       </span><span class="c">!! for negative `nstiff` the stiffness test is</span>
+<span class="w">                                       </span><span class="c">!! never activated.</span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">hinitial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w">  </span><span class="c">!! initial step size, for `hinitial=0` an initial guess</span>
+<span class="w">                                       </span><span class="c">!! is computed with help of the function [[hinit]].</span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">hmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w">      </span><span class="c">!! maximal step size, defaults to `xend-x` if `hmax=0`.</span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">safe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.9_wp</span><span class="w">      </span><span class="c">!! safety factor in step size prediction</span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fac1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.333_wp</span><span class="w">    </span><span class="c">!! parameter for step size selection.</span>
+<span class="w">                                       </span><span class="c">!! the new step size is chosen subject to the restriction</span>
+<span class="w">                                       </span><span class="c">!! `fac1 &lt;= hnew/hold &lt;= fac2`</span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fac2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">6.0_wp</span><span class="w">      </span><span class="c">!! parameter for step size selection.</span>
+<span class="w">                                       </span><span class="c">!! the new step size is chosen subject to the restriction</span>
+<span class="w">                                       </span><span class="c">!! `fac1 &lt;= hnew/hold &lt;= fac2`</span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">beta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w">      </span><span class="c">!! is the `beta` for stabilized step size control</span>
+<span class="w">                                       </span><span class="c">!! (see section iv.2). positive values of beta ( &lt;= 0.04 )</span>
+<span class="w">                                       </span><span class="c">!! make the step size control more stable.</span>
+
+<span class="w">        </span><span class="kt">integer</span><span class="p">,</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">icomp</span><span class="w">      </span><span class="c">!! `dimension(nrdens)`</span>
+<span class="w">                                                        </span><span class="c">!! the components for which dense output is required</span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">cont</span><span class="w">       </span><span class="c">!! `dimension(8*nrdens)`</span>
+
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="c">!! copy of `iout` input to [[dop853]] </span>
+
+<span class="w">        </span><span class="c">!formerly in the condo8 common block:</span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w"></span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">hout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w"></span>
+
+<span class="w">        </span><span class="c">!user-defined procedures:</span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">(</span><span class="n">deriv_func</span><span class="p">),</span><span class="k">pointer</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">fcn</span><span class="w">    </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">null</span><span class="p">()</span><span class="w"> </span><span class="c">!! subroutine computing the value of `f(x,y)`</span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">(</span><span class="n">solout_func</span><span class="p">),</span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">solout</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">null</span><span class="p">()</span><span class="w"> </span><span class="c">!! subroutine providing the</span>
+<span class="w">                                                           </span><span class="c">!! numerical solution during integration.</span>
+<span class="w">                                                           </span><span class="c">!! if `iout&gt;=1`, it is called during integration.</span>
+
+<span class="w">        </span><span class="k">contains</span>
+
+<span class="k">        private</span>
+
+<span class="k">        procedure</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">initialize</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">set_parameters</span><span class="w">    </span><span class="c">!! initialization routine.</span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">integrate</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">dop853</span><span class="w">            </span><span class="c">!! main integration routine.</span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">destroy</span><span class="w">    </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">destroy_dop853</span><span class="w">    </span><span class="c">!! destructor.</span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">info</span><span class="w">       </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">get_dop853_info</span><span class="w">   </span><span class="c">!! to get info after a run.</span>
+
+<span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dp86co</span><span class="w"></span>
+<span class="w">        </span><span class="k">procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">hinit</span><span class="w"></span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">contd8</span><span class="w">  </span><span class="c">!! can be called in user&#39;s [[solout_func]] for dense output.</span>
+
+<span class="w">    </span><span class="k">end type </span><span class="n">dop853_class</span><span class="w"></span>
+</pre></div>
+
+    </section>
     
     </div>
   </div>

@@ -67,6 +67,8 @@
                                                         !! the components for which dense output is required
         real(wp),dimension(:),allocatable :: cont       !! `dimension(8*nrdens)`
 
+        integer :: iout = 0 !! copy of `iout` input to [[dop853]] 
+
         !formerly in the condo8 common block:
         real(wp) :: xold = 0.0_wp
         real(wp) :: hout = 0.0_wp
@@ -136,7 +138,7 @@
 !>
 !  Get info from a [[dop853_class]].
 
-    subroutine get_dop853_info(me,n,nfcn,nstep,naccpt,nrejct,h)
+    subroutine get_dop853_info(me,n,nfcn,nstep,naccpt,nrejct,h,iout)
 
     implicit none
 
@@ -148,6 +150,8 @@
     integer,intent(out),optional   :: nrejct !! number of rejected steps (due to error test),
                                              !! (step rejections in the first step are not counted)
     real(wp),intent(out),optional  :: h      !! predicted step size of the last accepted step
+    integer,intent(out),optional   :: iout   !! `iout` flag passed into [[dop853]], used to 
+                                             !! specify how `solout` is called during integration.
 
     if (present(n     )) n      = me%n
     if (present(nfcn  )) nfcn   = me%nfcn
@@ -155,6 +159,7 @@
     if (present(naccpt)) naccpt = me%naccpt
     if (present(nrejct)) nrejct = me%nrejct
     if (present(h))      h      = me%h
+    if (present(iout))   iout   = me%iout
 
     end subroutine get_dop853_info
 !*****************************************************************************************
@@ -355,6 +360,7 @@
                           !!    `rtol(i)*abs(y(i))+atol(i)`.
 
       iprint = me%iprint
+      me%iout = iout
       arret = .false.
 
       !check procedures:
