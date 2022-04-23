@@ -7,9 +7,10 @@ This project is hosted on [GitHub](https://github.com/jacobwilliams/dop853).
 
 ## Status
 
-[![GitHub release](https://img.shields.io/github/release/jacobwilliams/dop853.svg?style=plastic)](https://github.com/jacobwilliams/dop853/releases/latest)
-![Build Status](https://github.com/jacobwilliams/dop853/actions/workflows/CI.yml/badge.svg)
-[![codecov](https://codecov.io/gh/jacobwilliams/dop853/branch/master/graph/badge.svg?token=43HK33CSMY)](https://codecov.io/gh/jacobwilliams/dop853)
+[![GitHub release](https://img.shields.io/github/release/jacobwilliams/dop853.svg)](https://github.com/jacobwilliams/dop853/releases/latest)
+[![CI Status](https://github.com/jacobwilliams/dop853/actions/workflows/CI.yml/badge.svg)](https://github.com/jacobwilliams/dop853/actions)
+[![codecov](https://codecov.io/gh/jacobwilliams/dop853/branch/master/graph/badge.svg)](https://codecov.io/gh/jacobwilliams/dop853)
+[![last-commit](https://img.shields.io/github/last-commit/jacobwilliams/dop853)](https://github.com/jacobwilliams/dop853/commits/master)
 
 ## Example
 
