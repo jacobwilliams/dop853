@@ -498,13 +498,16 @@
     integer :: i,iasti,iord,irtrn,j,nonsti,nrd
     logical :: reject,last,event,abort
 
-    ! initialisations
+    ! initializations
     nrd = me%nrdens
     facold = 1.0e-4_wp
     expo1 = 1.0_wp/8.0_wp - beta*0.2_wp
     facc1 = 1.0_wp/fac1
     facc2 = 1.0_wp/fac2
     posneg = sign(1.0_wp,xend-x)
+    irtrn = 0     ! these were not initialized
+    nonsti = 0    ! in the original code
+    xout = 0.0_wp !
 
     ! initial preparations
     atoli = atol(1)
