@@ -88,7 +88,7 @@
      <li><i class="fa fa-list-ol"></i>
        <a data-toggle="tooltip"
     data-placement="bottom" data-html="true"
-    title="45.4% of total for procedures.">215 statements</a>
+    title="45.7% of total for procedures.">218 statements</a>
      </li> 
     <li><i class="fa fa-code"></i><a href="../src/dop853_module.f90"> Source File</a></li>
   </ul>
@@ -333,13 +333,16 @@ parameters same as in <a href="../proc/dop853.html">dop853</a> with workspace ad
 <span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="n">iasti</span><span class="p">,</span><span class="n">iord</span><span class="p">,</span><span class="n">irtrn</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">nonsti</span><span class="p">,</span><span class="n">nrd</span><span class="w"></span>
 <span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">reject</span><span class="p">,</span><span class="n">last</span><span class="p">,</span><span class="n">event</span><span class="p">,</span><span class="nb">abort</span><span class="w"></span>
 
-<span class="w">    </span><span class="c">! initialisations</span>
+<span class="w">    </span><span class="c">! initializations</span>
 <span class="w">    </span><span class="n">nrd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">nrdens</span><span class="w"></span>
 <span class="w">    </span><span class="n">facold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0e-4_wp</span><span class="w"></span>
 <span class="w">    </span><span class="n">expo1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_wp</span><span class="o">/</span><span class="mf">8.0_wp</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">beta</span><span class="o">*</span><span class="mf">0.2_wp</span><span class="w"></span>
 <span class="w">    </span><span class="n">facc1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_wp</span><span class="o">/</span><span class="n">fac1</span><span class="w"></span>
 <span class="w">    </span><span class="n">facc2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_wp</span><span class="o">/</span><span class="n">fac2</span><span class="w"></span>
 <span class="w">    </span><span class="n">posneg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sign</span><span class="p">(</span><span class="mf">1.0_wp</span><span class="p">,</span><span class="n">xend</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">irtrn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">     </span><span class="c">! these were not initialized</span>
+<span class="w">    </span><span class="n">nonsti</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w">    </span><span class="c">! in the original code</span>
+<span class="w">    </span><span class="n">xout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w"> </span><span class="c">!</span>
 
 <span class="w">    </span><span class="c">! initial preparations</span>
 <span class="w">    </span><span class="n">atoli</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atol</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
