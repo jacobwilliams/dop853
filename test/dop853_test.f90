@@ -13,8 +13,7 @@
 
     program dop853_test
 
-    use dop853_module
-    use dop853_constants
+    use dop853_module, wp => dop853_wp
     use iso_fortran_env, only: output_unit
     use pyplot_module
 
@@ -28,6 +27,7 @@
     real(wp),parameter              :: xf    = 100.0_wp         !! endpoint of integration
     real(wp),dimension(n),parameter :: y0    = [0.0_wp,0.1_wp]  !! initial `y` value
     real(wp),parameter              :: dx    = 0.01_wp          !! time step for dense output
+    real(wp),dimension(2),parameter :: xylim = [-3.0_wp,3.0_wp] !! plot axis limits
 
     logical,parameter :: make_plots = .true. !! use pyplot to generate plots.
 
@@ -71,7 +71,7 @@
 
         ! print statistics
         write (output_unit,'(A,D8.2)') '       tol=',tol
-        write (output_unit,'(A,I5,A,I4,A,I4,A,I3)') &
+        write (output_unit,'(A,I5,A,I5,A,I4,A,I3)') &
                 ' fcn=',nfcn,' step=',nstep,' accpt=',naccpt,' rejct=',nrejct
 
         ! plot:
@@ -81,7 +81,7 @@
                               title='van der Pol''s Equation ($\mu = 0.2$)',legend=.true.)
             call plt%add_plot(y_vec,yp_vec,label='Forward',&
                               linestyle='r-',linewidth=2,&
-                              xlim=[-3.0_wp,3.0_wp], ylim=[-3.0_wp,3.0_wp],istat=istat)
+                              xlim=xylim, ylim=xylim,istat=istat)
             call plt%savefig('dop853_forward.png',istat=istat)
             call plt%destroy()
 
@@ -111,7 +111,7 @@
 
             call plt%add_plot(y_vec,yp_vec,label='Backward',&
                             linestyle='r-',linewidth=2,&
-                            xlim=[-3.0_wp,3.0_wp], ylim=[-3.0_wp,3.0_wp],istat=istat)
+                            xlim=xylim, ylim=xylim,istat=istat)
 
             call plt%savefig('dop853_backward.png',istat=istat)
             call plt%destroy()

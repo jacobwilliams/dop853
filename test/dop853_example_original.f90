@@ -4,8 +4,8 @@
 
     program dop853_example_original
 
-    use dop853_module
-    use dop853_constants
+    use dop853_module, wp => dop853_wp
+    use iso_fortran_env, only: output_unit
 
     implicit none
 
