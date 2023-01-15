@@ -49,7 +49,7 @@
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-            <li><a href="../lists/files.html">Source Files</a></li>
+            <li><a href="../sourcefile/dop853_module.f90.html">Source File</a></li>
             <li><a href="../lists/modules.html">Modules</a></li>
             <li><a href="../lists/procedures.html">Procedures</a></li>
             <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
@@ -58,7 +58,7 @@
             </ul>
         
             </li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/dop853_module.f90.html">Source File</a></li>
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/absint.html">Abstract Interfaces</a></li>
@@ -95,11 +95,11 @@
 
             <li id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/dop853_module.f90"> Source File</a>
+              <a href="../src/dop853_module.F90"> Source File</a>
             </li>
         </ul>
         <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/dop853_module.f90.html'>dop853_module.f90</a></li>
+              <li><a href='../sourcefile/dop853_module.f90.html'>dop853_module.F90</a></li>
               <li><a href='../module/dop853_module.html'>dop853_module</a></li>
           <li class="active">dop853_class</li>
         </ol>
@@ -640,7 +640,7 @@ the components for which dense output is required</p>
 <td> =</td>
                 <td>0</td>
             <td>
-                <p>copy of <code>iout</code> input to <a href="../proc/dop853.html">dop853</a> </p>
+                <p>copy of <code>iout</code> input to <a href="../proc/dop853.html">dop853</a></p>
             </td>
         </tr>
         <tr>
@@ -733,7 +733,7 @@ if <code>iout&gt;=1</code>, it is called during integration.</p>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    public  subroutine <a href='../proc/set_parameters.html'>set_parameters</a>(me, n, fcn, solout, iprint, nstiff, nmax, hinitial, hmax, safe, fac1, fac2, beta, icomp, status_ok)  
+    private  subroutine <a href='../proc/set_parameters.html'>set_parameters</a>(me, n, fcn, solout, iprint, nstiff, nmax, hinitial, hmax, safe, fac1, fac2, beta, icomp, status_ok)  
 </h3>
     
   <p>Set the optional inputs for <a href="../proc/dop853.html">dop853</a>.</p>
@@ -1010,7 +1010,7 @@ make the step size control more stable.</p>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    public  subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol, atol, iout, idid)  
+    private  subroutine <a href='../proc/dop853.html'>dop853</a>(me, x, y, xend, rtol, atol, iout, idid)  
 </h3>
     
   <p>Numerical solution of a system of first order
@@ -1190,7 +1190,7 @@ can be both scalars or else both vectors of length <code>n</code>.
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    public  subroutine <a href='../proc/destroy_dop853.html'>destroy_dop853</a>(me)  
+    private  subroutine <a href='../proc/destroy_dop853.html'>destroy_dop853</a>(me)  
 </h3>
     
   <p>Destructor for <a href="../type/dop853_class.html">dop853_class</a>.</p>
@@ -1239,7 +1239,7 @@ can be both scalars or else both vectors of length <code>n</code>.
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    public  subroutine <a href='../proc/get_dop853_info.html'>get_dop853_info</a>(me, n, nfcn, nstep, naccpt, nrejct, h, iout)  
+    private  subroutine <a href='../proc/get_dop853_info.html'>get_dop853_info</a>(me, n, nfcn, nstep, naccpt, nrejct, h, iout)  
 </h3>
     
   <p>Get info from a <a href="../type/dop853_class.html">dop853_class</a>.</p>
@@ -1373,7 +1373,7 @@ can be both scalars or else both vectors of length <code>n</code>.
             <td>::</td>
             <td><strong>iout</strong></td>
             <td>
-<p><code>iout</code> flag passed into <a href="../proc/dop853.html">dop853</a>, used to 
+<p><code>iout</code> flag passed into <a href="../proc/dop853.html">dop853</a>, used to
 specify how <code>solout</code> is called during integration.</p>
             </td>
         </tr>
@@ -1391,7 +1391,7 @@ specify how <code>solout</code> is called during integration.</p>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    public  subroutine <a href='../proc/dp86co.html'>dp86co</a>(me, x, y, xend, hmax, h, rtol, atol, itol, iprint, iout, idid, nmax, nstiff, safe, beta, fac1, fac2, nfcn, nstep, naccpt, nrejct)  
+    private  subroutine <a href='../proc/dp86co.html'>dp86co</a>(me, x, y, xend, hmax, h, rtol, atol, itol, iprint, iout, idid, nmax, nstiff, safe, beta, fac1, fac2, nfcn, nstep, naccpt, nrejct)  
 </h3>
     
   <p>Core integrator for <a href="../proc/dop853.html">dop853</a>.
@@ -1752,7 +1752,7 @@ parameters same as in <a href="../proc/dop853.html">dop853</a> with workspace ad
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    public  function <a href='../proc/hinit.html'>hinit</a>(me, x, y, posneg, f0, iord, hmax, atol, rtol, itol)  
+    private  function <a href='../proc/hinit.html'>hinit</a>(me, x, y, posneg, f0, iord, hmax, atol, rtol, itol)  
 </h3>
     
   <p>computation of an initial step size guess</p>
@@ -1941,7 +1941,7 @@ parameters same as in <a href="../proc/dop853.html">dop853</a> with workspace ad
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    public  function <a href='../proc/contd8.html'>contd8</a>(me, ii, x) result(y)  
+    private  function <a href='../proc/contd8.html'>contd8</a>(me, ii, x) result(y)  
 </h3>
     
   <p>this function can be used for continuous output in connection
@@ -2071,7 +2071,7 @@ approximation to the <code>ii</code>-th component of the solution at <code>x</co
 <span class="w">                                                        </span><span class="c">!! the components for which dense output is required</span>
 <span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">dimension</span><span class="p">(:),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">cont</span><span class="w">       </span><span class="c">!! `dimension(8*nrdens)`</span>
 
-<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="c">!! copy of `iout` input to [[dop853]] </span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="c">!! copy of `iout` input to [[dop853]]</span>
 
 <span class="w">        </span><span class="c">!formerly in the condo8 common block:</span>
 <span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_wp</span><span class="w"></span>

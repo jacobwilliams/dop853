@@ -49,7 +49,7 @@
               aria-haspopup="true"
      aria-expanded="false">Contents <span class="caret"></span></a>
         <ul class="dropdown-menu">
-            <li><a href="../lists/files.html">Source Files</a></li>
+            <li><a href="../sourcefile/dop853_module.f90.html">Source File</a></li>
             <li><a href="../lists/modules.html">Modules</a></li>
             <li><a href="../lists/procedures.html">Procedures</a></li>
             <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
@@ -58,7 +58,7 @@
             </ul>
         
             </li>
-<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/dop853_module.f90.html">Source File</a></li>
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
 <li class="visible-xs hidden-sm visible-lg"><a href="../lists/absint.html">Abstract Interfaces</a></li>
@@ -95,11 +95,11 @@
 
             <li id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/dop853_module.f90"> Source File</a>
+              <a href="../src/dop853_module.F90"> Source File</a>
             </li>
         </ul>
         <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/dop853_module.f90.html'>dop853_module.f90</a></li>
+              <li><a href='../sourcefile/dop853_module.f90.html'>dop853_module.F90</a></li>
               <li><a href='../module/dop853_module.html'>dop853_module</a></li>
           <li class="active">get_dop853_info</li>
         </ol>
@@ -150,7 +150,7 @@
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>public  subroutine get_dop853_info(me, n, nfcn, nstep, naccpt, nrejct, h, iout)  
+    <h2>private  subroutine get_dop853_info(me, n, nfcn, nstep, naccpt, nrejct, h, iout)  
 </h2>
     
 
@@ -285,7 +285,7 @@
             <td>::</td>
             <td><strong>iout</strong></td>
             <td>
-                <p><code>iout</code> flag passed into <a href="../proc/dop853.html">dop853</a>, used to 
+                <p><code>iout</code> flag passed into <a href="../proc/dop853.html">dop853</a>, used to
 specify how <code>solout</code> is called during integration.</p>
             </td>
         </tr>
@@ -349,7 +349,7 @@ specify how <code>solout</code> is called during integration.</p>
 <span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="k">optional</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">nrejct</span><span class="w"> </span><span class="c">!! number of rejected steps (due to error test),</span>
 <span class="w">                                             </span><span class="c">!! (step rejections in the first step are not counted)</span>
 <span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="k">optional</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">h</span><span class="w">      </span><span class="c">!! predicted step size of the last accepted step</span>
-<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="k">optional</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">iout</span><span class="w">   </span><span class="c">!! `iout` flag passed into [[dop853]], used to </span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="k">optional</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">iout</span><span class="w">   </span><span class="c">!! `iout` flag passed into [[dop853]], used to</span>
 <span class="w">                                             </span><span class="c">!! specify how `solout` is called during integration.</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">n</span><span class="w">     </span><span class="p">))</span><span class="w"> </span><span class="n">n</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">n</span><span class="w"></span>
