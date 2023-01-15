@@ -346,7 +346,7 @@
                                                         !! * `idid=-3` step size becomes too small.
                                                         !! * `idid=-4` problem is probably stiff (interrupted).
 
-      real(wp) :: beta,fac1,fac2,h,hmax,safe
+      real(wp) :: beta,fac1,fac2,hmax,safe
       integer  :: i,ieco,iprint,istore,nrdens,nstiff,nmax
       logical  :: arret
       integer  :: itol    !! switch for `rtol` and `atol`:
@@ -434,8 +434,7 @@
           hmax = me%hmax
       end if
 
-      h = me%hinitial     ! initial step size
-      me%h = h
+      me%h = me%hinitial     ! initial step size
 
       ! when a fail has occurred, we return with idid=-1
       if ( arret ) then
@@ -445,11 +444,9 @@
       else
 
         ! call to core integrator
-        call me%dp86co(x,y,xend,hmax,h,rtol,atol,itol,iprint, &
+        call me%dp86co(x,y,xend,hmax,me%h,rtol,atol,itol,iprint, &
                        iout,idid,nmax,nstiff,safe,beta,fac1,fac2, &
                        me%nfcn,me%nstep,me%naccpt,me%nrejct)
-
-        me%h = h  ! may have been updated
 
       end if
 

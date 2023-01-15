@@ -80,52 +80,78 @@
   <div class="row">
     <h1>dop853
       <small>Subroutine</small>
+      
     </h1>
-    <div class="row">
-  <div class="col-lg-12">
-<div class="well well-sm">
-  <ul class="list-inline" style="margin-bottom:0px;display:inline">
-     <li><i class="fa fa-list-ol"></i>
-       <a data-toggle="tooltip"
-    data-placement="bottom" data-html="true"
-    title="15.7% of total for procedures.">75 statements</a>
-     </li> 
-    <li><i class="fa fa-code"></i><a href="../src/dop853_module.f90"> Source File</a></li>
-  </ul>
-  <ol class="breadcrumb in-well text-right">
-     <li><a href='../sourcefile/dop853_module.f90.html'>dop853_module.f90</a></li>
-     <li><a href='../module/dop853_module.html'>dop853_module</a></li>
-     <li class="active">dop853</li>
-  </ol>
-</div>
-</div>
-</div>
-<script>
-  $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-  })
-</script>
+      <div class="row" id="info-bar">
+    <div class="col-lg-12">
+      <div class="well well-sm">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+          <li id="statements"><i class="fa fa-list-ol"></i>
+            <a data-toggle="tooltip"
+               data-placement="bottom" data-html="true"
+               title="15.4% of total for procedures.">73 statements</a>
+          </li>
+
+            <li id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/dop853_module.f90"> Source File</a>
+            </li>
+        </ul>
+        <ol class="breadcrumb in-well text-right">
+              <li><a href='../sourcefile/dop853_module.f90.html'>dop853_module.f90</a></li>
+              <li><a href='../module/dop853_module.html'>dop853_module</a></li>
+          <li class="active">dop853</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
 
   </div>
   
   <div class="row">
     <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
-    <div id="sidebar">
-  <h3>Contents</h3>
- 
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/dop853.html#src">dop853</a>
-  </div>
-</div>
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="panel panel-primary">
+      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/dop853.html#src">dop853</a>
+      </div>
+    </div>
 
-</div>
+
+  </div>
 
     </div>
     
     <div class="col-md-9" id='text'>
-    <h2>public subroutine dop853(me, x, y, xend, rtol, atol, iout, idid)</h2>
+    <h2>public  subroutine dop853(me, x, y, xend, rtol, atol, iout, idid)  
+</h2>
     
 
     <p>Numerical solution of a system of first order
@@ -152,69 +178,147 @@
 </ul>
 
     <h3>Arguments</h3>
-      <table class="table table-striped varlist">
-<thead><tr><th>Type</th><th>Intent</th><th>Optional</th><th>Attributes</th><th></th><th>Name</th><th></th></thead>
-<tbody>
-<tr>
-  <td><span class="anchor" id="variable-me~8"></span>class(<a href='../type/dop853_class.html'>dop853_class</a>),</td>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~2"></span>
+              class(<a href='../type/dop853_class.html'>dop853_class</a>),
+            </td>
 <td>intent(inout)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>me</strong></td><td></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-x~5"></span>real(kind=wp),</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-x~3"></span>
+              real(kind=wp),
+            </td>
 <td>intent(inout)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>x</strong></td><td><p><em>input:</em> initial value of independent variable.
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                <p><em>input:</em> initial value of independent variable.
 <em>output:</em> <code>x</code> for which the solution has been computed
-(after successful return <code>x=xend</code>).</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-y~5"></span>real(kind=wp),</td>
+(after successful return <code>x=xend</code>).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-y~4"></span>
+              real(kind=wp),
+            </td>
 <td>intent(inout),</td>
-  <td></td>  <td>dimension(:)</td><td>::</td>
-  <td><strong>y</strong></td><td><p><em>input:</em> initial values for <code>y</code>. [size n]</p>
-<p><em>output:</em> numerical solution at <code>x</code>.</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-xend"></span>real(kind=wp),</td>
+              <td></td>            <td>
+              dimension(:)
+            </td>
+            <td>::</td>
+            <td><strong>y</strong></td>
+            <td>
+                <p><em>input:</em> initial values for <code>y</code>. [size n]</p>
+<p><em>output:</em> numerical solution at <code>x</code>.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-xend"></span>
+              real(kind=wp),
+            </td>
 <td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>xend</strong></td><td><p>final x-value (<code>xend</code>-<code>x</code> may be positive or negative)</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-rtol~2"></span>real(kind=wp),</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>xend</strong></td>
+            <td>
+                <p>final x-value (<code>xend</code>-<code>x</code> may be positive or negative)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-rtol"></span>
+              real(kind=wp),
+            </td>
 <td>intent(in),</td>
-  <td></td>  <td>dimension(:)</td><td>::</td>
-  <td><strong>rtol</strong></td><td><p>relative error tolerance. <code>rtol</code> and <code>atol</code>
-can be both scalars or else both vectors of length <code>n</code>.</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-atol~2"></span>real(kind=wp),</td>
+              <td></td>            <td>
+              dimension(:)
+            </td>
+            <td>::</td>
+            <td><strong>rtol</strong></td>
+            <td>
+                <p>relative error tolerance. <code>rtol</code> and <code>atol</code>
+can be both scalars or else both vectors of length <code>n</code>.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-atol"></span>
+              real(kind=wp),
+            </td>
 <td>intent(in),</td>
-  <td></td>  <td>dimension(:)</td><td>::</td>
-  <td><strong>atol</strong></td><td><p>absolute error tolerance. <code>rtol</code> and <code>atol</code>
+              <td></td>            <td>
+              dimension(:)
+            </td>
+            <td>::</td>
+            <td><strong>atol</strong></td>
+            <td>
+                <p>absolute error tolerance. <code>rtol</code> and <code>atol</code>
 can be both scalars or else both vectors of length <code>n</code>.
-<code>atol</code> should be strictly positive (possibly very small)</p></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-iout~3"></span>integer,</td>
+<code>atol</code> should be strictly positive (possibly very small)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-iout~2"></span>
+              integer,
+            </td>
 <td>intent(in)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>iout</strong></td><td><p>switch for calling the subroutine <code>solout</code>:</p>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iout</strong></td>
+            <td>
+                <p>switch for calling the subroutine <code>solout</code>:</p>
 <ul>
 <li><code>iout=0</code>: subroutine is never called</li>
 <li><code>iout=1</code>: subroutine is called after every successful step</li>
 <li><code>iout=2</code>: dense output is performed after every successful step</li>
 <li><code>iout=3</code>: dense output is performed in steps defined by the user
          (see <code>xout</code> above)</li>
-</ul></td>
-</tr>
-<tr>
-  <td><span class="anchor" id="variable-idid"></span>integer,</td>
+</ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-idid"></span>
+              integer,
+            </td>
 <td>intent(out)</td>
-  <td></td>  <td></td><td>::</td>
-  <td><strong>idid</strong></td><td><p>reports on successfulness upon return:</p>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>idid</strong></td>
+            <td>
+                <p>reports on successfulness upon return:</p>
 <ul>
 <li><code>idid=1</code>  computation successful,</li>
 <li><code>idid=2</code>  comput. successful (interrupted by <a>solout</a>),</li>
@@ -222,22 +326,42 @@ can be both scalars or else both vectors of length <code>n</code>.
 <li><code>idid=-2</code> larger <code>nmax</code> is needed,</li>
 <li><code>idid=-3</code> step size becomes too small.</li>
 <li><code>idid=-4</code> problem is probably stiff (interrupted).</li>
-</ul></td>
-</tr>
-</tbody>
-</table>
+</ul>
+            </td>
+        </tr>
+    </tbody>
+  </table>
 
     <br>
 
     <section class="visible-xs visible-sm hidden-md">
-      <h3>Contents</h3>
- 
-<div class="panel panel-primary">
-  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
-  <div class="list-group">
-    <a class="list-group-item" href="../proc/dop853.html#src">dop853</a>
-  </div>
-</div>
+        <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="panel panel-primary">
+      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/dop853.html#src">dop853</a>
+      </div>
+    </div>
+
 
     </section>
     <br class="visible-xs visible-sm hidden-md">
@@ -286,7 +410,7 @@ can be both scalars or else both vectors of length <code>n</code>.
 <span class="w">                                                        </span><span class="c">!! * `idid=-3` step size becomes too small.</span>
 <span class="w">                                                        </span><span class="c">!! * `idid=-4` problem is probably stiff (interrupted).</span>
 
-<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">beta</span><span class="p">,</span><span class="n">fac1</span><span class="p">,</span><span class="n">fac2</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">hmax</span><span class="p">,</span><span class="n">safe</span><span class="w"></span>
+<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">wp</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">beta</span><span class="p">,</span><span class="n">fac1</span><span class="p">,</span><span class="n">fac2</span><span class="p">,</span><span class="n">hmax</span><span class="p">,</span><span class="n">safe</span><span class="w"></span>
 <span class="w">      </span><span class="kt">integer</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="n">ieco</span><span class="p">,</span><span class="n">iprint</span><span class="p">,</span><span class="n">istore</span><span class="p">,</span><span class="n">nrdens</span><span class="p">,</span><span class="n">nstiff</span><span class="p">,</span><span class="n">nmax</span><span class="w"></span>
 <span class="w">      </span><span class="kt">logical</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">arret</span><span class="w"></span>
 <span class="w">      </span><span class="kt">integer</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">itol</span><span class="w">    </span><span class="c">!! switch for `rtol` and `atol`:</span>
@@ -374,8 +498,7 @@ can be both scalars or else both vectors of length <code>n</code>.
 <span class="k">          </span><span class="n">hmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">hmax</span><span class="w"></span>
 <span class="w">      </span><span class="k">end if</span>
 
-<span class="k">      </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">hinitial</span><span class="w">     </span><span class="c">! initial step size</span>
-<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="w"></span>
+<span class="k">      </span><span class="n">me</span><span class="p">%</span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">hinitial</span><span class="w">     </span><span class="c">! initial step size</span>
 
 <span class="w">      </span><span class="c">! when a fail has occurred, we return with idid=-1</span>
 <span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">arret</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
@@ -385,11 +508,9 @@ can be both scalars or else both vectors of length <code>n</code>.
 <span class="w">      </span><span class="k">else</span><span class="w"></span>
 
 <span class="w">        </span><span class="c">! call to core integrator</span>
-<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">dp86co</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">xend</span><span class="p">,</span><span class="n">hmax</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">rtol</span><span class="p">,</span><span class="n">atol</span><span class="p">,</span><span class="n">itol</span><span class="p">,</span><span class="n">iprint</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">        </span><span class="k">call </span><span class="n">me</span><span class="p">%</span><span class="n">dp86co</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">xend</span><span class="p">,</span><span class="n">hmax</span><span class="p">,</span><span class="n">me</span><span class="p">%</span><span class="n">h</span><span class="p">,</span><span class="n">rtol</span><span class="p">,</span><span class="n">atol</span><span class="p">,</span><span class="n">itol</span><span class="p">,</span><span class="n">iprint</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
 <span class="w">                       </span><span class="n">iout</span><span class="p">,</span><span class="n">idid</span><span class="p">,</span><span class="n">nmax</span><span class="p">,</span><span class="n">nstiff</span><span class="p">,</span><span class="n">safe</span><span class="p">,</span><span class="n">beta</span><span class="p">,</span><span class="n">fac1</span><span class="p">,</span><span class="n">fac2</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
 <span class="w">                       </span><span class="n">me</span><span class="p">%</span><span class="n">nfcn</span><span class="p">,</span><span class="n">me</span><span class="p">%</span><span class="n">nstep</span><span class="p">,</span><span class="n">me</span><span class="p">%</span><span class="n">naccpt</span><span class="p">,</span><span class="n">me</span><span class="p">%</span><span class="n">nrejct</span><span class="p">)</span><span class="w"></span>
-
-<span class="w">        </span><span class="n">me</span><span class="p">%</span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="w">  </span><span class="c">! may have been updated</span>
 
 <span class="w">      </span><span class="k">end if</span>
 
@@ -407,7 +528,7 @@ can be both scalars or else both vectors of length <code>n</code>.
     <footer>
       <div class="container">
       <div class="row">
-        <div class="col-xs-6 col-md-6"><p>dop853 was developed by Jacob Williams<br>&copy; 2022 
+        <div class="col-xs-6 col-md-6"><p>dop853 was developed by Jacob Williams<br>&copy; 2023 
 </p>
         </div>
         <div class="col-xs-6 col-md-6">
