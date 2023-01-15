@@ -19,8 +19,8 @@ Basic use of the solver is shown here. The main methods in the `dop853_class` ar
 ```fortran
   program dop853_example
 
-  use dop853_module
-  use dop853_constants
+  use dop853_module, wp => dop853_wp
+  use iso_fortran_env, only: output_unit
 
   implicit none
 
@@ -98,10 +98,24 @@ To use `dop853` within your FPM project, add the following to your `fpm.toml` fi
 dop853 = { git="https://github.com/jacobwilliams/dop853.git" }
 ```
 
+By default, the library is built with double precision (`real64`) real values. Explicitly specifying the real kind can be done using the following processor flags:
+
+Preprocessor flag | Kind  | Number of bytes
+----------------- | ----- | ---------------
+`REAL32`  | `real(kind=real32)`  | 4
+`REAL64`  | `real(kind=real64)`  | 8
+`REAL128` | `real(kind=real128)` | 16
+
+For example, to build a single precision version of the library, use:
+
+```
+fpm build --profile release --flag "-DREAL32"
+```
+
 To generate the documentation using [FORD](https://github.com/Fortran-FOSS-Programmers/ford), run:
 
 ```
-  ford dop853.md
+ford dop853.md
 ```
 
 ## 3rd Party Dependencies
@@ -124,3 +138,6 @@ The latest API documentation for the `master` branch can be found [here](https:/
 
 * [Original license for Hairer's codes](http://www.unige.ch/~hairer/prog/licence.txt).
 * The updates are released under a [similar BSD-style license](https://raw.githubusercontent.com/jacobwilliams/dop853/master/LICENSE).
+
+## See also
+* [numbalsoda](https://github.com/Nicholaswogan/numbalsoda) Python wrapper to this code.
