@@ -101,8 +101,8 @@
 <p>Basic use of the solver is shown here. The main methods in the <code>dop853_class</code> are <code>initialize()</code> and <code>integrate()</code>.</p>
 <div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="k">program </span><span class="n">dop853_example</span><span class="w"></span>
 
-<span class="w">  </span><span class="k">use </span><span class="n">dop853_module</span><span class="w"></span>
-<span class="w">  </span><span class="k">use </span><span class="n">dop853_constants</span><span class="w"></span>
+<span class="w">  </span><span class="k">use </span><span class="n">dop853_module</span><span class="p">,</span><span class="w"> </span><span class="n">wp</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">dop853_wp</span><span class="w"></span>
+<span class="w">  </span><span class="k">use </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">output_unit</span><span class="w"></span>
 
 <span class="w">  </span><span class="k">implicit none</span>
 
@@ -173,8 +173,39 @@ fpm test --profile release
 <span class="n">dop853</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">git</span><span class="o">=</span><span class="s">&quot;https://github.com/jacobwilliams/dop853.git&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
+<p>By default, the library is built with double precision (<code>real64</code>) real values. Explicitly specifying the real kind can be done using the following processor flags:</p>
+<table>
+<thead>
+<tr>
+<th>Preprocessor flag</th>
+<th>Kind</th>
+<th>Number of bytes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>REAL32</code></td>
+<td><code>real(kind=real32)</code></td>
+<td>4</td>
+</tr>
+<tr>
+<td><code>REAL64</code></td>
+<td><code>real(kind=real64)</code></td>
+<td>8</td>
+</tr>
+<tr>
+<td><code>REAL128</code></td>
+<td><code>real(kind=real128)</code></td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<p>For example, to build a single precision version of the library, use:</p>
+<div class="codehilite"><pre><span></span><code>fpm build --profile release --flag &quot;-DREAL32&quot;
+</code></pre></div>
+
 <p>To generate the documentation using <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>, run:</p>
-<div class="codehilite"><pre><span></span><code>  ford dop853.md
+<div class="codehilite"><pre><span></span><code>ford dop853.md
 </code></pre></div>
 
 <h2>3rd Party Dependencies</h2>
@@ -193,6 +224,10 @@ fpm test --profile release
 <ul>
 <li><a href="http://www.unige.ch/~hairer/prog/licence.txt">Original license for Hairer's codes</a>.</li>
 <li>The updates are released under a <a href="https://raw.githubusercontent.com/jacobwilliams/dop853/master/LICENSE">similar BSD-style license</a>.</li>
+</ul>
+<h2>See also</h2>
+<ul>
+<li><a href="https://github.com/Nicholaswogan/numbalsoda">numbalsoda</a> Python wrapper to this code.</li>
 </ul>
         </div>
         <div class="col-md-4">
