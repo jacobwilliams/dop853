@@ -1,6 +1,7 @@
 project: dop853
 project_dir: ./src
 output_dir: ./doc
+media_dir: ./media
 project_github: https://github.com/jacobwilliams/dop853
 summary: Modern Fortran Implementation of the DOP853 ODE Solver
 author: Jacob Williams
